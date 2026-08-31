@@ -1,0 +1,49 @@
+name: Publish preview
+
+on:
+  push:
+    branches:
+      - preview
+
+permissions:
+  contents: write
+
+jobs:
+  publish-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out preview branch
+        uses: actions/checkout@v4
+        with:
+          ref: preview
+          path: preview-src
+
+      - name: Check out live branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: live
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Mirror preview site into /preview
+        run: |
+          rm -rf live/preview
+          mkdir -p live/preview
+          rsync -a --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='preview' \
+            preview-src/ live/preview/
+
+      - name: Publish preview snapshot
+        run: |
+          cd live
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add preview
+          if git diff --cached --quiet; then
+            echo "Preview is already current."
+          else
+            git commit -m "Publish preview snapshot"
+            git push origin main
+          fi
