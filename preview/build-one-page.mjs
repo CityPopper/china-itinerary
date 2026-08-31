@@ -110,6 +110,33 @@ const days = [
   }
 ];
 
+const foodNotes = {
+  '11': {
+    title: 'Dim sum morning',
+    summary: 'Begin with steamed dumplings, bao, and tea before setting out across Guangzhou’s shopping districts.',
+    art: 'assets/pixel-food/guangzhou-dim-sum.webp',
+    alt: 'Pastel pixel art of Cantonese dim sum in bamboo steamers with a porcelain teapot'
+  },
+  '12': {
+    title: 'Guilin rice noodles',
+    summary: 'Try the local dry-mixed rice noodles with braised meat, peanuts, pickled beans, scallions, and broth on the side.',
+    art: 'assets/pixel-food/guilin-rice-noodles.webp',
+    alt: 'Pastel pixel art of Guilin rice noodles with braised meat, peanuts, pickled beans, and scallions'
+  },
+  '16': {
+    title: 'Chongqing hotpot',
+    summary: 'Make dinner the main event with bubbling chili broth, vegetables, mushrooms, tofu, and a comfortable spice level.',
+    art: 'assets/pixel-food/chongqing-hotpot.webp',
+    alt: 'Pastel pixel art of a brass Chongqing hotpot with chili broth, mushrooms, greens, and tofu'
+  },
+  '19': {
+    title: 'Tea + small bites',
+    summary: 'Pair a slow gaiwan tea with dan dan noodles, red-oil wontons, or sesame sweets between the park and opera.',
+    art: 'assets/pixel-food/chengdu-tea-snacks.webp',
+    alt: 'Pastel pixel art of Chengdu gaiwan tea, dan dan noodles, red-oil wontons, and sesame sweets'
+  }
+};
+
 const timeline = days.map((day, index) => {
   const location = locations[day.city];
   return `<a class="date-link city-${day.city}${index === 0 ? ' active' : ''}" href="#day-${day.date}" data-day-target="day-${day.date}" aria-label="${day.weekday}, November ${Number(day.date)} — ${location.name}: ${day.title}"${index === 0 ? ' aria-current="date"' : ''}><span class="date-weekday">${day.weekday.slice(0, 3)}</span><strong class="date-number">${day.date}</strong><span class="date-city">${location.name}</span></a>`;
@@ -124,6 +151,12 @@ const locationArtwork = Object.entries(locations).map(([key, location], index) =
 const chapters = days.map((day) => {
   const location = locations[day.city];
   const beats = day.beats.map((beat) => `<li>${beat}</li>`).join('');
+  const food = foodNotes[day.date];
+  const foodCard = food ? `        <aside class="food-note" aria-label="Food note: ${food.title}">
+          <img src="${food.art}" alt="${food.alt}" loading="lazy" decoding="async"/>
+          <div><span>Taste note</span><h3>${food.title}</h3><p>${food.summary}</p></div>
+        </aside>
+` : '';
   return `<section class="itinerary-day day-chapter city-${day.city}" id="day-${day.date}" data-date="2026-11-${day.date}" data-location="${day.city}" aria-labelledby="day-${day.date}-title">
     <div class="chapter-copy">
         <div class="chapter-overline"><span>Day ${day.number}</span><time datetime="2026-11-${day.date}">${day.weekday} · Nov ${Number(day.date)}</time></div>
@@ -132,7 +165,7 @@ const chapters = days.map((day) => {
         <p class="chapter-theme">${day.theme}</p>
         <p class="chapter-summary">${day.summary}</p>
         <ul class="chapter-beats" aria-label="Day highlights">${beats}</ul>
-        <div class="chapter-meta"><div><span>Stay</span><strong>${day.stay}</strong></div><div><span>Move</span><strong>${day.move}</strong></div></div>
+${foodCard}        <div class="chapter-meta"><div><span>Stay</span><strong>${day.stay}</strong></div><div><span>Move</span><strong>${day.move}</strong></div></div>
     </div>
   </section>`;
 }).join('\n');
@@ -198,4 +231,4 @@ ${chapters}
 </html>`;
 
 await writeFile(path.join(previewDirectory, 'index.html'), output);
-console.log(`Built preview/index.html with ${days.length} concise day chapters and ${Object.keys(locations).length} single-use location artworks.`);
+console.log(`Built preview/index.html with ${days.length} day chapters, ${Object.keys(locations).length} location artworks, and ${Object.keys(foodNotes).length} food notes.`);
