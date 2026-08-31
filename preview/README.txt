@@ -1,14 +1,15 @@
-China itinerary website — shareable build
+China itinerary website — one-page preview
 
-1. Extract the ZIP completely.
-2. Open index.html in Safari, Chrome, Edge, or Firefox.
-3. Do not rely on the in-app preview inside Messages, WhatsApp, Mail, or Files; those previews can disable external links.
-4. Instagram links appear as both a button and a visible URL on each attraction card.
-5. Photos and itinerary pages work offline. Instagram requires internet access.
+1. Open index.html in Safari, Chrome, Edge, or Firefox.
+2. Use the sticky date timeline to jump to any day. It scrolls horizontally and keeps the active date visible on mobile.
+3. The overview, route, all 14 daily summaries, hotel bases, transport, and booking notes are included on index.html.
+4. The one-page preview uses six original pastel pixel-art scenes: one image element for each distinct location in a sticky artwork stage.
+5. The artwork stays pinned while that location's daily summaries scroll beside or beneath it, then transitions when the location changes.
+6. Everything required by the one-page preview works locally and offline.
 
-SOCIAL PHOTO GALLERIES (v4)
-- Daily attraction cards now use live traveler photos from Trip.com Moments.
-- Swipe/scroll horizontally or use the arrow buttons to see multiple photos.
-- Click/tap any photo to open the full-screen viewer; use arrows or keyboard left/right.
-- Each gallery includes a link back to the original traveler post for attribution/context.
-- The itinerary itself remains local/offline, but the social photos require an internet connection to load.
+The individual files in days/ remain available as source/reference pages. To edit the
+one-page experience, update the day summaries in build-one-page.mjs, then run:
+
+  node build-one-page.mjs
+
+Generated location art is stored in assets/pixel-art/.
