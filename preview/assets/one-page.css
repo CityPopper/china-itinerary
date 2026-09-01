@@ -54,15 +54,16 @@ figure,p,h1,h2,h3,ul{margin-top:0}
 
 #overview,#itinerary,#essentials,.itinerary-day{scroll-margin-top:calc(var(--topbar-height) + var(--date-nav-height) + 18px)}
 
-.journey-hero{min-height:calc(100svh - var(--topbar-height) - var(--date-nav-height));display:grid;align-items:center;padding:46px 0 70px;background:var(--peach);border-bottom:2px solid var(--ink)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(250px,.55fr);gap:clamp(48px,8vw,120px);align-items:end}
+.journey-hero{position:relative;isolation:isolate;min-height:calc(100svh - var(--topbar-height) - var(--date-nav-height));display:grid;align-items:center;overflow:hidden;padding:46px 0 70px;background:var(--peach) url("pixel-art/journey-hero.webp") center 58%/cover no-repeat;border-bottom:2px solid var(--ink)}
+.journey-hero::before{content:"";position:absolute;z-index:0;inset:0;background:linear-gradient(90deg,rgba(243,199,181,.96) 0%,rgba(243,199,181,.89) 34%,rgba(243,199,181,.48) 60%,rgba(243,199,181,.34) 100%)}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(250px,.55fr);gap:clamp(48px,8vw,120px);align-items:end}
 .hero-copy h1{margin:18px 0 30px;font:700 clamp(74px,10.2vw,154px)/.79 Georgia,"Times New Roman",serif;letter-spacing:-.06em}
 .hero-copy h1 em{font-size:.54em;font-weight:400;color:var(--plum)}
 .hero-lead{max-width:610px;margin:0 0 30px;color:#584e5c;font-size:21px}
 .hero-stats{display:flex;flex-wrap:wrap;gap:12px}
 .hero-stats span{padding:9px 12px;background:var(--paper);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;text-transform:uppercase}
 .hero-stats b{font-size:16px}
-.hero-note{align-self:center;padding:24px;background:rgba(255,248,236,.56);border:2px solid var(--ink);box-shadow:7px 7px 0 var(--ink)}
+.hero-note{align-self:center;padding:24px;background:rgba(255,248,236,.86);border:2px solid var(--ink);box-shadow:7px 7px 0 var(--ink);backdrop-filter:blur(5px)}
 .hero-note span,.hero-note p{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
 .hero-note strong{display:block;margin:22px 0;font:700 clamp(42px,4.6vw,68px)/.88 Georgia,serif;letter-spacing:-.045em}
 .hero-note p{margin:0;color:#584e5c;line-height:1.7}
@@ -86,17 +87,19 @@ figure,p,h1,h2,h3,ul{margin-top:0}
 .location-stage::before{content:"";position:absolute;inset:0;opacity:.22;background:linear-gradient(90deg,transparent 49.8%,var(--paper) 50%,transparent 50.2%),linear-gradient(0deg,transparent 49.8%,var(--paper) 50%,transparent 50.2%);background-size:44px 44px}
 .location-stage::after{content:"";position:absolute;z-index:3;inset:18px;border:1px solid rgba(255,248,236,.32);pointer-events:none}
 .location-art{--art-accent:var(--peach);position:absolute;z-index:1;top:50%;left:clamp(24px,3.3vw,54px);right:clamp(24px,3.3vw,54px);margin:0;overflow:hidden;background:var(--paper);border:3px solid var(--paper);box-shadow:13px 13px 0 var(--art-accent),16px 16px 0 var(--ink);opacity:0;pointer-events:none;transform:translate3d(-7%,-50%,0) scale(.96);transition:opacity .45s ease,transform .78s cubic-bezier(.2,.76,.2,1)}
+.location-art[data-era="present"]{transform:translate3d(7%,-50%,0) scale(.96)}
 .location-art.active{z-index:2;opacity:1;pointer-events:auto;transform:translate3d(0,-50%,0) scale(1)}
-.location-art[data-location-art="shenzhen"]{--art-accent:#91b7c3}
-.location-art[data-location-art="guangzhou"]{--art-accent:#d99f87}
-.location-art[data-location-art="guilin"]{--art-accent:#91ad8f}
-.location-art[data-location-art="xingping"]{--art-accent:#c990a0}
-.location-art[data-location-art="chongqing"]{--art-accent:#a79abc}
-.location-art[data-location-art="chengdu"]{--art-accent:#c8a95f}
-.location-art img{width:100%;aspect-ratio:1.58/1;object-fit:cover;image-rendering:pixelated}
+.location-art[data-location="shenzhen"]{--art-accent:#91b7c3}
+.location-art[data-location="guangzhou"]{--art-accent:#d99f87}
+.location-art[data-location="guilin"]{--art-accent:#91ad8f}
+.location-art[data-location="xingping"]{--art-accent:#c990a0}
+.location-art[data-location="chongqing"]{--art-accent:#a79abc}
+.location-art[data-location="chengdu"]{--art-accent:#c8a95f}
+.location-art img{width:100%;aspect-ratio:1.58/1;object-fit:cover;color:transparent;image-rendering:pixelated}
 .location-art figcaption{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 13px;color:var(--ink);border-top:2px solid var(--ink);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;text-transform:uppercase}
 .location-art figcaption span{font-size:10px;font-weight:900;letter-spacing:.08em}
 .location-art figcaption small{font-size:8px;font-weight:800;letter-spacing:.1em}
+.location-art[data-era="present"] figcaption small{color:var(--plum)}
 .day-stream{min-width:0;background:var(--paper-2);border-left:2px solid var(--ink)}
 .day-chapter{--chapter-bg:var(--paper-2);--chapter-accent:var(--blue);min-height:calc(100svh - var(--topbar-height) - var(--date-nav-height));display:flex;align-items:center;background:var(--chapter-bg);border-bottom:2px solid var(--ink)}
 .day-chapter.city-shenzhen{--chapter-bg:#dfedf1;--chapter-accent:#91b7c3}
@@ -126,6 +129,32 @@ figure,p,h1,h2,h3,ul{margin-top:0}
 .chapter-meta div+div{padding-left:18px;border-left:2px solid var(--ink)}
 .chapter-meta span{display:block;margin-bottom:4px;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
 .chapter-meta strong{font-size:13px}
+
+.food-plan-section{margin:34px 0 36px}
+.food-plan-section>.wrap{width:100%}
+.food-plan-section .places-title{margin:0 0 7px;font:700 29px/1 Georgia,serif;letter-spacing:-.025em}
+.food-plan-section .places-sub{margin:0 0 16px;color:var(--muted);font-size:12px;line-height:1.5}
+.food-plan-section .places-grid{display:grid;gap:14px}
+.food-plan-section .place-card{display:grid;grid-template-columns:minmax(150px,42%) minmax(0,1fr);min-height:190px;overflow:hidden;background:var(--paper);border:2px solid var(--ink);box-shadow:5px 5px 0 var(--chapter-accent)}
+.food-plan-section .social-gallery{position:relative;min-width:0;overflow:hidden;background:#241d28;border-right:2px solid var(--ink)}
+.food-plan-section .social-gallery-track{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.food-plan-section .social-gallery-track::-webkit-scrollbar{display:none}
+.food-plan-section .social-gallery-slide{position:relative;flex:0 0 100%;min-width:0;height:100%;margin:0;scroll-snap-align:start;background:#241d28}
+.food-plan-section .social-gallery-slide img{width:100%;height:100%;min-height:190px;object-fit:cover;image-rendering:pixelated}
+.food-plan-section .social-gallery-source{position:absolute;left:7px;bottom:7px;max-width:calc(100% - 14px);overflow:hidden;padding:4px 6px;border:1px solid rgba(255,255,255,.48);background:rgba(36,29,40,.78);color:#fff;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:7px;font-weight:800;line-height:1.2;text-overflow:ellipsis;text-transform:uppercase;white-space:nowrap;backdrop-filter:blur(4px)}
+.food-plan-section .social-gallery-nav{position:absolute;z-index:3;top:50%;width:30px;height:30px;display:grid;place-items:center;padding:0;transform:translateY(-50%);border:1px solid rgba(255,255,255,.68);border-radius:50%;background:rgba(36,29,40,.72);color:#fff;font:700 20px/1 Georgia,serif;cursor:pointer}
+.food-plan-section .social-gallery-nav.prev{left:7px}
+.food-plan-section .social-gallery-nav.next{right:7px}
+.food-plan-section .social-gallery-counter{position:absolute;z-index:3;top:7px;right:7px;padding:4px 6px;background:rgba(36,29,40,.72);color:#fff;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:8px;font-weight:900}
+.food-plan-section .social-gallery-dots{position:absolute;z-index:3;left:50%;bottom:33px;display:flex;gap:4px;transform:translateX(-50%);pointer-events:none}
+.food-plan-section .social-gallery-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.55);box-shadow:0 0 0 1px rgba(36,29,40,.35)}
+.food-plan-section .social-gallery-dot.active{width:14px;border-radius:5px;background:#fff}
+.food-plan-section .place-copy{align-self:center;padding:15px 16px}
+.food-plan-section .tag{display:inline-block;margin:0 0 9px;color:var(--plum);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:8px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.food-plan-section .tag+.tag{margin-left:6px!important}
+.food-plan-section .place-copy h3{margin:0 0 8px;font:700 21px/1.05 Georgia,serif;letter-spacing:-.02em}
+.food-plan-section .place-copy p{margin:0;color:#655b66;font-size:11.5px;line-height:1.45}
+.food-plan-section .place-actions{display:none}
 
 .essentials{padding:100px 0 110px;background:var(--sage);border-bottom:2px solid var(--ink)}
 .essentials h2{margin:12px 0 38px;font:700 clamp(48px,6vw,82px)/.92 Georgia,serif;letter-spacing:-.04em}
@@ -159,8 +188,9 @@ figure,p,h1,h2,h3,ul{margin-top:0}
   .location-stage{z-index:20;height:var(--mobile-art-height);border-bottom:2px solid var(--ink)}
   .location-stage::after{inset:9px}
   .location-art{left:12px;right:12px;border-width:2px;box-shadow:7px 7px 0 var(--art-accent),10px 10px 0 var(--ink)}
+  .location-art img{height:calc(var(--mobile-art-height) - 54px);aspect-ratio:auto;object-fit:cover}
   .location-art figcaption{padding:8px 10px}
-  .location-art figcaption small{display:none}
+  .location-art figcaption small{display:block;font-size:7px;white-space:nowrap}
   .day-stream{position:relative;z-index:10;margin-top:calc(-1 * var(--mobile-art-height));border-left:0}
   .day-chapter{min-height:calc(100svh - var(--topbar-height) - var(--date-nav-height))}
   .chapter-copy{max-width:760px;padding:calc(var(--mobile-art-height) + 42px) 32px 68px}
@@ -178,6 +208,7 @@ figure,p,h1,h2,h3,ul{margin-top:0}
   .date-number{font-size:20px}
   .date-city{font-size:8px}
   .journey-hero{min-height:auto;padding:34px 0 50px}
+  .journey-hero::before{background:linear-gradient(180deg,rgba(243,199,181,.92),rgba(243,199,181,.76))}
   .hero-grid{gap:28px}
   .hero-copy h1{font-size:60px;margin-top:14px}
   .hero-lead{font-size:16px;line-height:1.6}
@@ -221,14 +252,22 @@ figure,p,h1,h2,h3,ul{margin-top:0}
   .footer .wrap{align-items:flex-start;flex-direction:column}
 }
 
+@media(max-width:520px){
+  .food-plan-section .place-card{grid-template-columns:1fr}
+  .food-plan-section .social-gallery{height:260px;min-height:260px;border-right:0;border-bottom:2px solid var(--ink)}
+  .food-plan-section .social-gallery-slide img{height:260px;min-height:260px}
+}
+
 @media(max-width:390px){
   .hero-copy h1{font-size:50px}
   .chapter-copy h2{font-size:39px}
   .food-note{grid-template-columns:104px 1fr}
+  .location-art figcaption small{font-size:6.5px;letter-spacing:.06em}
   .location-art figcaption span{font-size:9px}
 }
 
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .date-link,.location-art{transition:none}
+  .food-plan-section .social-gallery-track{scroll-behavior:auto}
 }

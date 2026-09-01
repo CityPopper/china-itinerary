@@ -10,7 +10,7 @@
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let activeId = '';
-  let activeLocation = '';
+  let activeArtworkId = '';
   let frame = 0;
 
   function stickyOffset() {
@@ -27,25 +27,46 @@
     });
   }
 
-  function setActiveArtwork(location) {
-    if (!location || location === activeLocation) return;
-    activeLocation = location;
+  function artworkFor(location, marker) {
+    const portraits = locationArtwork.filter((artwork) => artwork.dataset.location === location);
+    if (portraits.length <= 1) return portraits[0];
 
-    if (locationStage) locationStage.dataset.activeLocation = location;
+    const locationSections = sections.filter((section) => section.dataset.location === location);
+    const first = locationSections[0];
+    const last = locationSections[locationSections.length - 1];
+    if (!first || !last) return portraits[0];
+
+    const groupTop = first.getBoundingClientRect().top + window.scrollY;
+    const groupBottom = last.getBoundingClientRect().bottom + window.scrollY;
+    const progress = Math.max(0, Math.min(1, (window.scrollY + marker - groupTop) / Math.max(1, groupBottom - groupTop)));
+    return portraits[progress >= (locationSections.length === 1 ? .36 : .48) ? portraits.length - 1 : 0];
+  }
+
+  function setActiveArtwork(location, marker = stickyOffset()) {
+    if (!location) return;
+    const selectedArtwork = artworkFor(location, marker);
+    if (!selectedArtwork || selectedArtwork.dataset.locationArt === activeArtworkId) return;
+
+    activeArtworkId = selectedArtwork.dataset.locationArt;
+
+    if (locationStage) {
+      locationStage.dataset.activeLocation = location;
+      locationStage.dataset.activeEra = selectedArtwork.dataset.era || '';
+    }
     locationArtwork.forEach((artwork) => {
-      const selected = artwork.dataset.locationArt === location;
+      const selected = artwork === selectedArtwork;
       artwork.classList.toggle('active', selected);
       if (selected) artwork.removeAttribute('aria-hidden');
       else artwork.setAttribute('aria-hidden', 'true');
     });
   }
 
-  function setActive(id, center = true) {
-    if (!id || id === activeId) return;
-    activeId = id;
-
+  function setActive(id, center = true, marker = stickyOffset()) {
+    if (!id) return;
     const section = document.getElementById(id);
-    setActiveArtwork(section?.dataset.location);
+    setActiveArtwork(section?.dataset.location, marker);
+    if (id === activeId) return;
+    activeId = id;
 
     links.forEach((link) => {
       const selected = link.dataset.dayTarget === id;
@@ -70,7 +91,7 @@
       current = sections[sections.length - 1];
     }
 
-    setActive(current.id);
+    setActive(current.id, true, marker);
   }
 
   function queueUpdate() {

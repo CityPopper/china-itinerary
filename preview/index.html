@@ -23,7 +23,7 @@
     <section class="journey-hero" id="overview">
       <div class="hero-grid wrap">
         <div class="hero-copy"><p class="pixel-label">8–21 November 2026 · 14 days</p><h1>South China<br/><em>to</em> Sichuan</h1><p class="hero-lead">A rail-first journey through six places, told as one continuous scroll.</p><div class="hero-stats"><span><b>13</b> nights</span><span><b>4</b> bases</span><span><b>0</b> domestic flights</span></div></div>
-        <aside class="hero-note" aria-label="Journey direction"><span>South → West</span><strong>22°N<br/>to 30°N</strong><p>Six location portraits appear once, then hold their place while each day unfolds.</p></aside>
+        <aside class="hero-note" aria-label="Journey direction"><span>South → West</span><strong>22°N<br/>to 30°N</strong><p>Urban portraits shift from then to now; landscape stops hold their calm.</p></aside>
       </div>
     </section>
 
@@ -31,40 +31,56 @@
       <div class="wrap"><p class="pixel-label">The route</p><h2 id="route-title">Six places, four hotel bases</h2><div class="route-stops"><span>Shenzhen<small>4 nights</small></span><i>→</i><span>Guangzhou<small>day trip</small></span><i>→</i><span>Guilin<small>3 nights</small></span><i>→</i><span>Xingping<small>day trip</small></span><i>→</i><span>Chongqing<small>2 nights</small></span><i>→</i><span>Chengdu<small>4 nights</small></span></div></div>
     </section>
 
-    <section class="itinerary-intro" id="itinerary"><div class="wrap"><p class="pixel-label">Scroll the journey</p><div><h2>Day by day</h2><p>Each location portrait stays pinned while its days move alongside it, then gives way to the next place on the route.</p></div></div></section>
+    <section class="itinerary-intro" id="itinerary"><div class="wrap"><p class="pixel-label">Scroll the journey</p><div><h2>Day by day</h2><p>Each portrait stays pinned while its days move alongside it. Four cities transform from heritage scenes into present-day China as you scroll.</p></div></div></section>
 
     <div class="itinerary-stage">
       <div class="location-visuals">
         <div class="location-stage" data-location-stage aria-label="Location artwork">
 
-      <figure class="location-art active" data-location-art="shenzhen">
+      <figure class="location-art active" data-location-art="shenzhen-heritage" data-location="shenzhen" data-era="heritage">
         <img src="assets/pixel-art/shenzhen.png" alt="Pastel pixel-art view of an ancient Lingnan harbor with pavilions, sailboats, mangroves, and distant hills" fetchpriority="high" decoding="async"/>
-        <figcaption><span>01 · Shenzhen</span><small>Original pastel pixel art</small></figcaption>
+        <figcaption><span>01A · Shenzhen</span><small>Then · heritage portrait</small></figcaption>
       </figure>
-      <figure class="location-art" data-location-art="guangzhou" aria-hidden="true">
+      <figure class="location-art" data-location-art="shenzhen-modern" data-location="shenzhen" data-era="present" aria-hidden="true">
+        <img src="assets/pixel-art/shenzhen-modern.png" alt="Pastel pixel-art view of present-day Shenzhen with a bayfront skyline, metro, promenade, and evening light" loading="lazy" decoding="async"/>
+        <figcaption><span>01B · Shenzhen</span><small>Now · modern China</small></figcaption>
+      </figure>
+      <figure class="location-art" data-location-art="guangzhou-heritage" data-location="guangzhou" data-era="heritage" aria-hidden="true">
         <img src="assets/pixel-art/guangzhou.png" alt="Pastel pixel-art view of an ancient Cantonese city along the broad Pearl River with arcades, boats, a pagoda, and kapok trees" loading="lazy" decoding="async"/>
-        <figcaption><span>02 · Guangzhou</span><small>Original pastel pixel art</small></figcaption>
+        <figcaption><span>02A · Guangzhou</span><small>Then · heritage portrait</small></figcaption>
       </figure>
-      <figure class="location-art" data-location-art="guilin" aria-hidden="true">
+      <figure class="location-art" data-location-art="guangzhou-modern" data-location="guangzhou" data-era="present" aria-hidden="true">
+        <img src="assets/pixel-art/guangzhou-modern.png" alt="Pastel pixel-art view of present-day Guangzhou with Canton Tower, the Pearl River, ferries, and a modern skyline" loading="lazy" decoding="async"/>
+        <figcaption><span>02B · Guangzhou</span><small>Now · modern China</small></figcaption>
+      </figure>
+      <figure class="location-art" data-location-art="guilin-heritage" data-location="guilin" data-era="heritage" aria-hidden="true">
         <img src="assets/pixel-art/guilin.png" alt="Pastel pixel-art view of Guilin karst peaks, misty water, twin pagodas, and a bamboo raft" loading="lazy" decoding="async"/>
-        <figcaption><span>03 · Guilin</span><small>Original pastel pixel art</small></figcaption>
+        <figcaption><span>03 · Guilin</span><small>Then · heritage portrait</small></figcaption>
       </figure>
-      <figure class="location-art" data-location-art="xingping" aria-hidden="true">
+      <figure class="location-art" data-location-art="xingping-heritage" data-location="xingping" data-era="heritage" aria-hidden="true">
         <img src="assets/pixel-art/xingping.png" alt="Pastel pixel-art view of Xingping Ancient Town, the Li River, karst peaks, a bamboo raft, and a hanfu-clad traveler" loading="lazy" decoding="async"/>
-        <figcaption><span>04 · Xingping</span><small>Original pastel pixel art</small></figcaption>
+        <figcaption><span>04 · Xingping</span><small>Then · heritage portrait</small></figcaption>
       </figure>
-      <figure class="location-art" data-location-art="chongqing" aria-hidden="true">
+      <figure class="location-art" data-location-art="chongqing-heritage" data-location="chongqing" data-era="heritage" aria-hidden="true">
         <img src="assets/pixel-art/chongqing.png" alt="Pastel pixel-art view of an ancient Chongqing river city with layered hillside buildings, bridges, boats, and lanterns" loading="lazy" decoding="async"/>
-        <figcaption><span>05 · Chongqing</span><small>Original pastel pixel art</small></figcaption>
+        <figcaption><span>05A · Chongqing</span><small>Then · heritage portrait</small></figcaption>
       </figure>
-      <figure class="location-art" data-location-art="chengdu" aria-hidden="true">
+      <figure class="location-art" data-location-art="chongqing-modern" data-location="chongqing" data-era="present" aria-hidden="true">
+        <img src="assets/pixel-art/chongqing-modern.png" alt="Pastel pixel-art view of present-day Chongqing with a monorail, high-rises, bridges, layered roads, and river traffic at blue hour" loading="lazy" decoding="async"/>
+        <figcaption><span>05B · Chongqing</span><small>Now · modern China</small></figcaption>
+      </figure>
+      <figure class="location-art" data-location-art="chengdu-heritage" data-location="chengdu" data-era="heritage" aria-hidden="true">
         <img src="assets/pixel-art/chengdu.png" alt="Pastel pixel-art view of a Chengdu bamboo grove, panda, teahouse courtyard, temple roofs, and misty hills" loading="lazy" decoding="async"/>
-        <figcaption><span>06 · Chengdu</span><small>Original pastel pixel art</small></figcaption>
+        <figcaption><span>06A · Chengdu</span><small>Then · heritage portrait</small></figcaption>
+      </figure>
+      <figure class="location-art" data-location-art="chengdu-modern" data-location="chengdu" data-era="present" aria-hidden="true">
+        <img src="assets/pixel-art/chengdu-modern.png" alt="Pastel pixel-art view of present-day Chengdu with a bamboo-edged park, teahouse terrace, metro, cyclists, and a modern skyline" loading="lazy" decoding="async"/>
+        <figcaption><span>06B · Chengdu</span><small>Now · modern China</small></figcaption>
       </figure>
         </div>
       </div>
       <div class="day-stream">
-<section class="itinerary-day day-chapter city-shenzhen" id="day-08" data-date="2026-11-08" data-location="shenzhen" aria-labelledby="day-08-title">
+<section class="itinerary-day day-chapter city-shenzhen" id="day-08" data-date="2026-11-08" data-location="shenzhen" data-day-file="2026-11-08-shenzhen.html" aria-labelledby="day-08-title">
     <div class="chapter-copy">
         <div class="chapter-overline"><span>Day 01</span><time datetime="2026-11-08">Sunday · Nov 8</time></div>
         <p class="chapter-location">Shenzhen</p>
@@ -75,7 +91,7 @@
         <div class="chapter-meta"><div><span>Stay</span><strong>Shenzhen</strong></div><div><span>Move</span><strong>Airport → Futian · 35–60 min</strong></div></div>
     </div>
   </section>
-<section class="itinerary-day day-chapter city-shenzhen" id="day-09" data-date="2026-11-09" data-location="shenzhen" aria-labelledby="day-09-title">
+<section class="itinerary-day day-chapter city-shenzhen" id="day-09" data-date="2026-11-09" data-location="shenzhen" data-day-file="2026-11-09-shenzhen.html" aria-labelledby="day-09-title">
     <div class="chapter-copy">
         <div class="chapter-overline"><span>Day 02</span><time datetime="2026-11-09">Monday · Nov 9</time></div>
         <p class="chapter-location">Shenzhen</p>
@@ -86,7 +102,7 @@
         <div class="chapter-meta"><div><span>Stay</span><strong>Shenzhen</strong></div><div><span>Move</span><strong>Metro day · minimal backtracking</strong></div></div>
     </div>
   </section>
-<section class="itinerary-day day-chapter city-shenzhen" id="day-10" data-date="2026-11-10" data-location="shenzhen" aria-labelledby="day-10-title">
+<section class="itinerary-day day-chapter city-shenzhen" id="day-10" data-date="2026-11-10" data-location="shenzhen" data-day-file="2026-11-10-shenzhen.html" aria-labelledby="day-10-title">
     <div class="chapter-copy">
         <div class="chapter-overline"><span>Day 03</span><time datetime="2026-11-10">Tuesday · Nov 10</time></div>
         <p class="chapter-location">Shenzhen</p>
@@ -97,7 +113,7 @@
         <div class="chapter-meta"><div><span>Stay</span><strong>Shenzhen</strong></div><div><span>Move</span><strong>Metro + short DiDi hops</strong></div></div>
     </div>
   </section>
-<section class="itinerary-day day-chapter city-guangzhou" id="day-11" data-date="2026-11-11" data-location="guangzhou" aria-labelledby="day-11-title">
+<section class="itinerary-day day-chapter city-guangzhou" id="day-11" data-date="2026-11-11" data-location="guangzhou" data-day-file="2026-11-11-guangzhou.html" aria-labelledby="day-11-title">
     <div class="chapter-copy">
         <div class="chapter-overline"><span>Day 04</span><time datetime="2026-11-11">Wednesday · Nov 11</time></div>
         <p class="chapter-location">Guangzhou</p>
@@ -112,7 +128,7 @@
         <div class="chapter-meta"><div><span>Stay</span><strong>Shenzhen</strong></div><div><span>Move</span><strong>HSR · 30–45 min each way</strong></div></div>
     </div>
   </section>
-<section class="itinerary-day day-chapter city-guilin" id="day-12" data-date="2026-11-12" data-location="guilin" aria-labelledby="day-12-title">
+<section class="itinerary-day day-chapter city-guilin" id="day-12" data-date="2026-11-12" data-location="guilin" data-day-file="2026-11-12-guilin.html" aria-labelledby="day-12-title">
     <div class="chapter-copy">
         <div class="chapter-overline"><span>Day 05</span><time datetime="2026-11-12">Thursday · Nov 12</time></div>
         <p class="chapter-location">Guilin</p>
@@ -127,7 +143,7 @@
         <div class="chapter-meta"><div><span>Stay</span><strong>Guilin</strong></div><div><span>Move</span><strong>HSR · about 3 hr</strong></div></div>
     </div>
   </section>
-<section class="itinerary-day day-chapter city-xingping" id="day-13" data-date="2026-11-13" data-location="xingping" aria-labelledby="day-13-title">
+<section class="itinerary-day day-chapter city-xingping" id="day-13" data-date="2026-11-13" data-location="xingping" data-day-file="2026-11-13-xingping.html" aria-labelledby="day-13-title">
     <div class="chapter-copy">
         <div class="chapter-overline"><span>Day 06</span><time datetime="2026-11-13">Friday · Nov 13</time></div>
         <p class="chapter-location">Xingping</p>
@@ -138,7 +154,7 @@
         <div class="chapter-meta"><div><span>Stay</span><strong>Guilin</strong></div><div><span>Move</span><strong>HSR + taxi · about 1 hr each way</strong></div></div>
     </div>
   </section>
-<section class="itinerary-day day-chapter city-guilin" id="day-14" data-date="2026-11-14" data-location="guilin" aria-labelledby="day-14-title">
+<section class="itinerary-day day-chapter city-guilin" id="day-14" data-date="2026-11-14" data-location="guilin" data-day-file="2026-11-14-guilin.html" aria-labelledby="day-14-title">
     <div class="chapter-copy">
         <div class="chapter-overline"><span>Day 07</span><time datetime="2026-11-14">Saturday · Nov 14</time></div>
         <p class="chapter-location">Guilin</p>
@@ -149,7 +165,7 @@
         <div class="chapter-meta"><div><span>Stay</span><strong>Guilin</strong></div><div><span>Move</span><strong>Walk + short DiDi rides</strong></div></div>
     </div>
   </section>
-<section class="itinerary-day day-chapter city-chongqing" id="day-15" data-date="2026-11-15" data-location="chongqing" aria-labelledby="day-15-title">
+<section class="itinerary-day day-chapter city-chongqing" id="day-15" data-date="2026-11-15" data-location="chongqing" data-day-file="2026-11-15-chongqing.html" aria-labelledby="day-15-title">
     <div class="chapter-copy">
         <div class="chapter-overline"><span>Day 08</span><time datetime="2026-11-15">Sunday · Nov 15</time></div>
         <p class="chapter-location">Chongqing</p>
@@ -160,7 +176,7 @@
         <div class="chapter-meta"><div><span>Stay</span><strong>Chongqing</strong></div><div><span>Move</span><strong>HSR · about 4–5 hr</strong></div></div>
     </div>
   </section>
-<section class="itinerary-day day-chapter city-chongqing" id="day-16" data-date="2026-11-16" data-location="chongqing" aria-labelledby="day-16-title">
+<section class="itinerary-day day-chapter city-chongqing" id="day-16" data-date="2026-11-16" data-location="chongqing" data-day-file="2026-11-16-chongqing.html" aria-labelledby="day-16-title">
     <div class="chapter-copy">
         <div class="chapter-overline"><span>Day 09</span><time datetime="2026-11-16">Monday · Nov 16</time></div>
         <p class="chapter-location">Chongqing</p>
@@ -175,7 +191,7 @@
         <div class="chapter-meta"><div><span>Stay</span><strong>Chongqing</strong></div><div><span>Move</span><strong>Metro, walking, and cableway</strong></div></div>
     </div>
   </section>
-<section class="itinerary-day day-chapter city-chengdu" id="day-17" data-date="2026-11-17" data-location="chengdu" aria-labelledby="day-17-title">
+<section class="itinerary-day day-chapter city-chengdu" id="day-17" data-date="2026-11-17" data-location="chengdu" data-day-file="2026-11-17-chengdu.html" aria-labelledby="day-17-title">
     <div class="chapter-copy">
         <div class="chapter-overline"><span>Day 10</span><time datetime="2026-11-17">Tuesday · Nov 17</time></div>
         <p class="chapter-location">Chengdu</p>
@@ -186,7 +202,7 @@
         <div class="chapter-meta"><div><span>Stay</span><strong>Chengdu</strong></div><div><span>Move</span><strong>HSR · about 1–1.5 hr</strong></div></div>
     </div>
   </section>
-<section class="itinerary-day day-chapter city-chengdu" id="day-18" data-date="2026-11-18" data-location="chengdu" aria-labelledby="day-18-title">
+<section class="itinerary-day day-chapter city-chengdu" id="day-18" data-date="2026-11-18" data-location="chengdu" data-day-file="2026-11-18-chengdu.html" aria-labelledby="day-18-title">
     <div class="chapter-copy">
         <div class="chapter-overline"><span>Day 11</span><time datetime="2026-11-18">Wednesday · Nov 18</time></div>
         <p class="chapter-location">Chengdu</p>
@@ -197,7 +213,7 @@
         <div class="chapter-meta"><div><span>Stay</span><strong>Chengdu</strong></div><div><span>Move</span><strong>Early DiDi + metro return</strong></div></div>
     </div>
   </section>
-<section class="itinerary-day day-chapter city-chengdu" id="day-19" data-date="2026-11-19" data-location="chengdu" aria-labelledby="day-19-title">
+<section class="itinerary-day day-chapter city-chengdu" id="day-19" data-date="2026-11-19" data-location="chengdu" data-day-file="2026-11-19-chengdu.html" aria-labelledby="day-19-title">
     <div class="chapter-copy">
         <div class="chapter-overline"><span>Day 12</span><time datetime="2026-11-19">Thursday · Nov 19</time></div>
         <p class="chapter-location">Chengdu</p>
@@ -212,7 +228,7 @@
         <div class="chapter-meta"><div><span>Stay</span><strong>Chengdu</strong></div><div><span>Move</span><strong>Metro + walking</strong></div></div>
     </div>
   </section>
-<section class="itinerary-day day-chapter city-chengdu" id="day-20" data-date="2026-11-20" data-location="chengdu" aria-labelledby="day-20-title">
+<section class="itinerary-day day-chapter city-chengdu" id="day-20" data-date="2026-11-20" data-location="chengdu" data-day-file="2026-11-20-chengdu.html" aria-labelledby="day-20-title">
     <div class="chapter-copy">
         <div class="chapter-overline"><span>Day 13</span><time datetime="2026-11-20">Friday · Nov 20</time></div>
         <p class="chapter-location">Chengdu</p>
@@ -223,7 +239,7 @@
         <div class="chapter-meta"><div><span>Stay</span><strong>Chengdu</strong></div><div><span>Move</span><strong>Local DiDi or metro only</strong></div></div>
     </div>
   </section>
-<section class="itinerary-day day-chapter city-chengdu" id="day-21" data-date="2026-11-21" data-location="chengdu" aria-labelledby="day-21-title">
+<section class="itinerary-day day-chapter city-chengdu" id="day-21" data-date="2026-11-21" data-location="chengdu" data-day-file="2026-11-21-chengdu.html" aria-labelledby="day-21-title">
     <div class="chapter-copy">
         <div class="chapter-overline"><span>Day 14</span><time datetime="2026-11-21">Saturday · Nov 21</time></div>
         <p class="chapter-location">Chengdu</p>
@@ -248,5 +264,6 @@
 
   <footer class="footer"><div class="wrap"><span>China · 8–21 November 2026</span><a href="#top">Back to top ↑</a></div></footer>
   <script src="assets/one-page.js"></script>
+  <script src="assets/site.js"></script>
 </body>
 </html>

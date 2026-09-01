@@ -8,12 +8,16 @@ const locations = {
   shenzhen: {
     name: 'Shenzhen',
     art: 'assets/pixel-art/shenzhen.png',
-    alt: 'Pastel pixel-art view of an ancient Lingnan harbor with pavilions, sailboats, mangroves, and distant hills'
+    alt: 'Pastel pixel-art view of an ancient Lingnan harbor with pavilions, sailboats, mangroves, and distant hills',
+    presentArt: 'assets/pixel-art/shenzhen-modern.png',
+    presentAlt: 'Pastel pixel-art view of present-day Shenzhen with a bayfront skyline, metro, promenade, and evening light'
   },
   guangzhou: {
     name: 'Guangzhou',
     art: 'assets/pixel-art/guangzhou.png',
-    alt: 'Pastel pixel-art view of an ancient Cantonese city along the broad Pearl River with arcades, boats, a pagoda, and kapok trees'
+    alt: 'Pastel pixel-art view of an ancient Cantonese city along the broad Pearl River with arcades, boats, a pagoda, and kapok trees',
+    presentArt: 'assets/pixel-art/guangzhou-modern.png',
+    presentAlt: 'Pastel pixel-art view of present-day Guangzhou with Canton Tower, the Pearl River, ferries, and a modern skyline'
   },
   guilin: {
     name: 'Guilin',
@@ -28,12 +32,16 @@ const locations = {
   chongqing: {
     name: 'Chongqing',
     art: 'assets/pixel-art/chongqing.png',
-    alt: 'Pastel pixel-art view of an ancient Chongqing river city with layered hillside buildings, bridges, boats, and lanterns'
+    alt: 'Pastel pixel-art view of an ancient Chongqing river city with layered hillside buildings, bridges, boats, and lanterns',
+    presentArt: 'assets/pixel-art/chongqing-modern.png',
+    presentAlt: 'Pastel pixel-art view of present-day Chongqing with a monorail, high-rises, bridges, layered roads, and river traffic at blue hour'
   },
   chengdu: {
     name: 'Chengdu',
     art: 'assets/pixel-art/chengdu.png',
-    alt: 'Pastel pixel-art view of a Chengdu bamboo grove, panda, teahouse courtyard, temple roofs, and misty hills'
+    alt: 'Pastel pixel-art view of a Chengdu bamboo grove, panda, teahouse courtyard, temple roofs, and misty hills',
+    presentArt: 'assets/pixel-art/chengdu-modern.png',
+    presentAlt: 'Pastel pixel-art view of present-day Chengdu with a bamboo-edged park, teahouse terrace, metro, cyclists, and a modern skyline'
   }
 };
 
@@ -142,11 +150,25 @@ const timeline = days.map((day, index) => {
   return `<a class="date-link city-${day.city}${index === 0 ? ' active' : ''}" href="#day-${day.date}" data-day-target="day-${day.date}" aria-label="${day.weekday}, November ${Number(day.date)} — ${location.name}: ${day.title}"${index === 0 ? ' aria-current="date"' : ''}><span class="date-weekday">${day.weekday.slice(0, 3)}</span><strong class="date-number">${day.date}</strong><span class="date-city">${location.name}</span></a>`;
 }).join('');
 
-const locationArtwork = Object.entries(locations).map(([key, location], index) => `
-      <figure class="location-art${index === 0 ? ' active' : ''}" data-location-art="${key}"${index === 0 ? '' : ' aria-hidden="true"'}>
-        <img src="${location.art}" alt="${location.alt}" ${index === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"/>
-        <figcaption><span>${String(index + 1).padStart(2, '0')} · ${location.name}</span><small>Original pastel pixel art</small></figcaption>
-      </figure>`).join('');
+const locationArtwork = Object.entries(locations).flatMap(([key, location], index) => {
+  const portraits = [
+    { id: `${key}-heritage`, art: location.art, alt: location.alt, era: 'heritage', caption: 'Then · heritage portrait' }
+  ];
+
+  if (location.presentArt) {
+    portraits.push({ id: `${key}-modern`, art: location.presentArt, alt: location.presentAlt, era: 'present', caption: 'Now · modern China' });
+  }
+
+  return portraits.map((portrait, portraitIndex) => {
+    const first = index === 0 && portraitIndex === 0;
+    const suffix = portraits.length > 1 ? String.fromCharCode(65 + portraitIndex) : '';
+    return `
+      <figure class="location-art${first ? ' active' : ''}" data-location-art="${portrait.id}" data-location="${key}" data-era="${portrait.era}"${first ? '' : ' aria-hidden="true"'}>
+        <img src="${portrait.art}" alt="${portrait.alt}" ${first ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"/>
+        <figcaption><span>${String(index + 1).padStart(2, '0')}${suffix} · ${location.name}</span><small>${portrait.caption}</small></figcaption>
+      </figure>`;
+  });
+}).join('');
 
 const chapters = days.map((day) => {
   const location = locations[day.city];
@@ -157,7 +179,7 @@ const chapters = days.map((day) => {
           <div><span>Taste note</span><h3>${food.title}</h3><p>${food.summary}</p></div>
         </aside>
 ` : '';
-  return `<section class="itinerary-day day-chapter city-${day.city}" id="day-${day.date}" data-date="2026-11-${day.date}" data-location="${day.city}" aria-labelledby="day-${day.date}-title">
+  return `<section class="itinerary-day day-chapter city-${day.city}" id="day-${day.date}" data-date="2026-11-${day.date}" data-location="${day.city}" data-day-file="2026-11-${day.date}-${day.city}.html" aria-labelledby="day-${day.date}-title">
     <div class="chapter-copy">
         <div class="chapter-overline"><span>Day ${day.number}</span><time datetime="2026-11-${day.date}">${day.weekday} · Nov ${Number(day.date)}</time></div>
         <p class="chapter-location">${location.name}</p>
@@ -195,7 +217,7 @@ const output = `<!DOCTYPE html>
     <section class="journey-hero" id="overview">
       <div class="hero-grid wrap">
         <div class="hero-copy"><p class="pixel-label">8–21 November 2026 · 14 days</p><h1>South China<br/><em>to</em> Sichuan</h1><p class="hero-lead">A rail-first journey through six places, told as one continuous scroll.</p><div class="hero-stats"><span><b>13</b> nights</span><span><b>4</b> bases</span><span><b>0</b> domestic flights</span></div></div>
-        <aside class="hero-note" aria-label="Journey direction"><span>South → West</span><strong>22°N<br/>to 30°N</strong><p>Six location portraits appear once, then hold their place while each day unfolds.</p></aside>
+        <aside class="hero-note" aria-label="Journey direction"><span>South → West</span><strong>22°N<br/>to 30°N</strong><p>Urban portraits shift from then to now; landscape stops hold their calm.</p></aside>
       </div>
     </section>
 
@@ -203,7 +225,7 @@ const output = `<!DOCTYPE html>
       <div class="wrap"><p class="pixel-label">The route</p><h2 id="route-title">Six places, four hotel bases</h2><div class="route-stops"><span>Shenzhen<small>4 nights</small></span><i>→</i><span>Guangzhou<small>day trip</small></span><i>→</i><span>Guilin<small>3 nights</small></span><i>→</i><span>Xingping<small>day trip</small></span><i>→</i><span>Chongqing<small>2 nights</small></span><i>→</i><span>Chengdu<small>4 nights</small></span></div></div>
     </section>
 
-    <section class="itinerary-intro" id="itinerary"><div class="wrap"><p class="pixel-label">Scroll the journey</p><div><h2>Day by day</h2><p>Each location portrait stays pinned while its days move alongside it, then gives way to the next place on the route.</p></div></div></section>
+    <section class="itinerary-intro" id="itinerary"><div class="wrap"><p class="pixel-label">Scroll the journey</p><div><h2>Day by day</h2><p>Each portrait stays pinned while its days move alongside it. Four cities transform from heritage scenes into present-day China as you scroll.</p></div></div></section>
 
     <div class="itinerary-stage">
       <div class="location-visuals">
@@ -227,8 +249,10 @@ ${chapters}
 
   <footer class="footer"><div class="wrap"><span>China · 8–21 November 2026</span><a href="#top">Back to top ↑</a></div></footer>
   <script src="assets/one-page.js"></script>
+  <script src="assets/site.js"></script>
 </body>
 </html>`;
 
 await writeFile(path.join(previewDirectory, 'index.html'), output);
-console.log(`Built preview/index.html with ${days.length} day chapters, ${Object.keys(locations).length} location artworks, and ${Object.keys(foodNotes).length} food notes.`);
+const artworkCount = Object.values(locations).reduce((count, location) => count + (location.presentArt ? 2 : 1), 0);
+console.log(`Built preview/index.html with ${days.length} day chapters, ${artworkCount} location artworks, and ${Object.keys(foodNotes).length} food notes.`);
