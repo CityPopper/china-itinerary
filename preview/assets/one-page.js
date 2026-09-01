@@ -9,6 +9,7 @@
   if (!timeline || !timelineScroll || !links.length || !sections.length) return;
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const mobileArtwork = window.matchMedia('(max-width: 900px)');
   let activeId = '';
   let activeArtworkId = '';
   let frame = 0;
@@ -27,44 +28,47 @@
     });
   }
 
-  function artworkFor(location, marker) {
-    const portraits = locationArtwork.filter((artwork) => artwork.dataset.location === location);
-    if (portraits.length <= 1) return portraits[0];
-
-    const locationSections = sections.filter((section) => section.dataset.location === location);
-    const first = locationSections[0];
-    const last = locationSections[locationSections.length - 1];
-    if (!first || !last) return portraits[0];
-
-    const groupTop = first.getBoundingClientRect().top + window.scrollY;
-    const groupBottom = last.getBoundingClientRect().bottom + window.scrollY;
-    const progress = Math.max(0, Math.min(1, (window.scrollY + marker - groupTop) / Math.max(1, groupBottom - groupTop)));
-    return portraits[progress >= (locationSections.length === 1 ? .36 : .48) ? portraits.length - 1 : 0];
+  function artworkFor(location) {
+    return locationArtwork.find((artwork) => artwork.dataset.location === location);
   }
 
-  function setActiveArtwork(location, marker = stickyOffset()) {
-    if (!location) return;
-    const selectedArtwork = artworkFor(location, marker);
-    if (!selectedArtwork || selectedArtwork.dataset.locationArt === activeArtworkId) return;
-
-    activeArtworkId = selectedArtwork.dataset.locationArt;
-
-    if (locationStage) {
-      locationStage.dataset.activeLocation = location;
-      locationStage.dataset.activeEra = selectedArtwork.dataset.era || '';
-    }
+  function syncArtworkAccessibility() {
+    const reel = mobileArtwork.matches;
     locationArtwork.forEach((artwork) => {
-      const selected = artwork === selectedArtwork;
-      artwork.classList.toggle('active', selected);
-      if (selected) artwork.removeAttribute('aria-hidden');
+      const selected = artwork.dataset.locationArt === activeArtworkId;
+      if (reel || selected) artwork.removeAttribute('aria-hidden');
       else artwork.setAttribute('aria-hidden', 'true');
     });
+    if (locationStage) {
+      locationStage.dataset.mobileMode = reel ? 'reel' : 'sticky';
+      if (reel) locationStage.tabIndex = 0;
+      else locationStage.removeAttribute('tabindex');
+    }
   }
 
-  function setActive(id, center = true, marker = stickyOffset()) {
+  function setActiveArtwork(location) {
+    if (!location) return;
+    const selectedArtwork = artworkFor(location);
+    if (!selectedArtwork) return;
+
+    if (selectedArtwork.dataset.locationArt !== activeArtworkId) {
+      activeArtworkId = selectedArtwork.dataset.locationArt;
+
+      if (locationStage) {
+        locationStage.dataset.activeLocation = location;
+        locationStage.dataset.activeEra = selectedArtwork.dataset.era || '';
+      }
+      locationArtwork.forEach((artwork) => {
+        artwork.classList.toggle('active', artwork === selectedArtwork);
+      });
+    }
+    syncArtworkAccessibility();
+  }
+
+  function setActive(id, center = true) {
     if (!id) return;
     const section = document.getElementById(id);
-    setActiveArtwork(section?.dataset.location, marker);
+    setActiveArtwork(section?.dataset.location);
     if (id === activeId) return;
     activeId = id;
 
@@ -91,7 +95,7 @@
       current = sections[sections.length - 1];
     }
 
-    setActive(current.id, true, marker);
+    setActive(current.id, true);
   }
 
   function queueUpdate() {
@@ -104,6 +108,10 @@
 
   window.addEventListener('scroll', queueUpdate, { passive: true });
   window.addEventListener('resize', queueUpdate, { passive: true });
+  mobileArtwork.addEventListener('change', () => {
+    syncArtworkAccessibility();
+    queueUpdate();
+  });
   window.addEventListener('load', () => {
     const hashTarget = location.hash ? document.querySelector(location.hash) : null;
     if (hashTarget?.classList.contains('itinerary-day')) {
