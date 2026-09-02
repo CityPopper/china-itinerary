@@ -173,7 +173,7 @@
     const items=data.images.map((src,i)=>({src,source:data.source,alt:title+' traveler photo '+(i+1)}));
     items.forEach((item,i)=>{
       const fig=document.createElement('figure');fig.className='social-gallery-slide';
-      const img=document.createElement('img');img.loading=i===0?'eager':'lazy';img.src=item.src;img.alt=item.alt;img.referrerPolicy='no-referrer';
+      const img=document.createElement('img');img.loading=i===0&&!document.body.classList.contains('one-page')?'eager':'lazy';img.src=item.src;img.alt=item.alt;img.referrerPolicy='no-referrer';
       img.dataset.index=i;img.addEventListener('click',()=>showLightbox({items,title},i));
       img.addEventListener('error',()=>{if(i===0&&fallback&&!img.dataset.fallbackTried){img.dataset.fallbackTried='1';img.src=fallback}else{fig.style.display='none'}});
       const source=document.createElement('a');source.className='social-gallery-source';source.href=data.source;source.rel='noopener noreferrer';source.textContent=SOURCE_LABEL+' ↗';
@@ -208,7 +208,7 @@
 
   const firstTitle=cards.map(c=>c.querySelector('h3')?.textContent.trim()).find(t=>galleries[t]);
   const hero=document.querySelector('.day-visuals');
-  if(hero&&firstTitle){
+  if(hero&&firstTitle&&!document.body.classList.contains('one-page')){
     const oldHero=hero.querySelector('img');const fallback=oldHero?oldHero.getAttribute('src'):'';
     hero.replaceChildren(makeGallery(firstTitle,galleries[firstTitle],fallback,true));
   }
