@@ -1,0 +1,366 @@
+{
+  "2026-11-08-shenzhen.html": [
+    {
+      "meal": "Breakfast",
+      "title": "Flexible Arrival Breakfast",
+      "desc": "Use the in-flight meal if timing works, or start gently with congee, buns and tea after landing. Keep this slot flexible around immigration and hotel check-in.",
+      "set": "fanlou",
+      "ig": "shenzhendimsum",
+      "night": false
+    },
+    {
+      "meal": "Lunch",
+      "title": "Coconut Chicken · Futian",
+      "desc": "If arrival timing leaves room for lunch, coconut-chicken hotpot is a warm, easy first taste of Shenzhen without committing to a long cross-city outing.",
+      "set": "coconut",
+      "ig": "coconutchicken",
+      "night": false
+    },
+    {
+      "meal": "Dinner",
+      "title": "Shuiwei 1368 Food Street",
+      "desc": "Choose a low-pressure first-night food crawl near Futian: rice rolls, buns, skewers, desserts and tea, with enough variety for whatever jet lag allows.",
+      "set": "shuiwei",
+      "ig": "shuiwei1368",
+      "night": true
+    }
+  ],
+  "2026-11-09-shenzhen.html": [
+    {
+      "meal": "Breakfast",
+      "title": "Fanlou Dim Sum · Huaqiangbei",
+      "desc": "Start beside the first shopping stop with shrimp dumplings, siu mai, congee and custard buns. Go early so breakfast does not eat into shopping time.",
+      "set": "fanlou",
+      "ig": "shenzhendimsum",
+      "night": false
+    },
+    {
+      "meal": "Lunch",
+      "title": "Coconut Chicken · Huaqiangbei",
+      "desc": "Take a sit-down break without leaving the shopping zone. Coconut-chicken hotpot with claypot rice is a very Shenzhen lunch; choose a busy branch around Huaqiangbei.",
+      "set": "coconut",
+      "ig": "coconutchicken",
+      "night": false
+    },
+    {
+      "meal": "Dinner",
+      "title": "Dongmen Food Street",
+      "desc": "Finish where the shopping day already ends: skewers, dumplings, grilled seafood, sweets and drinks around Dongmen instead of another cross-city restaurant.",
+      "set": "dongmen",
+      "ig": "dongmen",
+      "night": true
+    }
+  ],
+  "2026-11-10-shenzhen.html": [
+    {
+      "meal": "Breakfast",
+      "title": "Futian Dim Sum Breakfast",
+      "desc": "Have yum cha or congee near the hotel before MOCAPE. A fuller dim-sum breakfast works well because the rest of the morning is sightseeing.",
+      "set": "fanlou",
+      "ig": "shenzhendimsum",
+      "night": false
+    },
+    {
+      "meal": "Lunch",
+      "title": "Nantou Ancient City Cafés & Snacks",
+      "desc": "Eat while exploring Nantou: cafés, bakeries, tea shops and small restaurants are mixed through the historic lanes, so lunch doubles as part of the visit.",
+      "set": "nantou",
+      "ig": "nantouancientcity",
+      "night": false
+    },
+    {
+      "meal": "Dinner",
+      "title": "Happy Harbor Waterfront Dinner",
+      "desc": "Stay at Happy Harbor after Zhongshuge. Pick a photogenic café, casual Chinese restaurant or waterfront dinner spot, then walk the harbor before returning to Futian.",
+      "set": "happy",
+      "ig": "happyharborshenzhen",
+      "night": false
+    }
+  ],
+  "2026-11-11-guangzhou.html": [
+    {
+      "meal": "Breakfast",
+      "title": "Taotaoju Dim Sum · Tianhe",
+      "desc": "Make breakfast part of the Guangzhou day: classic Cantonese dim sum in the Tianhe shopping cluster, then continue straight into Taikoo Hui / Grandview.",
+      "set": "taotaoju",
+      "ig": "guangzhoudimsum",
+      "night": false
+    },
+    {
+      "meal": "Lunch",
+      "title": "Taikoo Hui / Tianhe Lunch",
+      "desc": "Keep lunch inside the shopping district. Choose Teochew/Cantonese, noodles or another mall restaurant rather than losing an hour transferring elsewhere.",
+      "set": "tianhe",
+      "ig": "taikoohuiguangzhou",
+      "night": false
+    },
+    {
+      "meal": "Dinner",
+      "title": "Huifu Food Street · Beijing Road",
+      "desc": "Finish with a snack crawl near Beijing Road before the train back to Shenzhen: roast meats, dumplings, desserts and street-style snacks.",
+      "set": "huifu",
+      "ig": "beijingroadguangzhou",
+      "night": true
+    }
+  ],
+  "2026-11-12-guilin.html": [
+    {
+      "meal": "Breakfast",
+      "title": "Quick Breakfast before Shenzhen North",
+      "desc": "Keep transfer day simple: hotel breakfast or buns, congee and soy milk near the station instead of a special detour.",
+      "set": "fanlou",
+      "ig": "chinesebreakfast",
+      "night": false
+    },
+    {
+      "meal": "Lunch",
+      "title": "Guilin Rice Noodles after Check-in",
+      "desc": "Your first Guilin meal should be mifen. Order a small bowl with braised toppings, peanuts and pickled vegetables near the hotel/lakes after dropping your bags.",
+      "set": "mifen",
+      "ig": "guilinricenoodles",
+      "night": false
+    },
+    {
+      "meal": "Dinner",
+      "title": "Zhengyang Night Food Street",
+      "desc": "After the Two Rivers & Four Lakes lights, walk into Zhengyang / the central pedestrian area for snacks, grilled food, desserts and local specialties.",
+      "set": "zhengyang",
+      "ig": "guilinfood",
+      "night": true
+    }
+  ],
+  "2026-11-13-xingping.html": [
+    {
+      "meal": "Breakfast",
+      "title": "Guilin Rice Noodles before the Train",
+      "desc": "A fast bowl of mifen near the hotel is ideal before heading to the station for the short HSR ride toward Xingping.",
+      "set": "mifen",
+      "ig": "guilinricenoodles",
+      "night": false
+    },
+    {
+      "meal": "Lunch",
+      "title": "Xingping Beer Fish & Local Dishes",
+      "desc": "Eat inside Xingping Ancient Town so lunch does not interrupt the hanfu/photo route. Look for beer fish, stuffed river snails, bamboo chicken or Li River shrimp; ask the fish price before ordering.",
+      "set": "xingping",
+      "ig": "yangshuobeerfish",
+      "night": false
+    },
+    {
+      "meal": "Dinner",
+      "title": "Light Dinner near Zhengyang / East-West Alley",
+      "desc": "You may still be full from beer fish, so keep the return-to-Guilin dinner flexible: noodles, dumplings, oil tea or snacks near the central lakes.",
+      "set": "zhengyang",
+      "ig": "guilinfood",
+      "night": false
+    }
+  ],
+  "2026-11-14-guilin.html": [
+    {
+      "meal": "Breakfast",
+      "title": "Guilin Rice Noodles",
+      "desc": "Have another local mifen breakfast near the hotel before Elephant Trunk Hill; it is easy, local and inexpensive.",
+      "set": "mifen",
+      "ig": "guilinricenoodles",
+      "night": false
+    },
+    {
+      "meal": "Lunch",
+      "title": "Guangxi Lunch near Elephant Trunk Hill",
+      "desc": "Stay around Elephant Hill / the central lakes for lunch. Choose local Guangxi dishes such as taro, river fish, stir-fries or stuffed vegetables before the optional cave visit.",
+      "set": "elephant",
+      "ig": "guilinfood",
+      "night": false
+    },
+    {
+      "meal": "Dinner",
+      "title": "Zhengyang Night Food Street",
+      "desc": "Use the relaxed evening for a proper snack crawl: grilled skewers, rice-noodle snacks, osmanthus sweets and whatever looked good on the first night.",
+      "set": "zhengyang",
+      "ig": "guilinnightmarket",
+      "night": true
+    }
+  ],
+  "2026-11-15-chongqing.html": [
+    {
+      "meal": "Breakfast",
+      "title": "Guilin Rice Noodles before Departure",
+      "desc": "A quick mifen breakfast near the hotel is the easiest pre-train meal; save the heavier eating for Chongqing.",
+      "set": "mifen",
+      "ig": "guilinricenoodles",
+      "night": false
+    },
+    {
+      "meal": "Lunch",
+      "title": "Chongqing Xiaomian · Jiefangbei",
+      "desc": "After check-in, start with a bowl of Chongqing small noodles around Jiefangbei. It is fast, spicy and light enough to leave room for the evening food crawl.",
+      "set": "xiaomian",
+      "ig": "chongqingnoodles",
+      "night": false
+    },
+    {
+      "meal": "Dinner",
+      "title": "Bayi Road Food Street",
+      "desc": "Bayi Road is in the same Jiefangbei evening cluster as your skyline walk. Snack on suanlafen, chaoshou, skewers, crispy potatoes and ice jelly before or after Hongya Cave.",
+      "set": "bayi",
+      "ig": "chongqingfood",
+      "night": true
+    }
+  ],
+  "2026-11-16-chongqing.html": [
+    {
+      "meal": "Breakfast",
+      "title": "Chongqing Xiaomian",
+      "desc": "Start with another noodle shop near Jiefangbei before Liziba. Choose mild/medium spice if you do not want to begin the day at full Chongqing heat.",
+      "set": "xiaomian",
+      "ig": "chongqingnoodles",
+      "night": false
+    },
+    {
+      "meal": "Lunch",
+      "title": "Shibati Local Lunch",
+      "desc": "Eat in the Shibati/Yuzhong cluster while you are already exploring the hillside streets: noodles, chaoshou, maocai or a simple local lunch all fit without a detour.",
+      "set": "shibati",
+      "ig": "shibati",
+      "night": false
+    },
+    {
+      "meal": "Dinner",
+      "title": "Chongqing Hotpot · Jiefangbei",
+      "desc": "Make the full Chongqing day your hotpot night. Pick a busy restaurant around Jiefangbei, order a divided pot if useful, and finish with ice jelly or a cold dessert nearby.",
+      "set": "hotpot",
+      "ig": "chongqinghotpot",
+      "night": false
+    }
+  ],
+  "2026-11-17-chengdu.html": [
+    {
+      "meal": "Breakfast",
+      "title": "Chongqing Xiaomian before the Train",
+      "desc": "One last quick bowl near the hotel before the short rail hop to Chengdu keeps the morning efficient.",
+      "set": "xiaomian",
+      "ig": "chongqingnoodles",
+      "night": false
+    },
+    {
+      "meal": "Lunch",
+      "title": "Chunxi Road Noodles & Buns",
+      "desc": "After checking in, have a simple Chengdu lunch around Chunxi Road: noodles plus steamed buns/dumplings is ideal before the Taikoo Li shopping walk.",
+      "set": "chunxi",
+      "ig": "chengdufood",
+      "night": false
+    },
+    {
+      "meal": "Dinner",
+      "title": "Taikoo Li Sichuan Dinner",
+      "desc": "Stay in the Taikoo Li / Chunxi cluster for dinner. Choose a Sichuan restaurant for mapo tofu, twice-cooked pork, fish or lighter dishes, then continue the evening walk.",
+      "set": "taikoo",
+      "ig": "taikoolichengdu",
+      "night": false
+    }
+  ],
+  "2026-11-18-chengdu.html": [
+    {
+      "meal": "Breakfast",
+      "title": "Early Chunxi Road Breakfast",
+      "desc": "Eat early near the hotel before the Panda Base: noodles, buns, dumplings or hotel breakfast. The priority is reaching the pandas near opening time.",
+      "set": "chunxi",
+      "ig": "chengdufood",
+      "night": false
+    },
+    {
+      "meal": "Lunch",
+      "title": "Wenshu Monastery Snack Crawl",
+      "desc": "Lunch exactly where the afternoon itinerary lands: sweet-water noodles, liangfen, guokui and other Chengdu snacks around Wenshu. A vegetarian meal by the monastery is a calmer alternative.",
+      "set": "wenshu",
+      "ig": "wenshumonastery",
+      "night": false
+    },
+    {
+      "meal": "Dinner",
+      "title": "Jianshe Road Night Market",
+      "desc": "If you still have energy, make this the street-food night: grilled skewers, tofu, spicy noodles, duck-neck snacks, milk tea and brown-sugar ice jelly.",
+      "set": "jianshe",
+      "ig": "jiansheroad",
+      "night": true
+    }
+  ],
+  "2026-11-19-chengdu.html": [
+    {
+      "meal": "Breakfast",
+      "title": "Chunxi Road Breakfast",
+      "desc": "Keep breakfast near the hotel: noodles, buns, dumplings or soy milk before heading west toward People’s Park.",
+      "set": "chunxi",
+      "ig": "chengdufood",
+      "night": false
+    },
+    {
+      "meal": "Lunch",
+      "title": "People’s Park Tea & Snacks",
+      "desc": "Turn the teahouse stop into a light lunch. Tea plus dumplings, noodles or small Chengdu snacks keeps the afternoon comfortable before Kuanzhai Alleys.",
+      "set": "tea",
+      "ig": "peoplesparkchengdu",
+      "night": false
+    },
+    {
+      "meal": "Dinner",
+      "title": "Kuixinglou Food Street",
+      "desc": "Walk from Kuanzhai toward Kuixinglou for a more food-focused dinner zone: skewers, Sichuan dishes, hotpot-style snacks and ice jelly before the opera.",
+      "set": "kuixinglou",
+      "ig": "chengdustreetfood",
+      "night": false
+    }
+  ],
+  "2026-11-20-chengdu.html": [
+    {
+      "meal": "Breakfast",
+      "title": "Chunxi Road Breakfast",
+      "desc": "A relaxed breakfast near the hotel fits the spa-day pace. Pick noodles/dumplings or a café breakfast depending how heavy you want lunch to be.",
+      "set": "chunxi",
+      "ig": "chengdufood",
+      "night": false
+    },
+    {
+      "meal": "Lunch",
+      "title": "Spa-Day Light Lunch",
+      "desc": "Keep lunch attached to the spa plan: use the spa restaurant/buffet only if your chosen venue actually includes food; otherwise eat a light meal near the hotel before going in.",
+      "set": "spa",
+      "ig": "chengduspa",
+      "night": false
+    },
+    {
+      "meal": "Dinner",
+      "title": "Fuqin Night Market",
+      "desc": "For a fun final night, graze through Fuqin: skewers, fried potatoes, grilled bites, cold noodles, ice jelly and sweets. Choose a sit-down dinner instead if you want a quieter finale.",
+      "set": "fuqin",
+      "ig": "chengdunightmarket",
+      "night": true
+    }
+  ],
+  "2026-11-21-chengdu.html": [
+    {
+      "meal": "Breakfast",
+      "title": "Hotel / Chunxi Road Breakfast",
+      "desc": "Have a dependable breakfast close to the hotel before the airport transfer. Avoid a destination breakfast that creates baggage or timing stress.",
+      "set": "chunxi",
+      "ig": "chengdufood",
+      "night": false
+    },
+    {
+      "meal": "Lunch",
+      "title": "Airport Meal after Security",
+      "desc": "Eat after check-in and security. If the ticket uses Tianfu (TFU), Terminal 1 has noodles, rice/soup options, coffee and fast food; verify your airport and terminal once the flight is booked.",
+      "set": "airport",
+      "ig": "chengdutianfuairport",
+      "night": false
+    },
+    {
+      "meal": "Dinner",
+      "title": "In-flight / Connection Meal",
+      "desc": "Plan dinner around the actual international itinerary. Use the airline meal if timing works, and buy water plus one good snack after security in case the connection is awkward.",
+      "set": "airport",
+      "ig": "airportfood",
+      "night": false
+    }
+  ]
+}

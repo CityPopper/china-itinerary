@@ -1,0 +1,11 @@
+/* Shared language controls; the original English page styles stay unchanged. */
+.header-actions{display:flex;align-items:center;gap:24px}
+.language-switch{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;min-width:56px;min-height:44px;padding:0 10px;border:1px solid currentColor;border-radius:6px;font:600 14px/1.2 ui-sans-serif,system-ui,sans-serif;color:var(--ink);white-space:nowrap}
+.language-switch:hover{background:var(--card,var(--paper));text-decoration:underline;text-underline-offset:3px}
+.language-switch:focus-visible{outline:3px solid var(--accent,var(--plum));outline-offset:3px}
+html[lang="zh-CN"]{font-synthesis:none}
+html[lang="zh-CN"] h1,html[lang="zh-CN"] h2,html[lang="zh-CN"] h3,html[lang="zh-CN"] h4{line-height:1.2;letter-spacing:0}
+html[lang="zh-CN"] .hero-copy h1{max-width:10ch}
+html[lang="zh-CN"] .chapter-theme{line-height:1.4}
+html[lang="zh-CN"] .date-weekday,html[lang="zh-CN"] .date-city{letter-spacing:0}
+@media(max-width:850px){.header-actions{gap:12px}}

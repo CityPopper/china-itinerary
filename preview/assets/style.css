@@ -127,7 +127,7 @@ body.lightbox-open{overflow:hidden}
 .itinerary-day .day-layout{padding-top:16px;padding-bottom:12px}
 .itinerary-day .timeline .time-block{border-left-color:var(--day-accent)}
 .itinerary-day .food-plan-section{padding-top:8px}
-.itinerary-day .food-plan-section .places-title::before{content:"Eat · ";color:var(--day-accent)}
+.itinerary-day .food-plan-section .places-title::before{content:var(--meal-prefix);color:var(--day-accent)}
 
 .essentials{padding:70px 0 24px;background:var(--ink);color:#f8f4ec}
 .essentials h2{font-size:clamp(40px,5vw,60px)}

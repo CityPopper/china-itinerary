@@ -1,5 +1,6 @@
 (function(){
-  const SOURCE_LABEL='Traveler photo · Trip.com Moments';
+  const { t: text } = window.ItineraryText;
+  const SOURCE_LABEL=text('traveler_photo');
   const galleries={
     'Riad by the Theatre':{source:'https://www.trip.com/moments/detail/shenzhen-26-143049951/',images:[
       'https://ak-d.tripcdn.com/images/1mi1912000rsinznl4081_W_640_0_R5_Q80.jpg?proc=source%2Ftrip',
@@ -143,8 +144,12 @@
   lightbox.className='social-lightbox';
   lightbox.setAttribute('role','dialog');
   lightbox.setAttribute('aria-modal','true');
-  lightbox.setAttribute('aria-label','Photo viewer');
-  lightbox.innerHTML='<div class="social-lightbox-inner"><button type="button" class="social-lightbox-close" aria-label="Close photo viewer">×</button><div class="social-lightbox-image-wrap"><button type="button" class="social-lightbox-arrow prev" aria-label="Previous photo">‹</button><img alt=""><button type="button" class="social-lightbox-arrow next" aria-label="Next photo">›</button></div><div class="social-lightbox-caption"><a class="social-lightbox-source" rel="noopener noreferrer">View traveler post ↗</a><span class="social-lightbox-count"></span></div></div>';
+  lightbox.setAttribute('aria-label',text('photo_viewer'));
+  lightbox.innerHTML='<div class="social-lightbox-inner"><button type="button" class="social-lightbox-close">×</button><div class="social-lightbox-image-wrap"><button type="button" class="social-lightbox-arrow prev">‹</button><img alt=""><button type="button" class="social-lightbox-arrow next">›</button></div><div class="social-lightbox-caption"><a class="social-lightbox-source" rel="noopener noreferrer"></a><span class="social-lightbox-count"></span></div></div>';
+  lightbox.querySelector('.social-lightbox-close').setAttribute('aria-label',text('close_photo_viewer'));
+  lightbox.querySelector('.social-lightbox-arrow.prev').setAttribute('aria-label',text('previous_photo'));
+  lightbox.querySelector('.social-lightbox-arrow.next').setAttribute('aria-label',text('next_photo'));
+  lightbox.querySelector('.social-lightbox-source').textContent=text('view_traveler_post');
   document.body.appendChild(lightbox);
   const lbImg=lightbox.querySelector('img');
   const lbSource=lightbox.querySelector('.social-lightbox-source');
@@ -154,7 +159,7 @@
     activeGallery=gallery;activeIndex=index;
     const item=gallery.items[index];
     lbImg.src=item.src; lbImg.alt=item.alt;
-    lbSource.href=item.source; lbSource.textContent='View traveler post ↗';
+    lbSource.href=item.source; lbSource.textContent=text('view_traveler_post');
     lbCount.textContent=(index+1)+' / '+gallery.items.length;
     lightbox.classList.add('open');document.body.classList.add('lightbox-open');
     lightbox.querySelector('.social-lightbox-close').focus();
@@ -169,8 +174,8 @@
 
   function makeGallery(title,data,fallback,hero){
     const wrap=document.createElement('div');wrap.className='social-gallery'+(hero?' social-gallery-hero':'');
-    const track=document.createElement('div');track.className='social-gallery-track';track.tabIndex=0;track.setAttribute('aria-label',title+' photo gallery');
-    const items=data.images.map((src,i)=>({src,source:data.source,alt:title+' traveler photo '+(i+1)}));
+    const track=document.createElement('div');track.className='social-gallery-track';track.tabIndex=0;track.setAttribute('aria-label',text('photo_gallery',{title}));
+    const items=data.images.map((src,i)=>({src,source:data.source,alt:text('traveler_photo_alt',{title,number:i+1})}));
     items.forEach((item,i)=>{
       const fig=document.createElement('figure');fig.className='social-gallery-slide';
       const img=document.createElement('img');img.loading=i===0?'eager':'lazy';img.src=item.src;img.alt=item.alt;img.referrerPolicy='no-referrer';
@@ -179,8 +184,8 @@
       const source=document.createElement('a');source.className='social-gallery-source';source.href=data.source;source.rel='noopener noreferrer';source.textContent=SOURCE_LABEL+' ↗';
       fig.append(img,source);track.appendChild(fig);
     });
-    const prev=document.createElement('button');prev.type='button';prev.className='social-gallery-nav prev';prev.setAttribute('aria-label','Previous photo');prev.textContent='‹';
-    const next=document.createElement('button');next.type='button';next.className='social-gallery-nav next';next.setAttribute('aria-label','Next photo');next.textContent='›';
+    const prev=document.createElement('button');prev.type='button';prev.className='social-gallery-nav prev';prev.setAttribute('aria-label',text('previous_photo'));prev.textContent='‹';
+    const next=document.createElement('button');next.type='button';next.className='social-gallery-nav next';next.setAttribute('aria-label',text('next_photo'));next.textContent='›';
     const counter=document.createElement('span');counter.className='social-gallery-counter';counter.textContent='1 / '+items.length;
     const dots=document.createElement('div');dots.className='social-gallery-dots';
     items.forEach((_,i)=>{const d=document.createElement('span');d.className='social-gallery-dot'+(i===0?' active':'');dots.appendChild(d)});
@@ -191,7 +196,9 @@
     wrap.append(track,prev,next,counter,dots);
     if(hero){
       const meta=document.createElement('div');meta.className='social-gallery-meta';
-      meta.innerHTML='<a class="social-gallery-credit" href="'+data.source+'" rel="noopener noreferrer">Traveler photos · Trip.com Moments ↗</a><span class="social-gallery-hint">Swipe / click to browse</span>';
+      const credit=document.createElement('a');credit.className='social-gallery-credit';credit.href=data.source;credit.rel='noopener noreferrer';credit.textContent=text('traveler_photos');
+      const hint=document.createElement('span');hint.className='social-gallery-hint';hint.textContent=text('browse_hint');
+      meta.append(credit,hint);
       wrap.appendChild(meta);
     }
     return wrap;
@@ -199,17 +206,17 @@
 
   const cards=[...document.querySelectorAll('.place-card')];
   cards.forEach(card=>{
-    const h=card.querySelector('h3');if(!h)return;const title=h.textContent.trim();const data=galleries[title];if(!data)return;
+    const h=card.querySelector('h3');if(!h)return;const title=h.textContent.trim();const data=galleries[h.dataset.galleryKey];if(!data)return;
     const old=card.querySelector(':scope > img');const fallback=old?old.getAttribute('src'):'';
     const gallery=makeGallery(title,data,fallback,false);
     if(old)old.replaceWith(gallery);else card.prepend(gallery);
     card.querySelectorAll('.photo-credit').forEach(n=>n.remove());
   });
 
-  const firstTitle=cards.map(c=>c.querySelector('h3')?.textContent.trim()).find(t=>galleries[t]);
+  const firstHeading=cards.map(c=>c.querySelector('h3')).find(h=>galleries[h?.dataset.galleryKey]);
   const hero=document.querySelector('.day-visuals');
-  if(hero&&firstTitle){
+  if(hero&&firstHeading){
     const oldHero=hero.querySelector('img');const fallback=oldHero?oldHero.getAttribute('src'):'';
-    hero.replaceChildren(makeGallery(firstTitle,galleries[firstTitle],fallback,true));
+    hero.replaceChildren(makeGallery(firstHeading.textContent.trim(),galleries[firstHeading.dataset.galleryKey],fallback,true));
   }
 })();

@@ -1,0 +1,16 @@
+services:
+  build:
+    image: node:22-alpine
+    working_dir: /site
+    volumes:
+      - .:/site:z
+    command: ["node", "scripts/build.mjs"]
+    profiles: ["tools"]
+  preview:
+    image: node:22-alpine
+    working_dir: /site
+    volumes:
+      - .:/site:ro,z
+    ports:
+      - "127.0.0.1:4173:4173"
+    command: ["node", "scripts/serve.mjs"]
