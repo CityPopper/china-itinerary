@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>China · November 2026</title>
+    <style>
+      :root { color-scheme: light; font-family: system-ui, sans-serif; color: #292c2a; background: #f6f4ef; }
+      * { box-sizing: border-box; }
+      body { margin: 0; }
+      main { max-width: 1000px; margin: auto; padding: 64px 24px 80px; }
+      .eyebrow { color: #99604a; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+      h1 { font-family: Georgia, serif; font-size: clamp(42px, 7vw, 68px); font-weight: 400; margin: 12px 0; letter-spacing: -.04em; }
+      .intro { color: #696d66; margin: 0 0 48px; line-height: 1.6; }
+      h2 { font-size: 24px; font-weight: 500; margin: 0; }
+      .section-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin: 36px 0 16px; }
+      .section-heading span { color: #74776f; font-size: 13px; }
+      article { background: #fffefa; border: 1px solid #dedfd6; border-radius: 16px; padding: 26px 30px; margin-bottom: 16px; }
+      .ticket-ar { background: #ddc5ac; border-color: #b39475; }
+      .ticket-cz { background: #eee5fa; border-color: #d2bce8; }
+      .ticket-shared { background: linear-gradient(110deg, #ddc5ac, #eee5fa); border-color: #c9b4bb; }
+      .hotel-card { background: #eee8ef; border-color: #cfc3d2; color: #493b50; }
+      .hotel-card .traveler { background: #ddd1e1; color: #563f60; }
+      .hotel-card .airport, .hotel-card .date, .hotel-card .label, .hotel-card .note { color: #6b606e; }
+      .hotel-card .note, .hotel-card .hotel-times { border-color: #d7cbd9; }
+      .ticket-ar .traveler { background: #795438; color: #fff; }
+      .ticket-cz .traveler { background: #dcc9ef; color: #563972; }
+      .ticket-ar .airport, .ticket-ar .date, .ticket-ar .label, .ticket-ar .code { color: #594736; }
+      .flight-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+      .traveler { background: #eee9df; border-radius: 6px; padding: 5px 9px; font-size: 12px; font-weight: 700; }
+      h3 { font-size: 16px; margin: 0; font-weight: 600; }
+      .route { display: grid; grid-template-columns: 1fr 80px 1fr; gap: 16px; }
+      .direction { text-align: center; color: #99604a; padding-top: 35px; font-size: 24px; }
+      .label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: #74776f; }
+      .city { font-size: 24px; font-weight: 600; margin: 6px 0 4px; }
+      .code { color: #74776f; font-size: 14px; font-weight: 400; }
+      .airport { font-size: 13px; color: #696d66; line-height: 1.6; margin: 0; }
+      .time { font-size: 28px; font-weight: 500; margin: 16px 0 4px; font-variant-numeric: tabular-nums; }
+      .date { font-size: 13px; margin: 0; color: #696d66; }
+      .note { border-top: 1px solid #e8e7df; padding-top: 16px; margin: 24px 0 0; color: #696d66; font-size: 13px; line-height: 1.6; }
+      .connection { margin: 0 0 16px 30px; color: #99604a; font-size: 13px; }
+      .tracking { margin: 22px 0 0; }
+      .tracking a { display: inline-block; padding: 10px 14px; border: 1px solid currentColor; border-radius: 8px; color: #493b50; font-size: 13px; font-weight: 600; text-decoration: none; }
+      .tracking a:hover { background: #ffffff60; text-decoration: underline; }
+      .tracking a:focus-visible { outline: 3px solid #493b50; outline-offset: 4px; }
+      footer { margin-top: 28px; color: #74776f; font-size: 12px; line-height: 1.6; }
+      .tab-choice { position: absolute; width: 1px; height: 1px; opacity: 0; }
+      .tab-label { display: inline-block; padding: 12px 22px; margin-right: 8px; border: 1px solid #c9c8bf; border-radius: 10px; color: #696d66; cursor: pointer; font-size: 14px; font-weight: 600; }
+      .tab-choice:checked + .tab-label { background: #493b50; border-color: #493b50; color: #fff; }
+      .tab-choice:focus-visible + .tab-label { outline: 3px solid #99604a; outline-offset: 4px; }
+      .flight-panel { display: none; }
+      #arrival-panel { padding-top: 24px; }
+      #november-7-panel { padding-top: 24px; }
+      .day-panel { display: none; }
+      .hotel-times { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border-top: 1px solid #e8e7df; margin: 24px 0 0; padding-top: 16px; }
+      .hotel-times .time { margin-top: 8px; }
+      .contact { margin: 14px 0 0; font-size: 13px; line-height: 1.6; }
+      .contact a, .source-link { color: #493b50; text-underline-offset: 3px; }
+      .instructions { padding-left: 22px; color: #696d66; font-size: 14px; line-height: 1.7; }
+      .instructions li + li { margin-top: 10px; }
+      .destination { padding: 16px; border: 1px solid #d7cbd9; border-radius: 8px; background: #f5f0f6; font-size: 14px; line-height: 1.7; color: #493b50; }
+      .hotel-destination { margin-top: 20px; }
+      .restaurant-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+      .restaurant-card { margin: 0; padding: 24px; }
+      .restaurant-meta { color: #74776f; font-size: 12px; line-height: 1.6; margin: 12px 0 0; }
+      .restaurant-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; }
+      .restaurant-actions a { padding: 9px 11px; border: 1px solid #cfc3d2; border-radius: 8px; color: #493b50; font-size: 12px; font-weight: 600; text-decoration: none; }
+      .restaurant-actions a:hover { background: #eee8ef; }
+      .restaurant-actions a:focus-visible { outline: 3px solid #99604a; outline-offset: 3px; }
+      .restaurant-intro { color: #696d66; font-size: 13px; line-height: 1.6; margin: 0 0 20px; }
+      .transfer-options { margin-top: 22px; }
+      .transfer-panel { display: none; }
+      #transfer-alipay:checked ~ #transfer-alipay-panel, #transfer-taxi:checked ~ #transfer-taxi-panel { display: block; }
+      #transfer-alipay-8:checked ~ #transfer-alipay-panel-8, #transfer-taxi-8:checked ~ #transfer-taxi-panel-8 { display: block; }
+      #shenzhen-hotels:checked ~ #shenzhen-hotels-panel { display: block; }
+      #day-7:checked ~ #day-7-panel, #day-8:checked ~ #day-8-panel, #day-9:checked ~ #day-9-panel, #day-10:checked ~ #day-10-panel, #day-11:checked ~ #day-11-panel, #day-12:checked ~ #day-12-panel { display: block; }
+      #tab-arrival:checked ~ #arrival-panel, #tab-departure:checked ~ #departure-panel, #tab-november-7:checked ~ #november-7-panel, #tab-todo:checked ~ #todo-panel { display: block; }
+      .subtab-label { padding: 8px 18px; margin-bottom: 18px; }
+      #tab-ar:checked + .tab-label { background: #795438; border-color: #795438; }
+      #tab-cz:checked + .tab-label { background: #563972; border-color: #563972; }
+      .traveler-panel { display: none; }
+      #tab-ar:checked ~ #ar-panel, #tab-cz:checked ~ #cz-panel { display: block; }
+      @media (max-width: 600px) {
+        .restaurant-grid { grid-template-columns: 1fr; }
+        main { padding: 36px 16px 48px; }
+        article { padding: 22px 18px; }
+        .route { grid-template-columns: 1fr 24px 1fr; gap: 8px; }
+        .city { font-size: 20px; }
+        .code { display: block; margin-top: 3px; }
+        .time { font-size: 24px; }
+        .section-heading { align-items: start; flex-direction: column; gap: 6px; }
+      }
+      @media print {
+        body { background: white; }
+        main { padding: 0; }
+        article { break-inside: avoid; }
+        .tab-choice, .tab-label { display: none; }
+        .flight-panel, .traveler-panel, .day-panel, .transfer-panel { display: block; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>A journey through China</h1>
+      </header>
+
+      <input class="tab-choice" type="radio" name="flight-view" id="tab-arrival" aria-controls="arrival-panel" checked>
+      <label class="tab-label" for="tab-arrival">Arrival</label>
+      <input class="tab-choice" type="radio" name="flight-view" id="tab-november-7" aria-controls="november-7-panel">
+      <label class="tab-label" for="tab-november-7">Shenzhen</label>
+      <input class="tab-choice" type="radio" name="flight-view" id="tab-departure" aria-controls="departure-panel">
+      <label class="tab-label" for="tab-departure">Departure</label>
+      <input class="tab-choice" type="radio" name="flight-view" id="tab-todo" aria-controls="todo-panel">
+      <label class="tab-label" for="tab-todo">Todo</label>
+
+      <section class="flight-panel" id="arrival-panel" aria-labelledby="arrivals">
+        <input class="tab-choice" type="radio" name="arrival-traveler" id="tab-ar" aria-controls="ar-panel" checked>
+        <label class="tab-label subtab-label" for="tab-ar">AR</label>
+        <input class="tab-choice" type="radio" name="arrival-traveler" id="tab-cz" aria-controls="cz-panel">
+        <label class="tab-label subtab-label" for="tab-cz">CZ</label>
+
+        <div class="section-heading"><h2 id="arrivals">Arrival flights</h2></div>
+
+        <div class="traveler-panel" id="ar-panel">
+        <article class="ticket-ar">
+          <div class="flight-header"><span class="traveler">AR</span><h3>CA 992 · Vancouver → Beijing</h3></div>
+          <div class="route">
+            <div>
+              <div class="label">Departure</div>
+              <div class="city">Vancouver <span class="code">YVR</span></div>
+              <p class="airport">Vancouver International Airport<br>Terminal M</p>
+              <div class="time">13:00</div>
+              <p class="date"><time datetime="2026-11-06T13:00">Friday, 6 November 2026</time></p>
+            </div>
+            <div class="direction" aria-hidden="true">→</div>
+            <div>
+              <div class="label">Arrival</div>
+              <div class="city">Beijing <span class="code">PEK</span></div>
+              <p class="airport">Capital International Airport<br>Terminal 3</p>
+              <div class="time">17:15</div>
+              <p class="date"><time datetime="2026-11-07T17:15">Saturday, 7 November 2026</time></p>
+            </div>
+          </div>
+          <p class="tracking"><a href="https://www.flightaware.com/live/flight/CCA992" target="_blank" rel="noopener noreferrer" aria-label="Track CA 992 live on FlightAware (opens in a new tab)">Track flight live ↗</a></p>
+        </article>
+        <p class="connection">Connection in Beijing · 2 hours 45 minutes · Terminal 3</p>
+        {{card:ca1307}}
+        </div>
+        <div class="traveler-panel" id="cz-panel">
+        {{card:cz8118}}
+        </div>
+      </section>
+
+      <section class="flight-panel" id="departure-panel" aria-labelledby="departure">
+        <div class="section-heading"><h2 id="departure">Flight home</h2><span>20 November 2026 · Departure</span></div>
+        <article class="ticket-shared">
+          <div class="flight-header"><span class="traveler">CZ + AR</span><h3>3U 3859 · Chengdu → Vancouver</h3></div>
+          <div class="route">
+            <div>
+              <div class="label">Departure</div>
+              <div class="city">Chengdu <span class="code">TFU</span></div>
+              <p class="airport">Tianfu International Airport<br>Terminal 1</p>
+              <div class="time">01:00</div>
+              <p class="date"><time datetime="2026-11-20T01:00">Friday, 20 November 2026</time></p>
+            </div>
+            <div class="direction" aria-hidden="true">→</div>
+            <div>
+              <div class="label">Arrival</div>
+              <div class="city">Vancouver <span class="code">YVR</span></div>
+              <p class="airport">Vancouver International Airport<br>Terminal M</p>
+              <div class="time">21:40</div>
+              <p class="date"><time datetime="2026-11-19T21:40">Thursday, 19 November 2026</time></p>
+            </div>
+          </div>
+          <p class="tracking"><a href="https://www.flightaware.com/live/flight/CSC3859" target="_blank" rel="noopener noreferrer" aria-label="Track 3U 3859 live on FlightAware (opens in a new tab)">Track flight live ↗</a></p>
+        </article>
+      </section>
+      <section class="flight-panel" id="todo-panel" aria-labelledby="todo-heading">
+        <div class="section-heading"><h2 id="todo-heading">Todo</h2></div>
+        <article aria-labelledby="alipay-setup-heading">
+          <div class="flight-header"><h3 id="alipay-setup-heading">Set up Alipay before travelling</h3></div>
+          <ol class="instructions">
+            <li>Install Alipay, register with your Canadian mobile number and set the language to English.</li>
+            <li>Add an international payment card and complete any requested passport verification before leaving. Have a Visa or Mastercard available as a backup to Amex.</li>
+            <li>Find DiDi inside Alipay for ride-hailing. Explore the Transport section for city transit options when you arrive.</li>
+            <li>Keep access to verification texts on your registered number and arrange mobile data for China.</li>
+          </ol>
+          <p class="note">Use Alipay as your main payment app for the trip. Keep a payment card and some RMB cash available as backups.</p>
+          <p class="contact"><a class="source-link" href="https://english.www.gov.cn/news/202404/11/content_WS6617c858c6d0868f4e8e5f4d.html" target="_blank" rel="noopener noreferrer">Official visitor payment guide ↗</a></p>
+        </article>
+        <article aria-labelledby="late-checkin-heading">
+          <div class="flight-header"><h3 id="late-checkin-heading">Confirm late arrival with the hotel</h3></div>
+          <p class="airport">Call <a class="source-link" href="tel:+8675583838888">+86 755 8383 8888</a> before travelling. Ask the hotel to hold your room for arrival after midnight, and ask whether a paid airport pickup can be arranged, including the price and meeting point.</p>
+          <p class="note">Book the night of November 7 even if you reach the hotel on November 8 after midnight. Your booking must cover that overnight stay.</p>
+          <div class="destination">“My flight CA 1307 lands at Shenzhen Airport at 23:30 on November 7. I may reach the hotel after midnight. Please note my late arrival and hold my room. Can you quote an airport pickup and confirm where the driver would meet me?”</div>
+        </article>
+      </section>
+      <section class="flight-panel" id="november-7-panel" aria-label="Shenzhen · 7–12 November 2026">
+        <input class="tab-choice" type="radio" name="itinerary-day" id="shenzhen-hotels" aria-controls="shenzhen-hotels-panel">
+        <label class="tab-label subtab-label" for="shenzhen-hotels">Hotel</label>
+        <input class="tab-choice" type="radio" name="itinerary-day" id="day-7" aria-controls="day-7-panel" checked>
+        <label class="tab-label subtab-label" for="day-7">Nov 7</label>
+        <input class="tab-choice" type="radio" name="itinerary-day" id="day-8" aria-controls="day-8-panel">
+        <label class="tab-label subtab-label" for="day-8">Nov 8</label>
+        <input class="tab-choice" type="radio" name="itinerary-day" id="day-9" aria-controls="day-9-panel">
+        <label class="tab-label subtab-label" for="day-9">Nov 9</label>
+        <input class="tab-choice" type="radio" name="itinerary-day" id="day-10" aria-controls="day-10-panel">
+        <label class="tab-label subtab-label" for="day-10">Nov 10</label>
+        <input class="tab-choice" type="radio" name="itinerary-day" id="day-11" aria-controls="day-11-panel">
+        <label class="tab-label subtab-label" for="day-11">Nov 11</label>
+        <input class="tab-choice" type="radio" name="itinerary-day" id="day-12" aria-controls="day-12-panel">
+        <label class="tab-label subtab-label" for="day-12">Nov 12</label>
+        <section class="day-panel" id="shenzhen-hotels-panel" aria-labelledby="shenzhen-hotels-heading">
+          <div class="section-heading"><h2 id="shenzhen-hotels-heading">Shenzhen hotel</h2></div>
+          <article class="hotel-card" aria-labelledby="sheraton-heading">
+            <div class="flight-header"><span class="traveler">Futian</span><h3 id="sheraton-heading">Sheraton Shenzhen Futian Hotel</h3></div>
+            <div class="label">Address</div>
+            <p class="airport">Great China International Exchange Square, Fuhua Road<br>Futian District, Shenzhen, Guangdong 518048, China</p>
+            <p class="contact"><strong>Hotel phone:</strong> <a href="tel:+8675583838888">+86 755 8383 8888</a></p>
+            <div class="destination hotel-destination"><strong>Show your driver</strong><br><span lang="zh-CN">请送我到深圳大中华喜来登酒店。<br>深圳市福田区福华路大中华国际交易广场</span><br>Sheraton Shenzhen Futian Hotel</div>
+            <p class="note">Near Convention &amp; Exhibition Center metro station (Lines 1 and 4), with Futian high-speed railway station about a 10-minute walk away. A convenient base for shopping and the Guangzhou day trip.</p>
+            <div class="hotel-times">
+              <div><div class="label">Check-in</div><div class="time">3:00 p.m.</div><p class="date">Standard check-in · Shenzhen local time</p></div>
+              <div><div class="label">Checkout · Amex Platinum / Marriott Gold</div><div class="time">2:00 p.m.</div><p class="date">On request, subject to availability, with enrolled Marriott Gold status and an eligible booking. Standard checkout: noon.</p></div>
+            </div>
+            <p class="tracking"><a href="https://www.marriott.com/en-us/hotels/szxsf-sheraton-shenzhen-futian-hotel/overview/" target="_blank" rel="noopener noreferrer" aria-label="View Sheraton Shenzhen Futian Hotel and rates on Marriott (opens in a new tab)">View hotel &amp; rates ↗</a></p>
+          </article>
+          {{card:nearby-restaurants}}
+        </section>
+        <section class="day-panel" id="day-7-panel" aria-label="7 November 2026">
+          {{card:ca1307}}
+          {{card:airport-transfer:nov7}}
+        </section>
+        <section class="day-panel" id="day-8-panel" aria-label="8 November 2026">
+          {{card:cz8118}}
+          {{card:airport-transfer:nov8}}
+        </section>
+        <section class="day-panel" id="day-9-panel" aria-label="9 November 2026"></section>
+        <section class="day-panel" id="day-10-panel" aria-label="10 November 2026"></section>
+        <section class="day-panel" id="day-11-panel" aria-label="11 November 2026"></section>
+        <section class="day-panel" id="day-12-panel" aria-label="12 November 2026"></section>
+      </section>
+    </main>
+  </body>
+</html>

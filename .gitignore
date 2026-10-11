@@ -1,0 +1,18 @@
+# Local agent state and credentials
+/.agents/
+/.codex/
+/.aws/
+
+# Local dependencies and environment settings
+node_modules/
+.env
+.env.*
+!.env.example
+
+# Downloadable exports and local archives
+/exports/
+*.zip
+
+# Operating-system metadata
+.DS_Store
+Thumbs.db

@@ -1,0 +1,31 @@
+<article aria-labelledby="airport-transfer-heading{{suffix}}">
+            <div class="flight-header"><h3 id="airport-transfer-heading{{suffix}}">Airport → Sheraton Shenzhen Futian Hotel</h3></div>
+            <p class="airport">{{arrival}}</p>
+            <div class="transfer-options">
+              <input class="tab-choice" type="radio" name="airport-transfer{{suffix}}" id="transfer-alipay{{suffix}}" aria-controls="transfer-alipay-panel{{suffix}}" checked>
+              <label class="tab-label subtab-label" for="transfer-alipay{{suffix}}">Alipay</label>
+              <input class="tab-choice" type="radio" name="airport-transfer{{suffix}}" id="transfer-taxi{{suffix}}" aria-controls="transfer-taxi-panel{{suffix}}">
+              <label class="tab-label subtab-label" for="transfer-taxi{{suffix}}">Taxi</label>
+              <section class="transfer-panel" id="transfer-alipay-panel{{suffix}}" aria-labelledby="alipay-transfer-heading{{suffix}}">
+                <h3 id="alipay-transfer-heading{{suffix}}">Book DiDi through Alipay</h3>
+                <ol class="instructions">
+                  <li>Collect your bags and connect to mobile data or airport Wi-Fi. Open Alipay and search for DiDi; complete any additional setup it requests.</li>
+                  <li>{{pickup}} Enter Sheraton Shenzhen Futian Hotel as the destination and check it matches the address in the Hotel tab.</li>
+                  <li>Choose a ride type, review the estimated fare and selected payment method, then request the car when you are ready to reach the pickup area.</li>
+                  <li>Follow the app’s assigned pickup area, gate and meeting-point instructions. Ride-hailing pickup is separate from the taxi queue.</li>
+                  <li>Match the car’s number plate to your booking before boarding. Use in-app messages if you need to coordinate with the driver.</li>
+                </ol>
+                <p class="note">Ride-hailing operates 24 hours. If payment setup or finding your pickup is inconvenient, choose the Taxi instructions for the official airport queue.</p>
+              </section>
+              <section class="transfer-panel" id="transfer-taxi-panel{{suffix}}" aria-labelledby="taxi-transfer-heading{{suffix}}">
+                <h3 id="taxi-transfer-heading{{suffix}}">Take an official airport taxi</h3>
+                <ol class="instructions">
+                  <li>Collect your bags, then follow signs to the Ground Transportation Center (GTC).</li>
+                  <li>Go to the GTC’s second floor, east side, outside Gate 13 for the official taxi queue. Taxis operate 24 hours.</li>
+                  <li>Show the driver the hotel name and Chinese address in the Hotel tab. Take a metered taxi and keep the receipt.</li>
+                </ol>
+                <p class="note">{{taxiNote}}</p>
+              </section>
+            </div>
+            <p class="contact"><a class="source-link" href="https://www.szairport.com/szairport/czc/zlm_tt.shtml" target="_blank" rel="noopener noreferrer">Airport taxi &amp; ride-hailing pickup guide ↗</a></p>
+          </article>

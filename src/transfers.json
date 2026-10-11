@@ -1,0 +1,14 @@
+{
+  "nov7": {
+    "suffix": "",
+    "arrival": "For your 23:30 arrival, take a car directly to the hotel. Allow roughly 40–60 minutes for the drive after collecting your bags; this is a planning estimate.",
+    "pickup": "Set the pickup to your arrival terminal at Shenzhen Baoan International Airport.",
+    "taxiNote": "Budget roughly RMB 150–200 for the late-night ride; this is a planning estimate. The fare depends on route, waiting time, tolls and surcharges. Keep RMB cash available as a payment backup."
+  },
+  "nov8": {
+    "suffix": "-8",
+    "arrival": "For your 17:35 arrival at Terminal 3, take a car directly to the hotel. Allow roughly 40–60 minutes for the drive after collecting your bags, with extra time for evening traffic; this is a planning estimate.",
+    "pickup": "Set the pickup to Terminal 3 at Shenzhen Baoan International Airport.",
+    "taxiNote": "The metered fare depends on route, waiting time and tolls. Keep RMB cash available as a payment backup."
+  }
+}
