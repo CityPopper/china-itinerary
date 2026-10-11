@@ -61,6 +61,17 @@
       .instructions li + li { margin-top: 10px; }
       .destination { padding: 16px; border: 1px solid #d7cbd9; border-radius: 8px; background: #f5f0f6; font-size: 14px; line-height: 1.7; color: #493b50; }
       .hotel-destination { margin-top: 20px; }
+      .destination-section { margin: 22px 0; }
+      .destination-section h3 { margin-bottom: 12px; }
+      .destination-travel-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+      .driver-destination-name { margin: 12px 0 6px; font-size: 22px; font-weight: 600; }
+      .card-language-choice { position: absolute; width: 1px; height: 1px; opacity: 0; }
+      .card-language-toggle { display: flex; align-items: center; justify-content: center; width: fit-content; min-width: 64px; min-height: 36px; margin: -8px -8px 12px auto; padding: 6px 12px; border: 1px solid #493b5050; border-radius: 8px; color: #493b50; background: #ffffff50; font-size: 13px; font-weight: 600; cursor: pointer; touch-action: manipulation; }
+      .card-language-toggle:hover { background: #ffffff90; }
+      .card-language-choice:focus-visible + .card-language-toggle { outline: 3px solid #99604a; outline-offset: 3px; }
+      .card-zh { display: none; letter-spacing: normal; }
+      .card-language-choice:checked ~ .card-content .card-en, .card-language-choice:checked + .card-language-toggle .card-en { display: none; }
+      .card-language-choice:checked ~ .card-content .card-zh, .card-language-choice:checked + .card-language-toggle .card-zh { display: inline; }
       .restaurant-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
       .restaurant-card { margin: 0; padding: 24px; }
       .restaurant-meta { color: #74776f; font-size: 12px; line-height: 1.6; margin: 12px 0 0; }
@@ -82,6 +93,8 @@
       .traveler-panel { display: none; }
       #tab-ar:checked ~ #ar-panel, #tab-cz:checked ~ #cz-panel { display: block; }
       @media (max-width: 600px) {
+        .destination-travel-meta { grid-template-columns: 1fr; }
+        .card-language-toggle { min-height: 44px; margin-top: -6px; margin-right: -2px; }
         main { padding: 28px 16px 48px; }
         main > header { margin-bottom: 24px; }
         h1 { font-size: clamp(32px, 9vw, 40px); line-height: 1.12; margin: 0; letter-spacing: -.035em; }
@@ -132,7 +145,7 @@
         body { background: white; }
         main { padding: 0; }
         article { break-inside: avoid; }
-        .tab-choice, .tab-label { display: none; }
+        .tab-choice, .tab-label, .card-language-choice, .card-language-toggle { display: none; }
         .flight-panel, .traveler-panel, .day-panel, .transfer-panel { display: block; }
       }
     </style>
@@ -274,7 +287,11 @@
           {{card:cz8118}}
           {{card:airport-transfer:nov8}}
         </section>
-        <section class="day-panel" id="day-9-panel" aria-label="9 November 2026"></section>
+        <section class="day-panel" id="day-9-panel" aria-label="9 November 2026">
+          {{card:destination:huaqiangbei}}
+          {{card:destination:bitcity}}
+          {{card:destination:dongmen}}
+        </section>
         <section class="day-panel" id="day-10-panel" aria-label="10 November 2026"></section>
         <section class="day-panel" id="day-11-panel" aria-label="11 November 2026"></section>
         <section class="day-panel" id="day-12-panel" aria-label="12 November 2026"></section>

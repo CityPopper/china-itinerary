@@ -61,6 +61,17 @@
       .instructions li + li { margin-top: 10px; }
       .destination { padding: 16px; border: 1px solid #d7cbd9; border-radius: 8px; background: #f5f0f6; font-size: 14px; line-height: 1.7; color: #493b50; }
       .hotel-destination { margin-top: 20px; }
+      .destination-section { margin: 22px 0; }
+      .destination-section h3 { margin-bottom: 12px; }
+      .destination-travel-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+      .driver-destination-name { margin: 12px 0 6px; font-size: 22px; font-weight: 600; }
+      .card-language-choice { position: absolute; width: 1px; height: 1px; opacity: 0; }
+      .card-language-toggle { display: flex; align-items: center; justify-content: center; width: fit-content; min-width: 64px; min-height: 36px; margin: -8px -8px 12px auto; padding: 6px 12px; border: 1px solid #493b5050; border-radius: 8px; color: #493b50; background: #ffffff50; font-size: 13px; font-weight: 600; cursor: pointer; touch-action: manipulation; }
+      .card-language-toggle:hover { background: #ffffff90; }
+      .card-language-choice:focus-visible + .card-language-toggle { outline: 3px solid #99604a; outline-offset: 3px; }
+      .card-zh { display: none; letter-spacing: normal; }
+      .card-language-choice:checked ~ .card-content .card-en, .card-language-choice:checked + .card-language-toggle .card-en { display: none; }
+      .card-language-choice:checked ~ .card-content .card-zh, .card-language-choice:checked + .card-language-toggle .card-zh { display: inline; }
       .restaurant-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
       .restaurant-card { margin: 0; padding: 24px; }
       .restaurant-meta { color: #74776f; font-size: 12px; line-height: 1.6; margin: 12px 0 0; }
@@ -82,6 +93,8 @@
       .traveler-panel { display: none; }
       #tab-ar:checked ~ #ar-panel, #tab-cz:checked ~ #cz-panel { display: block; }
       @media (max-width: 600px) {
+        .destination-travel-meta { grid-template-columns: 1fr; }
+        .card-language-toggle { min-height: 44px; margin-top: -6px; margin-right: -2px; }
         main { padding: 28px 16px 48px; }
         main > header { margin-bottom: 24px; }
         h1 { font-size: clamp(32px, 9vw, 40px); line-height: 1.12; margin: 0; letter-spacing: -.035em; }
@@ -132,7 +145,7 @@
         body { background: white; }
         main { padding: 0; }
         article { break-inside: avoid; }
-        .tab-choice, .tab-label { display: none; }
+        .tab-choice, .tab-label, .card-language-choice, .card-language-toggle { display: none; }
         .flight-panel, .traveler-panel, .day-panel, .transfer-panel { display: block; }
       }
     </style>
@@ -162,70 +175,82 @@
 
         <div class="traveler-panel" id="ar-panel">
         <article class="ticket-ar">
-          <div class="flight-header"><span class="traveler">AR</span><h3>CA 992 · Vancouver → Beijing</h3></div>
+<input class="card-language-choice" type="checkbox" id="card-language-1" aria-label="Chinese version of CA 992 · Vancouver → Beijing" aria-controls="card-language-1-content">
+<label class="card-language-toggle" for="card-language-1"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-1-content">
+          <div class="flight-header"><span class="traveler">AR</span><h3><span class="card-en" lang="en">CA 992 · Vancouver → Beijing</span><span class="card-zh" lang="zh-CN">CA 992 · 温哥华 → 北京</span></h3></div>
           <div class="route">
             <div>
-              <div class="label">Departure</div>
-              <div class="city">Vancouver <span class="code">YVR</span></div>
-              <p class="airport">Vancouver International Airport<br>Terminal M</p>
+              <div class="label"><span class="card-en" lang="en">Departure</span><span class="card-zh" lang="zh-CN">出发</span></div>
+              <div class="city"><span class="card-en" lang="en">Vancouver</span><span class="card-zh" lang="zh-CN">温哥华</span> <span class="code">YVR</span></div>
+              <p class="airport"><span class="card-en" lang="en">Vancouver International Airport</span><span class="card-zh" lang="zh-CN">温哥华国际机场</span><br><span class="card-en" lang="en">Terminal M</span><span class="card-zh" lang="zh-CN">M 航站楼</span></p>
               <div class="time">13:00</div>
-              <p class="date"><time datetime="2026-11-06T13:00">Friday, 6 November 2026</time></p>
+              <p class="date"><time datetime="2026-11-06T13:00"><span class="card-en" lang="en">Friday, 6 November 2026</span><span class="card-zh" lang="zh-CN">2026年11月6日 · 星期五</span></time></p>
             </div>
             <div class="direction" aria-hidden="true">→</div>
             <div>
-              <div class="label">Arrival</div>
-              <div class="city">Beijing <span class="code">PEK</span></div>
-              <p class="airport">Capital International Airport<br>Terminal 3</p>
+              <div class="label"><span class="card-en" lang="en">Arrival</span><span class="card-zh" lang="zh-CN">抵达</span></div>
+              <div class="city"><span class="card-en" lang="en">Beijing</span><span class="card-zh" lang="zh-CN">北京</span> <span class="code">PEK</span></div>
+              <p class="airport"><span class="card-en" lang="en">Capital International Airport</span><span class="card-zh" lang="zh-CN">北京首都国际机场</span><br><span class="card-en" lang="en">Terminal 3</span><span class="card-zh" lang="zh-CN">3 号航站楼</span></p>
               <div class="time">17:15</div>
-              <p class="date"><time datetime="2026-11-07T17:15">Saturday, 7 November 2026</time></p>
+              <p class="date"><time datetime="2026-11-07T17:15"><span class="card-en" lang="en">Saturday, 7 November 2026</span><span class="card-zh" lang="zh-CN">2026年11月7日 · 星期六</span></time></p>
             </div>
           </div>
-          <p class="tracking"><a href="https://www.flightaware.com/live/flight/CCA992" target="_blank" rel="noopener noreferrer" aria-label="Track CA 992 live on FlightAware (opens in a new tab)">Track flight live ↗</a></p>
-        </article>
+          <p class="tracking"><a href="https://www.flightaware.com/live/flight/CCA992" target="_blank" rel="noopener noreferrer" aria-label="Track CA 992 live on FlightAware (opens in a new tab)"><span class="card-en" lang="en">Track flight live ↗</span><span class="card-zh" lang="zh-CN">查看实时航班动态 ↗</span></a></p>
+        </div>
+</article>
         <p class="connection">Connection in Beijing · 2 hours 45 minutes · Terminal 3</p>
         <article class="ticket-ar">
-          <div class="flight-header"><span class="traveler">AR</span><h3>CA 1307 · Beijing → Shenzhen</h3></div>
+<input class="card-language-choice" type="checkbox" id="card-language-2" aria-label="Chinese version of CA 1307 · Beijing → Shenzhen" aria-controls="card-language-2-content">
+<label class="card-language-toggle" for="card-language-2"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-2-content">
+          <div class="flight-header"><span class="traveler">AR</span><h3><span class="card-en" lang="en">CA 1307 · Beijing → Shenzhen</span><span class="card-zh" lang="zh-CN">CA 1307 · 北京 → 深圳</span></h3></div>
           <div class="route">
             <div>
-              <div class="label">Departure</div>
-              <div class="city">Beijing <span class="code">PEK</span></div>
-              <p class="airport">Capital International Airport<br>Terminal 3</p>
+              <div class="label"><span class="card-en" lang="en">Departure</span><span class="card-zh" lang="zh-CN">出发</span></div>
+              <div class="city"><span class="card-en" lang="en">Beijing</span><span class="card-zh" lang="zh-CN">北京</span> <span class="code">PEK</span></div>
+              <p class="airport"><span class="card-en" lang="en">Capital International Airport</span><span class="card-zh" lang="zh-CN">北京首都国际机场</span><br><span class="card-en" lang="en">Terminal 3</span><span class="card-zh" lang="zh-CN">3 号航站楼</span></p>
               <div class="time">20:00</div>
-              <p class="date"><time datetime="2026-11-07T20:00">Saturday, 7 November 2026</time></p>
+              <p class="date"><time datetime="2026-11-07T20:00"><span class="card-en" lang="en">Saturday, 7 November 2026</span><span class="card-zh" lang="zh-CN">2026年11月7日 · 星期六</span></time></p>
             </div>
             <div class="direction" aria-hidden="true">→</div>
             <div>
-              <div class="label">Arrival</div>
-              <div class="city">Shenzhen <span class="code">SZX</span></div>
-                <p class="airport">Baoan International Airport<br>Terminal 3</p>
+              <div class="label"><span class="card-en" lang="en">Arrival</span><span class="card-zh" lang="zh-CN">抵达</span></div>
+              <div class="city"><span class="card-en" lang="en">Shenzhen</span><span class="card-zh" lang="zh-CN">深圳</span> <span class="code">SZX</span></div>
+                <p class="airport"><span class="card-en" lang="en">Baoan International Airport</span><span class="card-zh" lang="zh-CN">深圳宝安国际机场</span><br><span class="card-en" lang="en">Terminal 3</span><span class="card-zh" lang="zh-CN">3 号航站楼</span></p>
               <div class="time">23:30</div>
-              <p class="date"><time datetime="2026-11-07T23:30">Saturday, 7 November 2026</time></p>
+              <p class="date"><time datetime="2026-11-07T23:30"><span class="card-en" lang="en">Saturday, 7 November 2026</span><span class="card-zh" lang="zh-CN">2026年11月7日 · 星期六</span></time></p>
             </div>
           </div>
-          <p class="tracking"><a href="https://www.flightaware.com/live/flight/CCA1307" target="_blank" rel="noopener noreferrer" aria-label="Track CA 1307 live on FlightAware (opens in a new tab)">Track flight live ↗</a></p>
-        </article>
+          <p class="tracking"><a href="https://www.flightaware.com/live/flight/CCA1307" target="_blank" rel="noopener noreferrer" aria-label="Track CA 1307 live on FlightAware (opens in a new tab)"><span class="card-en" lang="en">Track flight live ↗</span><span class="card-zh" lang="zh-CN">查看实时航班动态 ↗</span></a></p>
+        </div>
+</article>
         </div>
         <div class="traveler-panel" id="cz-panel">
         <article class="ticket-cz">
-  <div class="flight-header"><span class="traveler">CZ</span><h3>CZ 8118 · Singapore → Shenzhen</h3></div>
+<input class="card-language-choice" type="checkbox" id="card-language-3" aria-label="Chinese version of CZ 8118 · Singapore → Shenzhen" aria-controls="card-language-3-content">
+<label class="card-language-toggle" for="card-language-3"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-3-content">
+  <div class="flight-header"><span class="traveler">CZ</span><h3><span class="card-en" lang="en">CZ 8118 · Singapore → Shenzhen</span><span class="card-zh" lang="zh-CN">CZ 8118 · 新加坡 → 深圳</span></h3></div>
   <div class="route">
     <div>
-      <div class="label">Departure</div>
-      <div class="city">Singapore <span class="code">SIN</span></div>
-      <p class="airport">Changi Airport<br>Terminal 1</p>
+      <div class="label"><span class="card-en" lang="en">Departure</span><span class="card-zh" lang="zh-CN">出发</span></div>
+      <div class="city"><span class="card-en" lang="en">Singapore</span><span class="card-zh" lang="zh-CN">新加坡</span> <span class="code">SIN</span></div>
+      <p class="airport"><span class="card-en" lang="en">Changi Airport</span><span class="card-zh" lang="zh-CN">新加坡樟宜机场</span><br><span class="card-en" lang="en">Terminal 1</span><span class="card-zh" lang="zh-CN">1 号航站楼</span></p>
       <div class="time">13:15</div>
-      <p class="date"><time datetime="2026-11-08T13:15">Sunday, 8 November 2026</time></p>
+      <p class="date"><time datetime="2026-11-08T13:15"><span class="card-en" lang="en">Sunday, 8 November 2026</span><span class="card-zh" lang="zh-CN">2026年11月8日 · 星期日</span></time></p>
     </div>
     <div class="direction" aria-hidden="true">→</div>
     <div>
-      <div class="label">Arrival</div>
-      <div class="city">Shenzhen <span class="code">SZX</span></div>
-      <p class="airport">Baoan International Airport<br>Terminal 3</p>
+      <div class="label"><span class="card-en" lang="en">Arrival</span><span class="card-zh" lang="zh-CN">抵达</span></div>
+      <div class="city"><span class="card-en" lang="en">Shenzhen</span><span class="card-zh" lang="zh-CN">深圳</span> <span class="code">SZX</span></div>
+      <p class="airport"><span class="card-en" lang="en">Baoan International Airport</span><span class="card-zh" lang="zh-CN">深圳宝安国际机场</span><br><span class="card-en" lang="en">Terminal 3</span><span class="card-zh" lang="zh-CN">3 号航站楼</span></p>
       <div class="time">17:35</div>
-      <p class="date"><time datetime="2026-11-08T17:35">Sunday, 8 November 2026</time></p>
+      <p class="date"><time datetime="2026-11-08T17:35"><span class="card-en" lang="en">Sunday, 8 November 2026</span><span class="card-zh" lang="zh-CN">2026年11月8日 · 星期日</span></time></p>
     </div>
   </div>
-  <p class="tracking"><a href="https://www.flightaware.com/live/flight/CSN8118" target="_blank" rel="noopener noreferrer" aria-label="Track CZ 8118 live on FlightAware (opens in a new tab)">Track flight live ↗</a></p>
+  <p class="tracking"><a href="https://www.flightaware.com/live/flight/CSN8118" target="_blank" rel="noopener noreferrer" aria-label="Track CZ 8118 live on FlightAware (opens in a new tab)"><span class="card-en" lang="en">Track flight live ↗</span><span class="card-zh" lang="zh-CN">查看实时航班动态 ↗</span></a></p>
+</div>
 </article>
         </div>
       </section>
@@ -233,46 +258,58 @@
       <section class="flight-panel" id="departure-panel" aria-labelledby="departure">
         <div class="section-heading"><h2 id="departure">Flight home</h2><span>20 November 2026 · Departure</span></div>
         <article class="ticket-shared">
-          <div class="flight-header"><span class="traveler">CZ + AR</span><h3>3U 3859 · Chengdu → Vancouver</h3></div>
+<input class="card-language-choice" type="checkbox" id="card-language-4" aria-label="Chinese version of 3U 3859 · Chengdu → Vancouver" aria-controls="card-language-4-content">
+<label class="card-language-toggle" for="card-language-4"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-4-content">
+          <div class="flight-header"><span class="traveler">CZ + AR</span><h3><span class="card-en" lang="en">3U 3859 · Chengdu → Vancouver</span><span class="card-zh" lang="zh-CN">3U 3859 · 成都 → 温哥华</span></h3></div>
           <div class="route">
             <div>
-              <div class="label">Departure</div>
-              <div class="city">Chengdu <span class="code">TFU</span></div>
-              <p class="airport">Tianfu International Airport<br>Terminal 1</p>
+              <div class="label"><span class="card-en" lang="en">Departure</span><span class="card-zh" lang="zh-CN">出发</span></div>
+              <div class="city"><span class="card-en" lang="en">Chengdu</span><span class="card-zh" lang="zh-CN">成都</span> <span class="code">TFU</span></div>
+              <p class="airport"><span class="card-en" lang="en">Tianfu International Airport</span><span class="card-zh" lang="zh-CN">成都天府国际机场</span><br><span class="card-en" lang="en">Terminal 1</span><span class="card-zh" lang="zh-CN">1 号航站楼</span></p>
               <div class="time">01:00</div>
-              <p class="date"><time datetime="2026-11-20T01:00">Friday, 20 November 2026</time></p>
+              <p class="date"><time datetime="2026-11-20T01:00"><span class="card-en" lang="en">Friday, 20 November 2026</span><span class="card-zh" lang="zh-CN">2026年11月20日 · 星期五</span></time></p>
             </div>
             <div class="direction" aria-hidden="true">→</div>
             <div>
-              <div class="label">Arrival</div>
-              <div class="city">Vancouver <span class="code">YVR</span></div>
-              <p class="airport">Vancouver International Airport<br>Terminal M</p>
+              <div class="label"><span class="card-en" lang="en">Arrival</span><span class="card-zh" lang="zh-CN">抵达</span></div>
+              <div class="city"><span class="card-en" lang="en">Vancouver</span><span class="card-zh" lang="zh-CN">温哥华</span> <span class="code">YVR</span></div>
+              <p class="airport"><span class="card-en" lang="en">Vancouver International Airport</span><span class="card-zh" lang="zh-CN">温哥华国际机场</span><br><span class="card-en" lang="en">Terminal M</span><span class="card-zh" lang="zh-CN">M 航站楼</span></p>
               <div class="time">21:40</div>
-              <p class="date"><time datetime="2026-11-19T21:40">Thursday, 19 November 2026</time></p>
+              <p class="date"><time datetime="2026-11-19T21:40"><span class="card-en" lang="en">Thursday, 19 November 2026</span><span class="card-zh" lang="zh-CN">2026年11月19日 · 星期四</span></time></p>
             </div>
           </div>
-          <p class="tracking"><a href="https://www.flightaware.com/live/flight/CSC3859" target="_blank" rel="noopener noreferrer" aria-label="Track 3U 3859 live on FlightAware (opens in a new tab)">Track flight live ↗</a></p>
-        </article>
+          <p class="tracking"><a href="https://www.flightaware.com/live/flight/CSC3859" target="_blank" rel="noopener noreferrer" aria-label="Track 3U 3859 live on FlightAware (opens in a new tab)"><span class="card-en" lang="en">Track flight live ↗</span><span class="card-zh" lang="zh-CN">查看实时航班动态 ↗</span></a></p>
+        </div>
+</article>
       </section>
       <section class="flight-panel" id="todo-panel" aria-labelledby="todo-heading">
         <div class="section-heading"><h2 id="todo-heading">Todo</h2></div>
         <article aria-labelledby="alipay-setup-heading">
-          <div class="flight-header"><h3 id="alipay-setup-heading">Set up Alipay before travelling</h3></div>
+<input class="card-language-choice" type="checkbox" id="card-language-5" aria-label="Chinese version of Set up Alipay before travelling" aria-controls="card-language-5-content">
+<label class="card-language-toggle" for="card-language-5"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-5-content">
+          <div class="flight-header"><h3 id="alipay-setup-heading"><span class="card-en" lang="en">Set up Alipay before travelling</span><span class="card-zh" lang="zh-CN">出发前设置支付宝</span></h3></div>
           <ol class="instructions">
-            <li>Install Alipay, register with your Canadian mobile number and set the language to English.</li>
-            <li>Add an international payment card and complete any requested passport verification before leaving. Have a Visa or Mastercard available as a backup to Amex.</li>
-            <li>Find DiDi inside Alipay for ride-hailing. Explore the Transport section for city transit options when you arrive.</li>
-            <li>Keep access to verification texts on your registered number and arrange mobile data for China.</li>
+            <li><span class="card-en" lang="en">Install Alipay, register with your Canadian mobile number and set the language to English.</span><span class="card-zh" lang="zh-CN">下载支付宝，用加拿大手机号注册，并将界面语言设为英语。</span></li>
+            <li><span class="card-en" lang="en">Add an international payment card and complete any requested passport verification before leaving. Have a Visa or Mastercard available as a backup to Amex.</span><span class="card-zh" lang="zh-CN">绑定境外银行卡，出发前按提示完成护照身份验证。除美国运通卡外，另备一张 Visa 或 Mastercard。</span></li>
+            <li><span class="card-en" lang="en">Find DiDi inside Alipay for ride-hailing. Explore the Transport section for city transit options when you arrive.</span><span class="card-zh" lang="zh-CN">在支付宝内搜索“滴滴出行”叫车。抵达后，可在“出行”栏目查看当地公共交通服务。</span></li>
+            <li><span class="card-en" lang="en">Keep access to verification texts on your registered number and arrange mobile data for China.</span><span class="card-zh" lang="zh-CN">确保注册手机号在中国仍能接收验证码短信，并提前安排在中国使用的移动数据服务。</span></li>
           </ol>
-          <p class="note">Use Alipay as your main payment app for the trip. Keep a payment card and some RMB cash available as backups.</p>
-          <p class="contact"><a class="source-link" href="https://english.www.gov.cn/news/202404/11/content_WS6617c858c6d0868f4e8e5f4d.html" target="_blank" rel="noopener noreferrer">Official visitor payment guide ↗</a></p>
-        </article>
+          <p class="note"><span class="card-en" lang="en">Use Alipay as your main payment app for the trip. Keep a payment card and some RMB cash available as backups.</span><span class="card-zh" lang="zh-CN">旅途中主要使用支付宝付款，同时备好银行卡和少量人民币现金。</span></p>
+          <p class="contact"><a class="source-link" href="https://english.www.gov.cn/news/202404/11/content_WS6617c858c6d0868f4e8e5f4d.html" target="_blank" rel="noopener noreferrer"><span class="card-en" lang="en">Official visitor payment guide ↗</span><span class="card-zh" lang="zh-CN">官方来华支付指南 ↗</span></a></p>
+        </div>
+</article>
         <article aria-labelledby="late-checkin-heading">
-          <div class="flight-header"><h3 id="late-checkin-heading">Confirm late arrival with the hotel</h3></div>
-          <p class="airport">Call <a class="source-link" href="tel:+8675583838888">+86 755 8383 8888</a> before travelling. Ask the hotel to hold your room for arrival after midnight, and ask whether a paid airport pickup can be arranged, including the price and meeting point.</p>
-          <p class="note">Book the night of November 7 even if you reach the hotel on November 8 after midnight. Your booking must cover that overnight stay.</p>
-          <div class="destination">“My flight CA 1307 lands at Shenzhen Airport at 23:30 on November 7. I may reach the hotel after midnight. Please note my late arrival and hold my room. Can you quote an airport pickup and confirm where the driver would meet me?”</div>
-        </article>
+<input class="card-language-choice" type="checkbox" id="card-language-6" aria-label="Chinese version of Confirm late arrival with the hotel" aria-controls="card-language-6-content">
+<label class="card-language-toggle" for="card-language-6"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-6-content">
+          <div class="flight-header"><h3 id="late-checkin-heading"><span class="card-en" lang="en">Confirm late arrival with the hotel</span><span class="card-zh" lang="zh-CN">联系酒店确认深夜入住</span></h3></div>
+          <p class="airport"><span class="card-en" lang="en">Call</span><span class="card-zh" lang="zh-CN">出发前致电</span> <a class="source-link" href="tel:+8675583838888">+86 755 8383 8888</a> <span class="card-en" lang="en">before travelling. Ask the hotel to hold your room for arrival after midnight, and ask whether a paid airport pickup can be arranged, including the price and meeting point.</span><span class="card-zh" lang="zh-CN">，告知可能在午夜后到店，请酒店保留房间。同时询问能否安排付费接机，并确认费用及接车地点。</span></p>
+          <p class="note"><span class="card-en" lang="en">Book the night of November 7 even if you reach the hotel on November 8 after midnight. Your booking must cover that overnight stay.</span><span class="card-zh" lang="zh-CN">即使在 11 月 8 日凌晨到店，也应预订 11 月 7 日晚的房间，确保预订涵盖当晚住宿。</span></p>
+          <div class="destination"><span class="card-en" lang="en">“My flight CA 1307 lands at Shenzhen Airport at 23:30 on November 7. I may reach the hotel after midnight. Please note my late arrival and hold my room. Can you quote an airport pickup and confirm where the driver would meet me?”</span><span class="card-zh" lang="zh-CN">“我的 CA 1307 航班将于 11 月 7 日 23:30 抵达深圳机场，可能午夜后才能到店。请备注延迟到店并为我保留房间。请问可以安排接机吗？费用是多少，司机会在哪里接我？”</span></div>
+        </div>
+</article>
       </section>
       <section class="flight-panel" id="november-7-panel" aria-label="Shenzhen · 7–12 November 2026">
         <input class="tab-choice" type="radio" name="itinerary-day" id="shenzhen-hotels" aria-controls="shenzhen-hotels-panel">
@@ -292,204 +329,348 @@
         <section class="day-panel" id="shenzhen-hotels-panel" aria-labelledby="shenzhen-hotels-heading">
           <div class="section-heading"><h2 id="shenzhen-hotels-heading">Shenzhen hotel</h2></div>
           <article class="hotel-card" aria-labelledby="sheraton-heading">
-            <div class="flight-header"><span class="traveler">Futian</span><h3 id="sheraton-heading">Sheraton Shenzhen Futian Hotel</h3></div>
-            <div class="label">Address</div>
-            <p class="airport">Great China International Exchange Square, Fuhua Road<br>Futian District, Shenzhen, Guangdong 518048, China</p>
-            <p class="contact"><strong>Hotel phone:</strong> <a href="tel:+8675583838888">+86 755 8383 8888</a></p>
-            <div class="destination hotel-destination"><strong>Show your driver</strong><br><span lang="zh-CN">请送我到深圳大中华喜来登酒店。<br>深圳市福田区福华路大中华国际交易广场</span><br>Sheraton Shenzhen Futian Hotel</div>
-            <p class="note">Near Convention &amp; Exhibition Center metro station (Lines 1 and 4), with Futian high-speed railway station about a 10-minute walk away. A convenient base for shopping and the Guangzhou day trip.</p>
+<input class="card-language-choice" type="checkbox" id="card-language-7" aria-label="Chinese version of Sheraton Shenzhen Futian Hotel" aria-controls="card-language-7-content">
+<label class="card-language-toggle" for="card-language-7"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-7-content">
+            <div class="flight-header"><span class="traveler"><span class="card-en" lang="en">Futian</span><span class="card-zh" lang="zh-CN">福田</span></span><h3 id="sheraton-heading"><span class="card-en" lang="en">Sheraton Shenzhen Futian Hotel</span><span class="card-zh" lang="zh-CN">深圳大中华喜来登酒店</span></h3></div>
+            <div class="label"><span class="card-en" lang="en">Address</span><span class="card-zh" lang="zh-CN">地址</span></div>
+            <p class="airport"><span class="card-en" lang="en">Great China International Exchange Square, Fuhua Road</span><span class="card-zh" lang="zh-CN">福田区福华路大中华国际交易广场</span><br><span class="card-en" lang="en">Futian District, Shenzhen, Guangdong 518048, China</span><span class="card-zh" lang="zh-CN">中国广东省深圳市，邮编 518048</span></p>
+            <p class="contact"><strong><span class="card-en" lang="en">Hotel phone:</span><span class="card-zh" lang="zh-CN">酒店电话：</span></strong> <a href="tel:+8675583838888">+86 755 8383 8888</a></p>
+            <div class="destination hotel-destination"><strong><span class="card-en" lang="en">Show your driver</span><span class="card-zh" lang="zh-CN">给司机看</span></strong><br><span lang="zh-CN">请送我到深圳大中华喜来登酒店。<br>深圳市福田区福华路大中华国际交易广场</span><br><span class="card-en" lang="en">Sheraton Shenzhen Futian Hotel</span><span class="card-zh" lang="zh-CN">深圳大中华喜来登酒店</span></div>
+            <p class="note"><span class="card-en" lang="en">Near Convention &amp; Exhibition Center metro station (Lines 1 and 4), with Futian high-speed railway station about a 10-minute walk away. A convenient base for shopping and the Guangzhou day trip.</span><span class="card-zh" lang="zh-CN">酒店邻近地铁会展中心站（1 号线、4 号线），步行约 10 分钟可到福田高铁站，方便购物及广州一日游。</span></p>
             <div class="hotel-times">
-              <div><div class="label">Check-in</div><div class="time">3:00 p.m.</div><p class="date">Standard check-in · Shenzhen local time</p></div>
-              <div><div class="label">Checkout · Amex Platinum / Marriott Gold</div><div class="time">2:00 p.m.</div><p class="date">On request, subject to availability, with enrolled Marriott Gold status and an eligible booking. Standard checkout: noon.</p></div>
+              <div><div class="label"><span class="card-en" lang="en">Check-in</span><span class="card-zh" lang="zh-CN">入住时间</span></div><div class="time"><span class="card-en" lang="en">3:00 p.m.</span><span class="card-zh" lang="zh-CN">15:00</span></div><p class="date"><span class="card-en" lang="en">Standard check-in · Shenzhen local time</span><span class="card-zh" lang="zh-CN">标准入住时间 · 深圳当地时间</span></p></div>
+              <div><div class="label"><span class="card-en" lang="en">Checkout · Amex Platinum / Marriott Gold</span><span class="card-zh" lang="zh-CN">退房 · 美国运通白金卡／万豪金卡</span></div><div class="time"><span class="card-en" lang="en">2:00 p.m.</span><span class="card-zh" lang="zh-CN">14:00</span></div><p class="date"><span class="card-en" lang="en">On request, subject to availability, with enrolled Marriott Gold status and an eligible booking. Standard checkout: noon.</span><span class="card-zh" lang="zh-CN">已登记万豪金卡会籍且预订符合条件时，可申请延迟至 14:00 退房，视房态而定。标准退房时间为 12:00。</span></p></div>
             </div>
-            <p class="tracking"><a href="https://www.marriott.com/en-us/hotels/szxsf-sheraton-shenzhen-futian-hotel/overview/" target="_blank" rel="noopener noreferrer" aria-label="View Sheraton Shenzhen Futian Hotel and rates on Marriott (opens in a new tab)">View hotel &amp; rates ↗</a></p>
-          </article>
+            <p class="tracking"><a href="https://www.marriott.com/en-us/hotels/szxsf-sheraton-shenzhen-futian-hotel/overview/" target="_blank" rel="noopener noreferrer" aria-label="View Sheraton Shenzhen Futian Hotel and rates on Marriott (opens in a new tab)"><span class="card-en" lang="en">View hotel &amp; rates ↗</span><span class="card-zh" lang="zh-CN">查看酒店及房价 ↗</span></a></p>
+          </div>
+</article>
           <section aria-labelledby="nearby-dining-heading">
   <div class="section-heading"><h2 id="nearby-dining-heading">Places to eat nearby</h2></div>
-  <p class="restaurant-intro">Tripadvisor lists Flavorz as a four-minute walk and Paletto as a five-minute walk from the hotel. Other restaurants below are listed within roughly 100–300 m; mall entrances and escalators may add walking time. Map buttons search for the named branch. Ratings checked October 10, 2026.</p>
   <div class="restaurant-grid">
     <article class="restaurant-card">
-      <h3>Flavorz</h3>
-      <p class="airport">International buffet · The Ritz-Carlton, 2nd floor</p>
-      <p class="restaurant-meta">300 m · 4-minute walk<br>Tripadvisor: 4.9/5 · 505 reviews</p>
+<input class="card-language-choice" type="checkbox" id="card-language-8" aria-label="Chinese version of Flavorz" aria-controls="card-language-8-content">
+<label class="card-language-toggle" for="card-language-8"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-8-content">
+      <h3><span class="card-en" lang="en">Flavorz</span><span class="card-zh" lang="zh-CN">Flavorz 全日制餐厅</span></h3>
+      <p class="airport"><span class="card-en" lang="en">International buffet · The Ritz-Carlton, 2nd floor</span><span class="card-zh" lang="zh-CN">国际自助餐 · 深圳星河丽思卡尔顿酒店二层</span></p>
+      <p class="restaurant-meta"><span class="card-en" lang="en">300 m · 4-minute walk</span><span class="card-zh" lang="zh-CN">300 米 · 步行 4 分钟</span><br><span class="card-en" lang="en">Tripadvisor: 4.9/5 · 505 reviews</span><span class="card-zh" lang="zh-CN">Tripadvisor 评分：4.9/5 · 505 条点评</span></p>
       <div class="restaurant-actions">
-        <a href="https://www.tripadvisor.co.uk/Restaurant_Review-g297415-d2085726-Reviews-Flavorz_all_day_dining_restaurant-Shenzhen_Guangdong.html" target="_blank" rel="noopener noreferrer" aria-label="Flavorz reviews on Tripadvisor (opens in a new tab)">Tripadvisor ↗</a>
-        <a href="https://www.google.com/maps/search/?api=1&amp;query=Flavorz+Ritz-Carlton+116+Fuhua+3rd+Road+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Flavorz on Google Maps (opens in a new tab)">Google Maps ↗</a>
-        <a href="https://maps.apple.com/?q=Flavorz+Ritz-Carlton+116+Fuhua+3rd+Road+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Flavorz on Apple Maps (opens in a new tab)">Apple Maps ↗</a>
+        <a href="https://www.tripadvisor.co.uk/Restaurant_Review-g297415-d2085726-Reviews-Flavorz_all_day_dining_restaurant-Shenzhen_Guangdong.html" target="_blank" rel="noopener noreferrer" aria-label="Flavorz reviews on Tripadvisor (opens in a new tab)"><span class="card-en" lang="en">Tripadvisor ↗</span><span class="card-zh" lang="zh-CN">Tripadvisor 猫途鹰 ↗</span></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Flavorz+Ritz-Carlton+116+Fuhua+3rd+Road+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Flavorz on Google Maps (opens in a new tab)"><span class="card-en" lang="en">Google Maps ↗</span><span class="card-zh" lang="zh-CN">谷歌地图 ↗</span></a>
+        <a href="https://maps.apple.com/?q=Flavorz+Ritz-Carlton+116+Fuhua+3rd+Road+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Flavorz on Apple Maps (opens in a new tab)"><span class="card-en" lang="en">Apple Maps ↗</span><span class="card-zh" lang="zh-CN">苹果地图 ↗</span></a>
       </div>
-    </article>
+    </div>
+</article>
     <article class="restaurant-card">
-      <h3>Paletto Italian Restaurant</h3>
-      <p class="airport">Italian fine dining · The Ritz-Carlton, 2nd floor</p>
-      <p class="restaurant-meta">300 m · 5-minute walk<br>Tripadvisor: 4.8/5 · 476 reviews</p>
+<input class="card-language-choice" type="checkbox" id="card-language-9" aria-label="Chinese version of Paletto Italian Restaurant" aria-controls="card-language-9-content">
+<label class="card-language-toggle" for="card-language-9"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-9-content">
+      <h3><span class="card-en" lang="en">Paletto Italian Restaurant</span><span class="card-zh" lang="zh-CN">Paletto 意大利餐厅</span></h3>
+      <p class="airport"><span class="card-en" lang="en">Italian fine dining · The Ritz-Carlton, 2nd floor</span><span class="card-zh" lang="zh-CN">精致意大利料理 · 深圳星河丽思卡尔顿酒店二层</span></p>
+      <p class="restaurant-meta"><span class="card-en" lang="en">300 m · 5-minute walk</span><span class="card-zh" lang="zh-CN">300 米 · 步行 5 分钟</span><br><span class="card-en" lang="en">Tripadvisor: 4.8/5 · 476 reviews</span><span class="card-zh" lang="zh-CN">Tripadvisor 评分：4.8/5 · 476 条点评</span></p>
       <div class="restaurant-actions">
-        <a href="https://www.tripadvisor.co.uk/Restaurant_Review-g297415-d2085729-Reviews-Paletto_Italian_Restaurant-Shenzhen_Guangdong.html" target="_blank" rel="noopener noreferrer" aria-label="Paletto reviews on Tripadvisor (opens in a new tab)">Tripadvisor ↗</a>
-        <a href="https://www.google.com/maps/search/?api=1&amp;query=Paletto+Ritz-Carlton+116+Fuhua+3rd+Road+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Paletto on Google Maps (opens in a new tab)">Google Maps ↗</a>
-        <a href="https://maps.apple.com/?q=Paletto+Ritz-Carlton+116+Fuhua+3rd+Road+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Paletto on Apple Maps (opens in a new tab)">Apple Maps ↗</a>
+        <a href="https://www.tripadvisor.co.uk/Restaurant_Review-g297415-d2085729-Reviews-Paletto_Italian_Restaurant-Shenzhen_Guangdong.html" target="_blank" rel="noopener noreferrer" aria-label="Paletto reviews on Tripadvisor (opens in a new tab)"><span class="card-en" lang="en">Tripadvisor ↗</span><span class="card-zh" lang="zh-CN">Tripadvisor 猫途鹰 ↗</span></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Paletto+Ritz-Carlton+116+Fuhua+3rd+Road+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Paletto on Google Maps (opens in a new tab)"><span class="card-en" lang="en">Google Maps ↗</span><span class="card-zh" lang="zh-CN">谷歌地图 ↗</span></a>
+        <a href="https://maps.apple.com/?q=Paletto+Ritz-Carlton+116+Fuhua+3rd+Road+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Paletto on Apple Maps (opens in a new tab)"><span class="card-en" lang="en">Apple Maps ↗</span><span class="card-zh" lang="zh-CN">苹果地图 ↗</span></a>
       </div>
-    </article>
+    </div>
+</article>
     <article class="restaurant-card">
-      <h3>Yelin Impression · Link City</h3>
-      <p class="airport">Coconut chicken hotpot · A03, Link City</p>
-      <p class="restaurant-meta">100–200 m nearby<br>Tripadvisor: 4.3/5 · 32 reviews</p>
+<input class="card-language-choice" type="checkbox" id="card-language-10" aria-label="Chinese version of Yelin Impression · Link City" aria-controls="card-language-10-content">
+<label class="card-language-toggle" for="card-language-10"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-10-content">
+      <h3><span class="card-en" lang="en">Yelin Impression · Link City</span><span class="card-zh" lang="zh-CN">椰林印象 · 连城店</span></h3>
+      <p class="airport"><span class="card-en" lang="en">Coconut chicken hotpot · A03, Link City</span><span class="card-zh" lang="zh-CN">椰子鸡火锅 · 连城新天地 A03</span></p>
+      <p class="restaurant-meta"><span class="card-en" lang="en">100–200 m nearby</span><span class="card-zh" lang="zh-CN">距酒店约 100–200 米</span><br><span class="card-en" lang="en">Tripadvisor: 4.3/5 · 32 reviews</span><span class="card-zh" lang="zh-CN">Tripadvisor 评分：4.3/5 · 32 条点评</span></p>
       <div class="restaurant-actions">
-        <a href="https://www.tripadvisor.com.tw/Restaurant_Review-g297415-d10586476-Reviews-Ye_Lin_Yin_Xiang_Yin_le_Zhu_Ti_Ye_Zi_Ji_Lian_Cheng-Shenzhen_Guangdong.html" target="_blank" rel="noopener noreferrer" aria-label="Yelin Impression Link City reviews on Tripadvisor (opens in a new tab)">Tripadvisor ↗</a>
-        <a href="https://www.google.com/maps/search/?api=1&amp;query=Yelin+Impression+Coconut+Chicken+A03+Link+City+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Yelin Impression Link City on Google Maps (opens in a new tab)">Google Maps ↗</a>
-        <a href="https://maps.apple.com/?q=Yelin+Impression+Coconut+Chicken+A03+Link+City+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Yelin Impression Link City on Apple Maps (opens in a new tab)">Apple Maps ↗</a>
+        <a href="https://www.tripadvisor.com.tw/Restaurant_Review-g297415-d10586476-Reviews-Ye_Lin_Yin_Xiang_Yin_le_Zhu_Ti_Ye_Zi_Ji_Lian_Cheng-Shenzhen_Guangdong.html" target="_blank" rel="noopener noreferrer" aria-label="Yelin Impression Link City reviews on Tripadvisor (opens in a new tab)"><span class="card-en" lang="en">Tripadvisor ↗</span><span class="card-zh" lang="zh-CN">Tripadvisor 猫途鹰 ↗</span></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Yelin+Impression+Coconut+Chicken+A03+Link+City+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Yelin Impression Link City on Google Maps (opens in a new tab)"><span class="card-en" lang="en">Google Maps ↗</span><span class="card-zh" lang="zh-CN">谷歌地图 ↗</span></a>
+        <a href="https://maps.apple.com/?q=Yelin+Impression+Coconut+Chicken+A03+Link+City+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Yelin Impression Link City on Apple Maps (opens in a new tab)"><span class="card-en" lang="en">Apple Maps ↗</span><span class="card-zh" lang="zh-CN">苹果地图 ↗</span></a>
       </div>
-    </article>
+    </div>
+</article>
     <article class="restaurant-card">
-      <h3>Chao JiangChun · Da ZhongHua</h3>
-      <p class="airport">Cantonese food and dim sum</p>
-      <p class="restaurant-meta">300 m nearby<br>Tripadvisor: 4.3/5 · 11 reviews</p>
+<input class="card-language-choice" type="checkbox" id="card-language-11" aria-label="Chinese version of Chao JiangChun · Da ZhongHua" aria-controls="card-language-11-content">
+<label class="card-language-toggle" for="card-language-11"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-11-content">
+      <h3><span class="card-en" lang="en">Chao JiangChun · Da ZhongHua</span><span class="card-zh" lang="zh-CN">潮江春 · 大中华店</span></h3>
+      <p class="airport"><span class="card-en" lang="en">Cantonese food and dim sum</span><span class="card-zh" lang="zh-CN">粤菜及点心</span></p>
+      <p class="restaurant-meta"><span class="card-en" lang="en">300 m nearby</span><span class="card-zh" lang="zh-CN">距酒店约 300 米</span><br><span class="card-en" lang="en">Tripadvisor: 4.3/5 · 11 reviews</span><span class="card-zh" lang="zh-CN">Tripadvisor 评分：4.3/5 · 11 条点评</span></p>
       <div class="restaurant-actions">
-        <a href="https://www.tripadvisor.co.uk/Restaurant_Review-g297415-d4692205-Reviews-Chao_JiangChun_Da_ZhongHua-Shenzhen_Guangdong.html" target="_blank" rel="noopener noreferrer" aria-label="Chao JiangChun Da ZhongHua reviews on Tripadvisor (opens in a new tab)">Tripadvisor ↗</a>
-        <a href="https://www.google.com/maps/search/?api=1&amp;query=Chao+JiangChun+Da+ZhongHua+Futian+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Chao JiangChun Da ZhongHua on Google Maps (opens in a new tab)">Google Maps ↗</a>
-        <a href="https://maps.apple.com/?q=Chao+JiangChun+Da+ZhongHua+Futian+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Chao JiangChun Da ZhongHua on Apple Maps (opens in a new tab)">Apple Maps ↗</a>
+        <a href="https://www.tripadvisor.co.uk/Restaurant_Review-g297415-d4692205-Reviews-Chao_JiangChun_Da_ZhongHua-Shenzhen_Guangdong.html" target="_blank" rel="noopener noreferrer" aria-label="Chao JiangChun Da ZhongHua reviews on Tripadvisor (opens in a new tab)"><span class="card-en" lang="en">Tripadvisor ↗</span><span class="card-zh" lang="zh-CN">Tripadvisor 猫途鹰 ↗</span></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Chao+JiangChun+Da+ZhongHua+Futian+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Chao JiangChun Da ZhongHua on Google Maps (opens in a new tab)"><span class="card-en" lang="en">Google Maps ↗</span><span class="card-zh" lang="zh-CN">谷歌地图 ↗</span></a>
+        <a href="https://maps.apple.com/?q=Chao+JiangChun+Da+ZhongHua+Futian+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Chao JiangChun Da ZhongHua on Apple Maps (opens in a new tab)"><span class="card-en" lang="en">Apple Maps ↗</span><span class="card-zh" lang="zh-CN">苹果地图 ↗</span></a>
       </div>
-    </article>
+    </div>
+</article>
     <article class="restaurant-card">
-      <h3>Tong Shun Ju · Central Walk</h3>
-      <p class="airport">Beijing cuisine and Peking duck</p>
-      <p class="restaurant-meta">300 m nearby<br>Tripadvisor: 4.1/5 · 16 reviews</p>
+<input class="card-language-choice" type="checkbox" id="card-language-12" aria-label="Chinese version of Tong Shun Ju · Central Walk" aria-controls="card-language-12-content">
+<label class="card-language-toggle" for="card-language-12"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-12-content">
+      <h3><span class="card-en" lang="en">Tong Shun Ju · Central Walk</span><span class="card-zh" lang="zh-CN">同顺居北京菜馆 · 中心城店</span></h3>
+      <p class="airport"><span class="card-en" lang="en">Beijing cuisine and Peking duck</span><span class="card-zh" lang="zh-CN">北京菜及北京烤鸭</span></p>
+      <p class="restaurant-meta"><span class="card-en" lang="en">300 m nearby</span><span class="card-zh" lang="zh-CN">距酒店约 300 米</span><br><span class="card-en" lang="en">Tripadvisor: 4.1/5 · 16 reviews</span><span class="card-zh" lang="zh-CN">Tripadvisor 评分：4.1/5 · 16 条点评</span></p>
       <div class="restaurant-actions">
-        <a href="https://www.tripadvisor.co.uk/Restaurant_Review-g297415-d4564855-Reviews-Tong_Shun_Ju_BeiJing_CaiGuan-Shenzhen_Guangdong.html" target="_blank" rel="noopener noreferrer" aria-label="Tong Shun Ju reviews on Tripadvisor (opens in a new tab)">Tripadvisor ↗</a>
-        <a href="https://www.google.com/maps/search/?api=1&amp;query=Tong+Shun+Ju+Beijing+Restaurant+Central+Walk+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Tong Shun Ju Central Walk on Google Maps (opens in a new tab)">Google Maps ↗</a>
-        <a href="https://maps.apple.com/?q=Tong+Shun+Ju+Beijing+Restaurant+Central+Walk+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Tong Shun Ju Central Walk on Apple Maps (opens in a new tab)">Apple Maps ↗</a>
+        <a href="https://www.tripadvisor.co.uk/Restaurant_Review-g297415-d4564855-Reviews-Tong_Shun_Ju_BeiJing_CaiGuan-Shenzhen_Guangdong.html" target="_blank" rel="noopener noreferrer" aria-label="Tong Shun Ju reviews on Tripadvisor (opens in a new tab)"><span class="card-en" lang="en">Tripadvisor ↗</span><span class="card-zh" lang="zh-CN">Tripadvisor 猫途鹰 ↗</span></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Tong+Shun+Ju+Beijing+Restaurant+Central+Walk+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Tong Shun Ju Central Walk on Google Maps (opens in a new tab)"><span class="card-en" lang="en">Google Maps ↗</span><span class="card-zh" lang="zh-CN">谷歌地图 ↗</span></a>
+        <a href="https://maps.apple.com/?q=Tong+Shun+Ju+Beijing+Restaurant+Central+Walk+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Tong Shun Ju Central Walk on Apple Maps (opens in a new tab)"><span class="card-en" lang="en">Apple Maps ↗</span><span class="card-zh" lang="zh-CN">苹果地图 ↗</span></a>
       </div>
-    </article>
+    </div>
+</article>
     <article class="restaurant-card">
-      <h3>Tairyo · Central Walk</h3>
-      <p class="airport">Japanese food and seafood</p>
-      <p class="restaurant-meta">300 m nearby<br>Tripadvisor: 4.0/5 · 12 reviews</p>
+<input class="card-language-choice" type="checkbox" id="card-language-13" aria-label="Chinese version of Tairyo · Central Walk" aria-controls="card-language-13-content">
+<label class="card-language-toggle" for="card-language-13"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-13-content">
+      <h3><span class="card-en" lang="en">Tairyo · Central Walk</span><span class="card-zh" lang="zh-CN">大渔铁板烧 · 领展中心城店</span></h3>
+      <p class="airport"><span class="card-en" lang="en">Japanese food and seafood</span><span class="card-zh" lang="zh-CN">日式料理及海鲜</span></p>
+      <p class="restaurant-meta"><span class="card-en" lang="en">300 m nearby</span><span class="card-zh" lang="zh-CN">距酒店约 300 米</span><br><span class="card-en" lang="en">Tripadvisor: 4.0/5 · 12 reviews</span><span class="card-zh" lang="zh-CN">Tripadvisor 评分：4.0/5 · 12 条点评</span></p>
       <div class="restaurant-actions">
-        <a href="https://www.tripadvisor.co.uk/Restaurant_Review-g297415-d3481621-Reviews-Tairyo_ZhongXinCheng-Shenzhen_Guangdong.html" target="_blank" rel="noopener noreferrer" aria-label="Tairyo Central Walk reviews on Tripadvisor (opens in a new tab)">Tripadvisor ↗</a>
-        <a href="https://www.google.com/maps/search/?api=1&amp;query=Tairyo+Central+Walk+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Tairyo Central Walk on Google Maps (opens in a new tab)">Google Maps ↗</a>
-        <a href="https://maps.apple.com/?q=Tairyo+Central+Walk+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Tairyo Central Walk on Apple Maps (opens in a new tab)">Apple Maps ↗</a>
+        <a href="https://www.tripadvisor.co.uk/Restaurant_Review-g297415-d3481621-Reviews-Tairyo_ZhongXinCheng-Shenzhen_Guangdong.html" target="_blank" rel="noopener noreferrer" aria-label="Tairyo Central Walk reviews on Tripadvisor (opens in a new tab)"><span class="card-en" lang="en">Tripadvisor ↗</span><span class="card-zh" lang="zh-CN">Tripadvisor 猫途鹰 ↗</span></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Tairyo+Central+Walk+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Tairyo Central Walk on Google Maps (opens in a new tab)"><span class="card-en" lang="en">Google Maps ↗</span><span class="card-zh" lang="zh-CN">谷歌地图 ↗</span></a>
+        <a href="https://maps.apple.com/?q=Tairyo+Central+Walk+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Tairyo Central Walk on Apple Maps (opens in a new tab)"><span class="card-en" lang="en">Apple Maps ↗</span><span class="card-zh" lang="zh-CN">苹果地图 ↗</span></a>
       </div>
-    </article>
+    </div>
+</article>
     <article class="restaurant-card">
-      <h3>Wa Lai Da · Central Walk</h3>
-      <p class="airport">Charcoal-grilled bullfrog</p>
-      <p class="restaurant-meta">200 m nearby<br>Tripadvisor: 3.9/5 · 7 reviews</p>
+<input class="card-language-choice" type="checkbox" id="card-language-14" aria-label="Chinese version of Wa Lai Da · Central Walk" aria-controls="card-language-14-content">
+<label class="card-language-toggle" for="card-language-14"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-14-content">
+      <h3><span class="card-en" lang="en">Wa Lai Da · Central Walk</span><span class="card-zh" lang="zh-CN">蛙来哒炭烧牛蛙 · 中心城店</span></h3>
+      <p class="airport"><span class="card-en" lang="en">Charcoal-grilled bullfrog</span><span class="card-zh" lang="zh-CN">炭烧牛蛙</span></p>
+      <p class="restaurant-meta"><span class="card-en" lang="en">200 m nearby</span><span class="card-zh" lang="zh-CN">距酒店约 200 米</span><br><span class="card-en" lang="en">Tripadvisor: 3.9/5 · 7 reviews</span><span class="card-zh" lang="zh-CN">Tripadvisor 评分：3.9/5 · 7 条点评</span></p>
       <div class="restaurant-actions">
-        <a href="https://www.tripadvisor.co.uk/Restaurant_Review-g297415-d10776948-Reviews-Wa_Lai_Da_TanShao_NiuWa_Zhongxincheng-Shenzhen_Guangdong.html" target="_blank" rel="noopener noreferrer" aria-label="Wa Lai Da Central Walk reviews on Tripadvisor (opens in a new tab)">Tripadvisor ↗</a>
-        <a href="https://www.google.com/maps/search/?api=1&amp;query=Wa+Lai+Da+Bullfrog+Central+Walk+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Wa Lai Da Central Walk on Google Maps (opens in a new tab)">Google Maps ↗</a>
-        <a href="https://maps.apple.com/?q=Wa+Lai+Da+Bullfrog+Central+Walk+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Wa Lai Da Central Walk on Apple Maps (opens in a new tab)">Apple Maps ↗</a>
+        <a href="https://www.tripadvisor.co.uk/Restaurant_Review-g297415-d10776948-Reviews-Wa_Lai_Da_TanShao_NiuWa_Zhongxincheng-Shenzhen_Guangdong.html" target="_blank" rel="noopener noreferrer" aria-label="Wa Lai Da Central Walk reviews on Tripadvisor (opens in a new tab)"><span class="card-en" lang="en">Tripadvisor ↗</span><span class="card-zh" lang="zh-CN">Tripadvisor 猫途鹰 ↗</span></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Wa+Lai+Da+Bullfrog+Central+Walk+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Wa Lai Da Central Walk on Google Maps (opens in a new tab)"><span class="card-en" lang="en">Google Maps ↗</span><span class="card-zh" lang="zh-CN">谷歌地图 ↗</span></a>
+        <a href="https://maps.apple.com/?q=Wa+Lai+Da+Bullfrog+Central+Walk+Shenzhen" target="_blank" rel="noopener noreferrer" aria-label="Find Wa Lai Da Central Walk on Apple Maps (opens in a new tab)"><span class="card-en" lang="en">Apple Maps ↗</span><span class="card-zh" lang="zh-CN">苹果地图 ↗</span></a>
       </div>
-    </article>
+    </div>
+</article>
   </div>
 </section>
         </section>
         <section class="day-panel" id="day-7-panel" aria-label="7 November 2026">
           <article class="ticket-ar">
-          <div class="flight-header"><span class="traveler">AR</span><h3>CA 1307 · Beijing → Shenzhen</h3></div>
+<input class="card-language-choice" type="checkbox" id="card-language-15" aria-label="Chinese version of CA 1307 · Beijing → Shenzhen" aria-controls="card-language-15-content">
+<label class="card-language-toggle" for="card-language-15"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-15-content">
+          <div class="flight-header"><span class="traveler">AR</span><h3><span class="card-en" lang="en">CA 1307 · Beijing → Shenzhen</span><span class="card-zh" lang="zh-CN">CA 1307 · 北京 → 深圳</span></h3></div>
           <div class="route">
             <div>
-              <div class="label">Departure</div>
-              <div class="city">Beijing <span class="code">PEK</span></div>
-              <p class="airport">Capital International Airport<br>Terminal 3</p>
+              <div class="label"><span class="card-en" lang="en">Departure</span><span class="card-zh" lang="zh-CN">出发</span></div>
+              <div class="city"><span class="card-en" lang="en">Beijing</span><span class="card-zh" lang="zh-CN">北京</span> <span class="code">PEK</span></div>
+              <p class="airport"><span class="card-en" lang="en">Capital International Airport</span><span class="card-zh" lang="zh-CN">北京首都国际机场</span><br><span class="card-en" lang="en">Terminal 3</span><span class="card-zh" lang="zh-CN">3 号航站楼</span></p>
               <div class="time">20:00</div>
-              <p class="date"><time datetime="2026-11-07T20:00">Saturday, 7 November 2026</time></p>
+              <p class="date"><time datetime="2026-11-07T20:00"><span class="card-en" lang="en">Saturday, 7 November 2026</span><span class="card-zh" lang="zh-CN">2026年11月7日 · 星期六</span></time></p>
             </div>
             <div class="direction" aria-hidden="true">→</div>
             <div>
-              <div class="label">Arrival</div>
-              <div class="city">Shenzhen <span class="code">SZX</span></div>
-                <p class="airport">Baoan International Airport<br>Terminal 3</p>
+              <div class="label"><span class="card-en" lang="en">Arrival</span><span class="card-zh" lang="zh-CN">抵达</span></div>
+              <div class="city"><span class="card-en" lang="en">Shenzhen</span><span class="card-zh" lang="zh-CN">深圳</span> <span class="code">SZX</span></div>
+                <p class="airport"><span class="card-en" lang="en">Baoan International Airport</span><span class="card-zh" lang="zh-CN">深圳宝安国际机场</span><br><span class="card-en" lang="en">Terminal 3</span><span class="card-zh" lang="zh-CN">3 号航站楼</span></p>
               <div class="time">23:30</div>
-              <p class="date"><time datetime="2026-11-07T23:30">Saturday, 7 November 2026</time></p>
+              <p class="date"><time datetime="2026-11-07T23:30"><span class="card-en" lang="en">Saturday, 7 November 2026</span><span class="card-zh" lang="zh-CN">2026年11月7日 · 星期六</span></time></p>
             </div>
           </div>
-          <p class="tracking"><a href="https://www.flightaware.com/live/flight/CCA1307" target="_blank" rel="noopener noreferrer" aria-label="Track CA 1307 live on FlightAware (opens in a new tab)">Track flight live ↗</a></p>
-        </article>
+          <p class="tracking"><a href="https://www.flightaware.com/live/flight/CCA1307" target="_blank" rel="noopener noreferrer" aria-label="Track CA 1307 live on FlightAware (opens in a new tab)"><span class="card-en" lang="en">Track flight live ↗</span><span class="card-zh" lang="zh-CN">查看实时航班动态 ↗</span></a></p>
+        </div>
+</article>
           <article aria-labelledby="airport-transfer-heading">
-            <div class="flight-header"><h3 id="airport-transfer-heading">Airport → Sheraton Shenzhen Futian Hotel</h3></div>
-            <p class="airport">For your 23:30 arrival, take a car directly to the hotel. Allow roughly 40–60 minutes for the drive after collecting your bags; this is a planning estimate.</p>
+<input class="card-language-choice" type="checkbox" id="card-language-16" aria-label="Chinese version of Airport → Sheraton Shenzhen Futian Hotel" aria-controls="card-language-16-content">
+<label class="card-language-toggle" for="card-language-16"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-16-content">
+            <div class="flight-header"><h3 id="airport-transfer-heading"><span class="card-en" lang="en">Airport → Sheraton Shenzhen Futian Hotel</span><span class="card-zh" lang="zh-CN">机场 → 深圳大中华喜来登酒店</span></h3></div>
+            <p class="airport"><span class="card-en" lang="en">For your 23:30 arrival, take a car directly to the hotel. Allow roughly 40–60 minutes for the drive after collecting your bags; this is a planning estimate.</span><span class="card-zh" lang="zh-CN">航班 23:30 抵达后，建议乘车直达酒店。取完行李后的车程预计约 40–60 分钟，仅供行程规划参考。</span></p>
             <div class="transfer-options">
               <input class="tab-choice" type="radio" name="airport-transfer" id="transfer-alipay" aria-controls="transfer-alipay-panel" checked>
-              <label class="tab-label subtab-label" for="transfer-alipay">Alipay</label>
+              <label class="tab-label subtab-label" for="transfer-alipay"><span class="card-en" lang="en">Alipay</span><span class="card-zh" lang="zh-CN">支付宝</span></label>
               <input class="tab-choice" type="radio" name="airport-transfer" id="transfer-taxi" aria-controls="transfer-taxi-panel">
-              <label class="tab-label subtab-label" for="transfer-taxi">Taxi</label>
+              <label class="tab-label subtab-label" for="transfer-taxi"><span class="card-en" lang="en">Taxi</span><span class="card-zh" lang="zh-CN">出租车</span></label>
               <section class="transfer-panel" id="transfer-alipay-panel" aria-labelledby="alipay-transfer-heading">
-                <h3 id="alipay-transfer-heading">Book DiDi through Alipay</h3>
+                <h3 id="alipay-transfer-heading"><span class="card-en" lang="en">Book DiDi through Alipay</span><span class="card-zh" lang="zh-CN">通过支付宝叫滴滴</span></h3>
                 <ol class="instructions">
-                  <li>Collect your bags and connect to mobile data or airport Wi-Fi. Open Alipay and search for DiDi; complete any additional setup it requests.</li>
-                  <li>Set the pickup to your arrival terminal at Shenzhen Baoan International Airport. Enter Sheraton Shenzhen Futian Hotel as the destination and check it matches the address in the Hotel tab.</li>
-                  <li>Choose a ride type, review the estimated fare and selected payment method, then request the car when you are ready to reach the pickup area.</li>
-                  <li>Follow the app’s assigned pickup area, gate and meeting-point instructions. Ride-hailing pickup is separate from the taxi queue.</li>
-                  <li>Match the car’s number plate to your booking before boarding. Use in-app messages if you need to coordinate with the driver.</li>
+                  <li><span class="card-en" lang="en">Collect your bags and connect to mobile data or airport Wi-Fi. Open Alipay and search for DiDi; complete any additional setup it requests.</span><span class="card-zh" lang="zh-CN">取完行李后连接移动网络或机场 Wi-Fi，打开支付宝搜索“滴滴出行”，按提示完成所需设置。</span></li>
+                  <li><span class="card-en" lang="en">Set the pickup to your arrival terminal at Shenzhen Baoan International Airport. Enter Sheraton Shenzhen Futian Hotel as the destination and check it matches the address in the Hotel tab.</span><span class="card-zh" lang="zh-CN">上车地点选择深圳宝安国际机场的实际抵达航站楼。目的地输入“深圳大中华喜来登酒店”，并核对“Hotel”页中的地址。</span></li>
+                  <li><span class="card-en" lang="en">Choose a ride type, review the estimated fare and selected payment method, then request the car when you are ready to reach the pickup area.</span><span class="card-zh" lang="zh-CN">选择车型，确认预估费用和付款方式。准备好前往上车点后再叫车。</span></li>
+                  <li><span class="card-en" lang="en">Follow the app’s assigned pickup area, gate and meeting-point instructions. Ride-hailing pickup is separate from the taxi queue.</span><span class="card-zh" lang="zh-CN">按应用内指引前往指定上车区、出口及接车地点。网约车上车区与出租车候车区分开。</span></li>
+                  <li><span class="card-en" lang="en">Match the car’s number plate to your booking before boarding. Use in-app messages if you need to coordinate with the driver.</span><span class="card-zh" lang="zh-CN">上车前核对车牌与订单是否一致。如需联系司机，可使用应用内消息。</span></li>
                 </ol>
-                <p class="note">Ride-hailing operates 24 hours. If payment setup or finding your pickup is inconvenient, choose the Taxi instructions for the official airport queue.</p>
+                <p class="note"><span class="card-en" lang="en">Ride-hailing operates 24 hours. If payment setup or finding your pickup is inconvenient, choose the Taxi instructions for the official airport queue.</span><span class="card-zh" lang="zh-CN">机场网约车服务全天开放。如付款设置或寻找上车点不方便，可切换到“出租车”指引，在机场正规候车区乘车。</span></p>
               </section>
               <section class="transfer-panel" id="transfer-taxi-panel" aria-labelledby="taxi-transfer-heading">
-                <h3 id="taxi-transfer-heading">Take an official airport taxi</h3>
+                <h3 id="taxi-transfer-heading"><span class="card-en" lang="en">Take an official airport taxi</span><span class="card-zh" lang="zh-CN">乘坐机场正规出租车</span></h3>
                 <ol class="instructions">
-                  <li>Collect your bags, then follow signs to the Ground Transportation Center (GTC).</li>
-                  <li>Go to the GTC’s second floor, east side, outside Gate 13 for the official taxi queue. Taxis operate 24 hours.</li>
-                  <li>Show the driver the hotel name and Chinese address in the Hotel tab. Take a metered taxi and keep the receipt.</li>
+                  <li><span class="card-en" lang="en">Collect your bags, then follow signs to the Ground Transportation Center (GTC).</span><span class="card-zh" lang="zh-CN">取完行李后，按指示牌前往地面交通中心（GTC）。</span></li>
+                  <li><span class="card-en" lang="en">Go to the GTC’s second floor, east side, outside Gate 13 for the official taxi queue. Taxis operate 24 hours.</span><span class="card-zh" lang="zh-CN">出租车上客区位于地面交通中心二楼东侧 13 号门外，全天 24 小时服务。</span></li>
+                  <li><span class="card-en" lang="en">Show the driver the hotel name and Chinese address in the Hotel tab. Take a metered taxi and keep the receipt.</span><span class="card-zh" lang="zh-CN">向司机展示“Hotel”页中的酒店名称和中文地址。乘坐打表计费的出租车，并保留发票。</span></li>
                 </ol>
-                <p class="note">Budget roughly RMB 150–200 for the late-night ride; this is a planning estimate. The fare depends on route, waiting time, tolls and surcharges. Keep RMB cash available as a payment backup.</p>
+                <p class="note"><span class="card-en" lang="en">Budget roughly RMB 150–200 for the late-night ride; this is a planning estimate. The fare depends on route, waiting time, tolls and surcharges. Keep RMB cash available as a payment backup.</span><span class="card-zh" lang="zh-CN">深夜车费可按约人民币 150–200 元预留预算，仅供参考。实际费用取决于路线、等候时间、通行费及附加费。备好人民币现金以防付款不便。</span></p>
               </section>
             </div>
-            <p class="contact"><a class="source-link" href="https://www.szairport.com/szairport/czc/zlm_tt.shtml" target="_blank" rel="noopener noreferrer">Airport taxi &amp; ride-hailing pickup guide ↗</a></p>
-          </article>
+            <p class="contact"><a class="source-link" href="https://www.szairport.com/szairport/czc/zlm_tt.shtml" target="_blank" rel="noopener noreferrer"><span class="card-en" lang="en">Airport taxi &amp; ride-hailing pickup guide ↗</span><span class="card-zh" lang="zh-CN">机场官方出租车及网约车乘车指引 ↗</span></a></p>
+          </div>
+</article>
         </section>
         <section class="day-panel" id="day-8-panel" aria-label="8 November 2026">
           <article class="ticket-cz">
-  <div class="flight-header"><span class="traveler">CZ</span><h3>CZ 8118 · Singapore → Shenzhen</h3></div>
+<input class="card-language-choice" type="checkbox" id="card-language-17" aria-label="Chinese version of CZ 8118 · Singapore → Shenzhen" aria-controls="card-language-17-content">
+<label class="card-language-toggle" for="card-language-17"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-17-content">
+  <div class="flight-header"><span class="traveler">CZ</span><h3><span class="card-en" lang="en">CZ 8118 · Singapore → Shenzhen</span><span class="card-zh" lang="zh-CN">CZ 8118 · 新加坡 → 深圳</span></h3></div>
   <div class="route">
     <div>
-      <div class="label">Departure</div>
-      <div class="city">Singapore <span class="code">SIN</span></div>
-      <p class="airport">Changi Airport<br>Terminal 1</p>
+      <div class="label"><span class="card-en" lang="en">Departure</span><span class="card-zh" lang="zh-CN">出发</span></div>
+      <div class="city"><span class="card-en" lang="en">Singapore</span><span class="card-zh" lang="zh-CN">新加坡</span> <span class="code">SIN</span></div>
+      <p class="airport"><span class="card-en" lang="en">Changi Airport</span><span class="card-zh" lang="zh-CN">新加坡樟宜机场</span><br><span class="card-en" lang="en">Terminal 1</span><span class="card-zh" lang="zh-CN">1 号航站楼</span></p>
       <div class="time">13:15</div>
-      <p class="date"><time datetime="2026-11-08T13:15">Sunday, 8 November 2026</time></p>
+      <p class="date"><time datetime="2026-11-08T13:15"><span class="card-en" lang="en">Sunday, 8 November 2026</span><span class="card-zh" lang="zh-CN">2026年11月8日 · 星期日</span></time></p>
     </div>
     <div class="direction" aria-hidden="true">→</div>
     <div>
-      <div class="label">Arrival</div>
-      <div class="city">Shenzhen <span class="code">SZX</span></div>
-      <p class="airport">Baoan International Airport<br>Terminal 3</p>
+      <div class="label"><span class="card-en" lang="en">Arrival</span><span class="card-zh" lang="zh-CN">抵达</span></div>
+      <div class="city"><span class="card-en" lang="en">Shenzhen</span><span class="card-zh" lang="zh-CN">深圳</span> <span class="code">SZX</span></div>
+      <p class="airport"><span class="card-en" lang="en">Baoan International Airport</span><span class="card-zh" lang="zh-CN">深圳宝安国际机场</span><br><span class="card-en" lang="en">Terminal 3</span><span class="card-zh" lang="zh-CN">3 号航站楼</span></p>
       <div class="time">17:35</div>
-      <p class="date"><time datetime="2026-11-08T17:35">Sunday, 8 November 2026</time></p>
+      <p class="date"><time datetime="2026-11-08T17:35"><span class="card-en" lang="en">Sunday, 8 November 2026</span><span class="card-zh" lang="zh-CN">2026年11月8日 · 星期日</span></time></p>
     </div>
   </div>
-  <p class="tracking"><a href="https://www.flightaware.com/live/flight/CSN8118" target="_blank" rel="noopener noreferrer" aria-label="Track CZ 8118 live on FlightAware (opens in a new tab)">Track flight live ↗</a></p>
+  <p class="tracking"><a href="https://www.flightaware.com/live/flight/CSN8118" target="_blank" rel="noopener noreferrer" aria-label="Track CZ 8118 live on FlightAware (opens in a new tab)"><span class="card-en" lang="en">Track flight live ↗</span><span class="card-zh" lang="zh-CN">查看实时航班动态 ↗</span></a></p>
+</div>
 </article>
           <article aria-labelledby="airport-transfer-heading-8">
-            <div class="flight-header"><h3 id="airport-transfer-heading-8">Airport → Sheraton Shenzhen Futian Hotel</h3></div>
-            <p class="airport">For your 17:35 arrival at Terminal 3, take a car directly to the hotel. Allow roughly 40–60 minutes for the drive after collecting your bags, with extra time for evening traffic; this is a planning estimate.</p>
+<input class="card-language-choice" type="checkbox" id="card-language-18" aria-label="Chinese version of Airport → Sheraton Shenzhen Futian Hotel" aria-controls="card-language-18-content">
+<label class="card-language-toggle" for="card-language-18"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-18-content">
+            <div class="flight-header"><h3 id="airport-transfer-heading-8"><span class="card-en" lang="en">Airport → Sheraton Shenzhen Futian Hotel</span><span class="card-zh" lang="zh-CN">机场 → 深圳大中华喜来登酒店</span></h3></div>
+            <p class="airport"><span class="card-en" lang="en">For your 17:35 arrival at Terminal 3, take a car directly to the hotel. Allow roughly 40–60 minutes for the drive after collecting your bags, with extra time for evening traffic; this is a planning estimate.</span><span class="card-zh" lang="zh-CN">航班 17:35 抵达 3 号航站楼后，可乘车直达酒店。取完行李后的车程预计约 40–60 分钟，晚高峰需额外预留时间。此时间仅供行程规划参考。</span></p>
             <div class="transfer-options">
               <input class="tab-choice" type="radio" name="airport-transfer-8" id="transfer-alipay-8" aria-controls="transfer-alipay-panel-8" checked>
-              <label class="tab-label subtab-label" for="transfer-alipay-8">Alipay</label>
+              <label class="tab-label subtab-label" for="transfer-alipay-8"><span class="card-en" lang="en">Alipay</span><span class="card-zh" lang="zh-CN">支付宝</span></label>
               <input class="tab-choice" type="radio" name="airport-transfer-8" id="transfer-taxi-8" aria-controls="transfer-taxi-panel-8">
-              <label class="tab-label subtab-label" for="transfer-taxi-8">Taxi</label>
+              <label class="tab-label subtab-label" for="transfer-taxi-8"><span class="card-en" lang="en">Taxi</span><span class="card-zh" lang="zh-CN">出租车</span></label>
               <section class="transfer-panel" id="transfer-alipay-panel-8" aria-labelledby="alipay-transfer-heading-8">
-                <h3 id="alipay-transfer-heading-8">Book DiDi through Alipay</h3>
+                <h3 id="alipay-transfer-heading-8"><span class="card-en" lang="en">Book DiDi through Alipay</span><span class="card-zh" lang="zh-CN">通过支付宝叫滴滴</span></h3>
                 <ol class="instructions">
-                  <li>Collect your bags and connect to mobile data or airport Wi-Fi. Open Alipay and search for DiDi; complete any additional setup it requests.</li>
-                  <li>Set the pickup to Terminal 3 at Shenzhen Baoan International Airport. Enter Sheraton Shenzhen Futian Hotel as the destination and check it matches the address in the Hotel tab.</li>
-                  <li>Choose a ride type, review the estimated fare and selected payment method, then request the car when you are ready to reach the pickup area.</li>
-                  <li>Follow the app’s assigned pickup area, gate and meeting-point instructions. Ride-hailing pickup is separate from the taxi queue.</li>
-                  <li>Match the car’s number plate to your booking before boarding. Use in-app messages if you need to coordinate with the driver.</li>
+                  <li><span class="card-en" lang="en">Collect your bags and connect to mobile data or airport Wi-Fi. Open Alipay and search for DiDi; complete any additional setup it requests.</span><span class="card-zh" lang="zh-CN">取完行李后连接移动网络或机场 Wi-Fi，打开支付宝搜索“滴滴出行”，按提示完成所需设置。</span></li>
+                  <li><span class="card-en" lang="en">Set the pickup to Terminal 3 at Shenzhen Baoan International Airport. Enter Sheraton Shenzhen Futian Hotel as the destination and check it matches the address in the Hotel tab.</span><span class="card-zh" lang="zh-CN">上车地点选择深圳宝安国际机场 3 号航站楼。目的地输入“深圳大中华喜来登酒店”，并核对“Hotel”页中的地址。</span></li>
+                  <li><span class="card-en" lang="en">Choose a ride type, review the estimated fare and selected payment method, then request the car when you are ready to reach the pickup area.</span><span class="card-zh" lang="zh-CN">选择车型，确认预估费用和付款方式。准备好前往上车点后再叫车。</span></li>
+                  <li><span class="card-en" lang="en">Follow the app’s assigned pickup area, gate and meeting-point instructions. Ride-hailing pickup is separate from the taxi queue.</span><span class="card-zh" lang="zh-CN">按应用内指引前往指定上车区、出口及接车地点。网约车上车区与出租车候车区分开。</span></li>
+                  <li><span class="card-en" lang="en">Match the car’s number plate to your booking before boarding. Use in-app messages if you need to coordinate with the driver.</span><span class="card-zh" lang="zh-CN">上车前核对车牌与订单是否一致。如需联系司机，可使用应用内消息。</span></li>
                 </ol>
-                <p class="note">Ride-hailing operates 24 hours. If payment setup or finding your pickup is inconvenient, choose the Taxi instructions for the official airport queue.</p>
+                <p class="note"><span class="card-en" lang="en">Ride-hailing operates 24 hours. If payment setup or finding your pickup is inconvenient, choose the Taxi instructions for the official airport queue.</span><span class="card-zh" lang="zh-CN">机场网约车服务全天开放。如付款设置或寻找上车点不方便，可切换到“出租车”指引，在机场正规候车区乘车。</span></p>
               </section>
               <section class="transfer-panel" id="transfer-taxi-panel-8" aria-labelledby="taxi-transfer-heading-8">
-                <h3 id="taxi-transfer-heading-8">Take an official airport taxi</h3>
+                <h3 id="taxi-transfer-heading-8"><span class="card-en" lang="en">Take an official airport taxi</span><span class="card-zh" lang="zh-CN">乘坐机场正规出租车</span></h3>
                 <ol class="instructions">
-                  <li>Collect your bags, then follow signs to the Ground Transportation Center (GTC).</li>
-                  <li>Go to the GTC’s second floor, east side, outside Gate 13 for the official taxi queue. Taxis operate 24 hours.</li>
-                  <li>Show the driver the hotel name and Chinese address in the Hotel tab. Take a metered taxi and keep the receipt.</li>
+                  <li><span class="card-en" lang="en">Collect your bags, then follow signs to the Ground Transportation Center (GTC).</span><span class="card-zh" lang="zh-CN">取完行李后，按指示牌前往地面交通中心（GTC）。</span></li>
+                  <li><span class="card-en" lang="en">Go to the GTC’s second floor, east side, outside Gate 13 for the official taxi queue. Taxis operate 24 hours.</span><span class="card-zh" lang="zh-CN">出租车上客区位于地面交通中心二楼东侧 13 号门外，全天 24 小时服务。</span></li>
+                  <li><span class="card-en" lang="en">Show the driver the hotel name and Chinese address in the Hotel tab. Take a metered taxi and keep the receipt.</span><span class="card-zh" lang="zh-CN">向司机展示“Hotel”页中的酒店名称和中文地址。乘坐打表计费的出租车，并保留发票。</span></li>
                 </ol>
-                <p class="note">The metered fare depends on route, waiting time and tolls. Keep RMB cash available as a payment backup.</p>
+                <p class="note"><span class="card-en" lang="en">The metered fare depends on route, waiting time and tolls. Keep RMB cash available as a payment backup.</span><span class="card-zh" lang="zh-CN">车费按计价器结算，受路线、等候时间及通行费影响。备好人民币现金作为付款备用。</span></p>
               </section>
             </div>
-            <p class="contact"><a class="source-link" href="https://www.szairport.com/szairport/czc/zlm_tt.shtml" target="_blank" rel="noopener noreferrer">Airport taxi &amp; ride-hailing pickup guide ↗</a></p>
-          </article>
+            <p class="contact"><a class="source-link" href="https://www.szairport.com/szairport/czc/zlm_tt.shtml" target="_blank" rel="noopener noreferrer"><span class="card-en" lang="en">Airport taxi &amp; ride-hailing pickup guide ↗</span><span class="card-zh" lang="zh-CN">机场官方出租车及网约车乘车指引 ↗</span></a></p>
+          </div>
+</article>
         </section>
-        <section class="day-panel" id="day-9-panel" aria-label="9 November 2026"></section>
+        <section class="day-panel" id="day-9-panel" aria-label="9 November 2026">
+          <article class="destination-card" aria-labelledby="destination-heading-huaqiangbei">
+<input class="card-language-choice" type="checkbox" id="card-language-19" aria-label="Chinese version of Huaqiangbei" aria-controls="card-language-19-content">
+<label class="card-language-toggle" for="card-language-19"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-19-content">
+  <div class="flight-header"><span class="traveler"><span class="card-en" lang="en">Destination</span><span class="card-zh" lang="zh-CN">目的地</span></span><h3 id="destination-heading-huaqiangbei"><span class="card-en" lang="en">Huaqiangbei</span><span class="card-zh" lang="zh-CN">华强北步行街</span></h3></div>
+  <p class="airport"><span class="card-en" lang="en">Shenzhen&#39;s electronics shopping district, with SEG Plaza, Huaqiang Electronic World and shops for gadgets, accessories and components.</span><span class="card-zh" lang="zh-CN">深圳电子产品购物商圈，可逛赛格广场、华强电子世界，以及各类数码产品、配件和电子元器件商店。</span></p>
+  <div class="destination-section">
+    <div class="label"><span class="card-en" lang="en">Address</span><span class="card-zh" lang="zh-CN">地址</span></div>
+    <p class="airport"><span class="card-en" lang="en">Huaqiangbei Road, between Shennan Road and Hongli Road, Futian District, Shenzhen</span><span class="card-zh" lang="zh-CN">深圳市福田区华强北路步行街（深南路至红荔路段）</span></p>
+  </div>
+  <section class="destination-section" aria-labelledby="destination-travel-heading-huaqiangbei">
+    <h3 id="destination-travel-heading-huaqiangbei"><span class="card-en" lang="en">How to get there</span><span class="card-zh" lang="zh-CN">交通方式</span></h3>
+    <p class="airport"><span class="card-en" lang="en">Metro Line 1 to Huaqiang Road, followed by a short walk north into the shopping district.</span><span class="card-zh" lang="zh-CN">乘地铁1号线到华强路站，再向北步行进入华强北商圈。</span></p>
+    <div class="destination-travel-meta">
+      <div><div class="label"><span class="card-en" lang="en">From</span><span class="card-zh" lang="zh-CN">出发地</span></div><p class="airport"><span class="card-en" lang="en">Sheraton Shenzhen Futian Hotel</span><span class="card-zh" lang="zh-CN">深圳大中华喜来登酒店</span></p></div>
+      <div><div class="label"><span class="card-en" lang="en">Estimated journey</span><span class="card-zh" lang="zh-CN">预计用时</span></div><p class="airport"><span class="card-en" lang="en">About 15–25 minutes by metro and on foot (estimate)</span><span class="card-zh" lang="zh-CN">地铁加步行约15–25分钟（估计）</span></p></div>
+    </div>
+    <ol class="instructions"><li><span class="card-en" lang="en">Walk from the hotel to Convention &amp; Exhibition Center metro station and take Line 1 toward Luohu.</span><span class="card-zh" lang="zh-CN">从酒店步行到会展中心地铁站，乘1号线罗湖方向列车。</span></li><li><span class="card-en" lang="en">Get off at Huaqiang Road station. Follow signs toward Huaqiangbei Road and walk north into the pedestrian shopping district.</span><span class="card-zh" lang="zh-CN">在华强路站下车，按指示牌前往华强北路，向北步行进入购物步行街。</span></li><li><span class="card-en" lang="en">Browse SEG Plaza and Huaqiang Electronic World along the street. Keep the Hotel tab handy for your return trip to BitCity in the hotel complex.</span><span class="card-zh" lang="zh-CN">沿街可逛赛格广场及华强电子世界。之后返回酒店所在的大中华广场逛BitCity时，可查看“Hotel”页中的酒店地址。</span></li></ol>
+  </section>
+  <div class="destination" aria-labelledby="destination-driver-heading-huaqiangbei">
+    <h3 id="destination-driver-heading-huaqiangbei"><span class="card-en" lang="en">Show your driver</span><span class="card-zh" lang="zh-CN">给司机看</span></h3>
+    <p class="driver-destination-name" lang="zh-CN">华强北步行街</p>
+    <p class="airport" lang="zh-CN">深圳市福田区华强北路步行街（深南路至红荔路段）</p>
+    <p class="airport" lang="zh-CN">请送我到华强北步行街，靠近赛格广场，在附近可以停车的位置下车。</p>
+  </div>
+  <div class="restaurant-actions">
+    <a href="https://www.sz.gov.cn/en_szgov/news/infocus/SZCitywalk/Explore/CitywalkRoutes/CyberSZ/content/post_11893874.html" target="_blank" rel="noopener noreferrer"><span class="card-en" lang="en">Destination details ↗</span><span class="card-zh" lang="zh-CN">目的地详情 ↗</span></a>
+    <a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%8E%E5%BC%BA%E5%8C%97%E6%AD%A5%E8%A1%8C%E8%A1%97%20%E8%B5%9B%E6%A0%BC%E5%B9%BF%E5%9C%BA%20%E6%B7%B1%E5%9C%B3%E5%B8%82%E7%A6%8F%E7%94%B0%E5%8C%BA%E5%8D%8E%E5%BC%BA%E5%8C%97%E8%B7%AF" target="_blank" rel="noopener noreferrer"><span class="card-en" lang="en">Google Maps ↗</span><span class="card-zh" lang="zh-CN">谷歌地图 ↗</span></a>
+    <a href="https://maps.apple.com/?q=%E5%8D%8E%E5%BC%BA%E5%8C%97%E6%AD%A5%E8%A1%8C%E8%A1%97%20%E8%B5%9B%E6%A0%BC%E5%B9%BF%E5%9C%BA%20%E6%B7%B1%E5%9C%B3%E5%B8%82%E7%A6%8F%E7%94%B0%E5%8C%BA%E5%8D%8E%E5%BC%BA%E5%8C%97%E8%B7%AF" target="_blank" rel="noopener noreferrer"><span class="card-en" lang="en">Apple Maps ↗</span><span class="card-zh" lang="zh-CN">苹果地图 ↗</span></a>
+  </div>
+</div>
+</article>
+          <article class="destination-card" aria-labelledby="destination-heading-bitcity">
+<input class="card-language-choice" type="checkbox" id="card-language-20" aria-label="Chinese version of BitCity 次元小镇 — Anime Mall" aria-controls="card-language-20-content">
+<label class="card-language-toggle" for="card-language-20"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-20-content">
+  <div class="flight-header"><span class="traveler"><span class="card-en" lang="en">Destination</span><span class="card-zh" lang="zh-CN">目的地</span></span><h3 id="destination-heading-bitcity"><span class="card-en" lang="en">BitCity 次元小镇 — Anime Mall</span><span class="card-zh" lang="zh-CN">BitCity 次元小镇</span></h3></div>
+  <p class="airport"><span class="card-en" lang="en">An anime and pop-culture shopping district with collectible figures, themed shops and interactive entertainment. It is in the same Great China complex as your hotel.</span><span class="card-zh" lang="zh-CN">以二次元文化、潮玩手办及互动娱乐为特色的购物街区，与酒店同在大中华广场商业体内。</span></p>
+  <div class="destination-section">
+    <div class="label"><span class="card-en" lang="en">Address</span><span class="card-zh" lang="zh-CN">地址</span></div>
+    <p class="airport"><span class="card-en" lang="en">G level, Great China HUA Plaza, 1 Fuhua 1st Road, Futian District, Shenzhen</span><span class="card-zh" lang="zh-CN">深圳市福田区福华一路1号，大中华HUA广场G层</span></p>
+  </div>
+  <section class="destination-section" aria-labelledby="destination-travel-heading-bitcity">
+    <h3 id="destination-travel-heading-bitcity"><span class="card-en" lang="en">How to get there</span><span class="card-zh" lang="zh-CN">交通方式</span></h3>
+    <p class="airport"><span class="card-en" lang="en">Walk within the Great China complex; a taxi is not needed from the hotel.</span><span class="card-zh" lang="zh-CN">从酒店步行前往，同在大中华广场商业体内，无需打车。</span></p>
+    <div class="destination-travel-meta">
+      <div><div class="label"><span class="card-en" lang="en">From</span><span class="card-zh" lang="zh-CN">出发地</span></div><p class="airport"><span class="card-en" lang="en">Sheraton Shenzhen Futian Hotel</span><span class="card-zh" lang="zh-CN">深圳大中华喜来登酒店</span></p></div>
+      <div><div class="label"><span class="card-en" lang="en">Estimated journey</span><span class="card-zh" lang="zh-CN">预计用时</span></div><p class="airport"><span class="card-en" lang="en">About 2–5 minutes on foot (estimate)</span><span class="card-zh" lang="zh-CN">步行约2–5分钟（估计）</span></p></div>
+    </div>
+    <ol class="instructions"><li><span class="card-en" lang="en">From the hotel lobby, follow signs or ask the concierge for Great China HUA Plaza / BitCity.</span><span class="card-zh" lang="zh-CN">从酒店大堂出发，按指示牌前往大中华HUA广场／BitCity次元小镇，或请礼宾人员指路。</span></li><li><span class="card-en" lang="en">Go to the mall&#39;s G level and look for the BitCity 次元小镇 signs. Allow extra time to find the entrance on your first visit.</span><span class="card-zh" lang="zh-CN">前往商场G层，寻找“BitCity次元小镇”的招牌。首次前往时，可多预留一点时间寻找入口。</span></li><li><span class="card-en" lang="en">If coming from elsewhere, take Metro Line 1 or 4 to Convention &amp; Exhibition Center and use Exit A toward Great China HUA Plaza.</span><span class="card-zh" lang="zh-CN">如从其他地方出发，可乘地铁1号线或4号线到会展中心站，从A口前往大中华HUA广场。</span></li></ol>
+  </section>
+  <div class="destination" aria-labelledby="destination-driver-heading-bitcity">
+    <h3 id="destination-driver-heading-bitcity"><span class="card-en" lang="en">Show your driver</span><span class="card-zh" lang="zh-CN">给司机看</span></h3>
+    <p class="driver-destination-name" lang="zh-CN">BitCity 次元小镇</p>
+    <p class="airport" lang="zh-CN">深圳市福田区福华一路1号，大中华HUA广场G层</p>
+    <p class="airport" lang="zh-CN">请送我到大中华HUA广场的BitCity次元小镇，靠近会展中心地铁站A口。</p>
+  </div>
+  <div class="restaurant-actions">
+    <a href="https://www.szft.gov.cn/ftqftjdbsc/gkmlpt/content/11/11266/post_11266143.html" target="_blank" rel="noopener noreferrer"><span class="card-en" lang="en">Destination details ↗</span><span class="card-zh" lang="zh-CN">目的地详情 ↗</span></a>
+    <a href="https://www.google.com/maps/search/?api=1&amp;query=BitCity%20%E6%AC%A1%E5%85%83%E5%B0%8F%E9%95%87%20%E5%A4%A7%E4%B8%AD%E5%8D%8EHUA%E5%B9%BF%E5%9C%BA%20%E6%B7%B1%E5%9C%B3%E5%B8%82%E7%A6%8F%E7%94%B0%E5%8C%BA%E7%A6%8F%E5%8D%8E%E4%B8%80%E8%B7%AF1%E5%8F%B7" target="_blank" rel="noopener noreferrer"><span class="card-en" lang="en">Google Maps ↗</span><span class="card-zh" lang="zh-CN">谷歌地图 ↗</span></a>
+    <a href="https://maps.apple.com/?q=BitCity%20%E6%AC%A1%E5%85%83%E5%B0%8F%E9%95%87%20%E5%A4%A7%E4%B8%AD%E5%8D%8EHUA%E5%B9%BF%E5%9C%BA%20%E6%B7%B1%E5%9C%B3%E5%B8%82%E7%A6%8F%E7%94%B0%E5%8C%BA%E7%A6%8F%E5%8D%8E%E4%B8%80%E8%B7%AF1%E5%8F%B7" target="_blank" rel="noopener noreferrer"><span class="card-en" lang="en">Apple Maps ↗</span><span class="card-zh" lang="zh-CN">苹果地图 ↗</span></a>
+  </div>
+</div>
+</article>
+          <article class="destination-card" aria-labelledby="destination-heading-dongmen">
+<input class="card-language-choice" type="checkbox" id="card-language-21" aria-label="Chinese version of Dongmen" aria-controls="card-language-21-content">
+<label class="card-language-toggle" for="card-language-21"><span class="card-en" lang="zh-CN">中文</span><span class="card-zh" lang="en">English</span></label>
+<div class="card-content" id="card-language-21-content">
+  <div class="flight-header"><span class="traveler"><span class="card-en" lang="en">Destination</span><span class="card-zh" lang="zh-CN">目的地</span></span><h3 id="destination-heading-dongmen"><span class="card-en" lang="en">Dongmen</span><span class="card-zh" lang="zh-CN">东门商业步行街（东门老街）</span></h3></div>
+  <p class="airport"><span class="card-en" lang="en">Shenzhen&#39;s historic shopping district: pedestrian lanes, fashion shops, snacks and lively street performances. A good final stop for browsing and dinner.</span><span class="card-zh" lang="zh-CN">深圳历史悠久的购物商圈，有步行街巷、服装店、小吃及热闹的街头表演，适合当天最后逛街和吃晚饭。</span></p>
+  <div class="destination-section">
+    <div class="label"><span class="card-en" lang="en">Address</span><span class="card-zh" lang="zh-CN">地址</span></div>
+    <p class="airport"><span class="card-en" lang="en">Dongmen Old Street, Luohu District, Shenzhen; near Laojie metro station</span><span class="card-zh" lang="zh-CN">深圳市罗湖区东门商业步行街，老街地铁站附近</span></p>
+  </div>
+  <section class="destination-section" aria-labelledby="destination-travel-heading-dongmen">
+    <h3 id="destination-travel-heading-dongmen"><span class="card-en" lang="en">How to get there</span><span class="card-zh" lang="zh-CN">交通方式</span></h3>
+    <p class="airport"><span class="card-en" lang="en">Metro Line 1 directly from Convention &amp; Exhibition Center to Laojie; use Exit E for Dongmen Old Street.</span><span class="card-zh" lang="zh-CN">从会展中心站乘地铁1号线直达老街站，由E口前往东门老街。</span></p>
+    <div class="destination-travel-meta">
+      <div><div class="label"><span class="card-en" lang="en">From</span><span class="card-zh" lang="zh-CN">出发地</span></div><p class="airport"><span class="card-en" lang="en">Sheraton Shenzhen Futian Hotel / BitCity</span><span class="card-zh" lang="zh-CN">深圳大中华喜来登酒店／BitCity次元小镇</span></p></div>
+      <div><div class="label"><span class="card-en" lang="en">Estimated journey</span><span class="card-zh" lang="zh-CN">预计用时</span></div><p class="airport"><span class="card-en" lang="en">About 25–35 minutes by metro and on foot (estimate)</span><span class="card-zh" lang="zh-CN">地铁加步行约25–35分钟（估计）</span></p></div>
+    </div>
+    <ol class="instructions"><li><span class="card-en" lang="en">From the hotel or BitCity, walk to Convention &amp; Exhibition Center metro station and take Line 1 toward Luohu.</span><span class="card-zh" lang="zh-CN">从酒店或BitCity步行到会展中心地铁站，乘1号线罗湖方向列车。</span></li><li><span class="card-en" lang="en">Get off at Laojie station and follow Exit E toward Dongmen Old Street, as recommended by Shenzhen&#39;s official visitor guide.</span><span class="card-zh" lang="zh-CN">在老街站下车，按深圳官方旅游指南推荐，从E口前往东门老街。</span></li><li><span class="card-en" lang="en">Explore the pedestrian shopping streets and snack stalls. To return, take Line 1 toward Airport East and get off at Convention &amp; Exhibition Center.</span><span class="card-zh" lang="zh-CN">逛步行购物街及小吃摊。返回时乘1号线机场东方向列车，在会展中心站下车。</span></li></ol>
+  </section>
+  <div class="destination" aria-labelledby="destination-driver-heading-dongmen">
+    <h3 id="destination-driver-heading-dongmen"><span class="card-en" lang="en">Show your driver</span><span class="card-zh" lang="zh-CN">给司机看</span></h3>
+    <p class="driver-destination-name" lang="zh-CN">东门商业步行街（东门老街）</p>
+    <p class="airport" lang="zh-CN">深圳市罗湖区东门商业步行街，老街地铁站附近</p>
+    <p class="airport" lang="zh-CN">请送我到东门老街附近可以停车的位置，靠近老街地铁站E口。</p>
+  </div>
+  <div class="restaurant-actions">
+    <a href="https://www.sz.gov.cn/en_szgov/news/infocus/SZCitywalk/Explore/Districts/LuohuDistrict/content/post_11892515.html" target="_blank" rel="noopener noreferrer"><span class="card-en" lang="en">Destination details ↗</span><span class="card-zh" lang="zh-CN">目的地详情 ↗</span></a>
+    <a href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%9C%E9%97%A8%E5%95%86%E4%B8%9A%E6%AD%A5%E8%A1%8C%E8%A1%97%20%E8%80%81%E8%A1%97%E5%9C%B0%E9%93%81%E7%AB%99E%E5%8F%A3%20%E6%B7%B1%E5%9C%B3%E5%B8%82%E7%BD%97%E6%B9%96%E5%8C%BA" target="_blank" rel="noopener noreferrer"><span class="card-en" lang="en">Google Maps ↗</span><span class="card-zh" lang="zh-CN">谷歌地图 ↗</span></a>
+    <a href="https://maps.apple.com/?q=%E4%B8%9C%E9%97%A8%E5%95%86%E4%B8%9A%E6%AD%A5%E8%A1%8C%E8%A1%97%20%E8%80%81%E8%A1%97%E5%9C%B0%E9%93%81%E7%AB%99E%E5%8F%A3%20%E6%B7%B1%E5%9C%B3%E5%B8%82%E7%BD%97%E6%B9%96%E5%8C%BA" target="_blank" rel="noopener noreferrer"><span class="card-en" lang="en">Apple Maps ↗</span><span class="card-zh" lang="zh-CN">苹果地图 ↗</span></a>
+  </div>
+</div>
+</article>
+        </section>
         <section class="day-panel" id="day-10-panel" aria-label="10 November 2026"></section>
         <section class="day-panel" id="day-11-panel" aria-label="11 November 2026"></section>
         <section class="day-panel" id="day-12-panel" aria-label="12 November 2026"></section>

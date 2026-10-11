@@ -1,0 +1,28 @@
+<article class="destination-card" aria-labelledby="destination-heading-{{id}}">
+  <div class="flight-header"><span class="traveler">Destination</span><h3 id="destination-heading-{{id}}">{{name}}</h3></div>
+  <p class="airport">{{summary}}</p>
+  <div class="destination-section">
+    <div class="label">Address</div>
+    <p class="airport">{{address}}</p>
+  </div>
+  <section class="destination-section" aria-labelledby="destination-travel-heading-{{id}}">
+    <h3 id="destination-travel-heading-{{id}}">How to get there</h3>
+    <p class="airport">{{transport}}</p>
+    <div class="destination-travel-meta">
+      <div><div class="label">From</div><p class="airport">{{origin}}</p></div>
+      <div><div class="label">Estimated journey</div><p class="airport">{{journeyTime}}</p></div>
+    </div>
+    <ol class="instructions">{{directions}}</ol>
+  </section>
+  <div class="destination" aria-labelledby="destination-driver-heading-{{id}}">
+    <h3 id="destination-driver-heading-{{id}}">Show your driver</h3>
+    <p class="driver-destination-name" lang="zh-CN">{{nameZh}}</p>
+    <p class="airport" lang="zh-CN">{{addressZh}}</p>
+    <p class="airport" lang="zh-CN">{{driverTextZh}}</p>
+  </div>
+  <div class="restaurant-actions">
+    <a href="{{sourceUrl}}" target="_blank" rel="noopener noreferrer">Destination details ↗</a>
+    <a href="{{googleMapsUrl}}" target="_blank" rel="noopener noreferrer">Google Maps ↗</a>
+    <a href="{{appleMapsUrl}}" target="_blank" rel="noopener noreferrer">Apple Maps ↗</a>
+  </div>
+</article>

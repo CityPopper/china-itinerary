@@ -1,0 +1,95 @@
+{
+  "huaqiangbei": {
+    "name": "Huaqiangbei",
+    "nameZh": "华强北步行街",
+    "summary": "Shenzhen's electronics shopping district, with SEG Plaza, Huaqiang Electronic World and shops for gadgets, accessories and components.",
+    "summaryZh": "深圳电子产品购物商圈，可逛赛格广场、华强电子世界，以及各类数码产品、配件和电子元器件商店。",
+    "address": "Huaqiangbei Road, between Shennan Road and Hongli Road, Futian District, Shenzhen",
+    "addressZh": "深圳市福田区华强北路步行街（深南路至红荔路段）",
+    "transport": "Metro Line 1 to Huaqiang Road, followed by a short walk north into the shopping district.",
+    "transportZh": "乘地铁1号线到华强路站，再向北步行进入华强北商圈。",
+    "origin": "Sheraton Shenzhen Futian Hotel",
+    "originZh": "深圳大中华喜来登酒店",
+    "journeyTime": "About 15–25 minutes by metro and on foot (estimate)",
+    "journeyTimeZh": "地铁加步行约15–25分钟（估计）",
+    "directions": [
+      {
+        "en": "Walk from the hotel to Convention & Exhibition Center metro station and take Line 1 toward Luohu.",
+        "zh": "从酒店步行到会展中心地铁站，乘1号线罗湖方向列车。"
+      },
+      {
+        "en": "Get off at Huaqiang Road station. Follow signs toward Huaqiangbei Road and walk north into the pedestrian shopping district.",
+        "zh": "在华强路站下车，按指示牌前往华强北路，向北步行进入购物步行街。"
+      },
+      {
+        "en": "Browse SEG Plaza and Huaqiang Electronic World along the street. Keep the Hotel tab handy for your return trip to BitCity in the hotel complex.",
+        "zh": "沿街可逛赛格广场及华强电子世界。之后返回酒店所在的大中华广场逛BitCity时，可查看“Hotel”页中的酒店地址。"
+      }
+    ],
+    "driverTextZh": "请送我到华强北步行街，靠近赛格广场，在附近可以停车的位置下车。",
+    "mapQuery": "华强北步行街 赛格广场 深圳市福田区华强北路",
+    "sourceUrl": "https://www.sz.gov.cn/en_szgov/news/infocus/SZCitywalk/Explore/CitywalkRoutes/CyberSZ/content/post_11893874.html"
+  },
+  "bitcity": {
+    "name": "BitCity 次元小镇 — Anime Mall",
+    "nameZh": "BitCity 次元小镇",
+    "summary": "An anime and pop-culture shopping district with collectible figures, themed shops and interactive entertainment. It is in the same Great China complex as your hotel.",
+    "summaryZh": "以二次元文化、潮玩手办及互动娱乐为特色的购物街区，与酒店同在大中华广场商业体内。",
+    "address": "G level, Great China HUA Plaza, 1 Fuhua 1st Road, Futian District, Shenzhen",
+    "addressZh": "深圳市福田区福华一路1号，大中华HUA广场G层",
+    "transport": "Walk within the Great China complex; a taxi is not needed from the hotel.",
+    "transportZh": "从酒店步行前往，同在大中华广场商业体内，无需打车。",
+    "origin": "Sheraton Shenzhen Futian Hotel",
+    "originZh": "深圳大中华喜来登酒店",
+    "journeyTime": "About 2–5 minutes on foot (estimate)",
+    "journeyTimeZh": "步行约2–5分钟（估计）",
+    "directions": [
+      {
+        "en": "From the hotel lobby, follow signs or ask the concierge for Great China HUA Plaza / BitCity.",
+        "zh": "从酒店大堂出发，按指示牌前往大中华HUA广场／BitCity次元小镇，或请礼宾人员指路。"
+      },
+      {
+        "en": "Go to the mall's G level and look for the BitCity 次元小镇 signs. Allow extra time to find the entrance on your first visit.",
+        "zh": "前往商场G层，寻找“BitCity次元小镇”的招牌。首次前往时，可多预留一点时间寻找入口。"
+      },
+      {
+        "en": "If coming from elsewhere, take Metro Line 1 or 4 to Convention & Exhibition Center and use Exit A toward Great China HUA Plaza.",
+        "zh": "如从其他地方出发，可乘地铁1号线或4号线到会展中心站，从A口前往大中华HUA广场。"
+      }
+    ],
+    "driverTextZh": "请送我到大中华HUA广场的BitCity次元小镇，靠近会展中心地铁站A口。",
+    "mapQuery": "BitCity 次元小镇 大中华HUA广场 深圳市福田区福华一路1号",
+    "sourceUrl": "https://www.szft.gov.cn/ftqftjdbsc/gkmlpt/content/11/11266/post_11266143.html"
+  },
+  "dongmen": {
+    "name": "Dongmen",
+    "nameZh": "东门商业步行街（东门老街）",
+    "summary": "Shenzhen's historic shopping district: pedestrian lanes, fashion shops, snacks and lively street performances. A good final stop for browsing and dinner.",
+    "summaryZh": "深圳历史悠久的购物商圈，有步行街巷、服装店、小吃及热闹的街头表演，适合当天最后逛街和吃晚饭。",
+    "address": "Dongmen Old Street, Luohu District, Shenzhen; near Laojie metro station",
+    "addressZh": "深圳市罗湖区东门商业步行街，老街地铁站附近",
+    "transport": "Metro Line 1 directly from Convention & Exhibition Center to Laojie; use Exit E for Dongmen Old Street.",
+    "transportZh": "从会展中心站乘地铁1号线直达老街站，由E口前往东门老街。",
+    "origin": "Sheraton Shenzhen Futian Hotel / BitCity",
+    "originZh": "深圳大中华喜来登酒店／BitCity次元小镇",
+    "journeyTime": "About 25–35 minutes by metro and on foot (estimate)",
+    "journeyTimeZh": "地铁加步行约25–35分钟（估计）",
+    "directions": [
+      {
+        "en": "From the hotel or BitCity, walk to Convention & Exhibition Center metro station and take Line 1 toward Luohu.",
+        "zh": "从酒店或BitCity步行到会展中心地铁站，乘1号线罗湖方向列车。"
+      },
+      {
+        "en": "Get off at Laojie station and follow Exit E toward Dongmen Old Street, as recommended by Shenzhen's official visitor guide.",
+        "zh": "在老街站下车，按深圳官方旅游指南推荐，从E口前往东门老街。"
+      },
+      {
+        "en": "Explore the pedestrian shopping streets and snack stalls. To return, take Line 1 toward Airport East and get off at Convention & Exhibition Center.",
+        "zh": "逛步行购物街及小吃摊。返回时乘1号线机场东方向列车，在会展中心站下车。"
+      }
+    ],
+    "driverTextZh": "请送我到东门老街附近可以停车的位置，靠近老街地铁站E口。",
+    "mapQuery": "东门商业步行街 老街地铁站E口 深圳市罗湖区",
+    "sourceUrl": "https://www.sz.gov.cn/en_szgov/news/infocus/SZCitywalk/Explore/Districts/LuohuDistrict/content/post_11892515.html"
+  }
+}
